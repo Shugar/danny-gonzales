@@ -1,22 +1,18 @@
 $(document).ready(() => {
-  $('.nav-toggle').click(() => {
+  let navShow = () => {
     $('.nav').addClass('nav-active');
     $('.nav-toggle').addClass('toggle-active');
-  });
+  };
+  $('.nav-toggle').click(navShow);
 
-  $('.nav-close').click(() => {
+  let navHide = () => {
     $('.nav').removeClass('nav-active');
     $('.nav-toggle').removeClass('toggle-active');
-  });
+  };
+  $('.nav-close').click(navHide);
+  $('html, body').click(navHide);
 
-  $('html, body').click(() => {
-    $('.nav').removeClass('nav-active');
-    $('.nav-toggle').removeClass('toggle-active');
-  });
-
-  $('.nav, .nav-toggle').click(event => {
-    event.stopPropagation();
-  });
+  $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
   $(document).bind('mousewheel', () => {
     $('.arts').addClass('animations-active');
@@ -25,4 +21,3 @@ $(document).ready(() => {
     });
   });
 });
-  
