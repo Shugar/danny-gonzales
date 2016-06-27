@@ -44,3 +44,6 @@ To build app to production version (minified code and etc) —
 ```
 brunch build -p
 ```
+
+# danny-gonzales 
+
