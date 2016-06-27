@@ -1,4 +1,6 @@
-$(document).ready(() => {
+import {fillPosts, setBubbles, bubbles} from './posts';
+
+function setMouseListeners() {
   let navShow = () => {
     $('.nav').addClass('nav-active');
     $('.nav-toggle').addClass('toggle-active');
@@ -15,9 +17,33 @@ $(document).ready(() => {
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
   $(document).bind('mousewheel', () => {
-    $('.arts').addClass('animations-active');
+    $('.art').addClass('animations-active');
     $('.bubbles').addClass('bubbles-active').delay(500).queue(() => {
       $(this).addClass('bubbles-overflow');
     });
   });
+}
+
+let bubbleElms = [];
+
+$(document).ready(() => {
+  setMouseListeners();
+
+  fillPosts();
+  setBubbles();
+
+  let parentElem = document.querySelector('.bubbles');
+
+  for (let bubble of bubbles) {
+    let elm = document.createElement('div');
+    elm.className = 'bubble';
+    elm.style.left = bubble.x - bubble.radius;
+    elm.style.top = bubble.y - bubble.radius;
+    elm.style.width = bubble.radius * 2;
+    elm.style.height = bubble.radius * 2;
+
+    parentElem.appendChild(elm);
+    bubbleElms.push(elm);
+  }
+
 });
