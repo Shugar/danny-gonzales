@@ -1,0 +1,486 @@
+body {
+  background: url('../images/bg.png') no-repeat center center;
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+}
+
+html,
+body {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav {
+  transform: translate3d(-100%,0,0);
+  will-change: transform;
+  transition: transform 0.3s ease;
+
+  z-index: 999;
+  background: #fff;
+  width: 26%;
+  height: 100%;
+
+  position: absolute;
+  left: 0%;
+  top: 0%;
+
+  box-shadow: 0px 0px 38px 0px rgba(0,0,0,0.30), 0px 15px 12px 0px rgba(0,0,0,0.22);
+
+  &.nav-active {
+    transform: translate3d(0,0,0);
+  }
+
+  &-toggle {
+    font-size: 13px;
+    color: #0E172F;
+    letter-spacing: 1.05px;
+    line-height: 20px;
+
+    position: absolute;
+    bottom: 15px;
+    left: 46px;
+    border-bottom: 2px solid transparent;
+    will-change: border-bottom;
+    transition: border-bottom 0.3s ease;
+    transition-delay: 0.2s;
+
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  &-toggle.toggle-active {
+    border-bottom: 2px solid #0E172F;
+  }
+
+  &-close {
+    background: url('../images/cross.svg') no-repeat center center;
+    background-size: contain;
+    height: 15px;
+    width: 12px;
+
+    position: absolute;
+    right: 19px;
+    top: 12px;
+
+    cursor: pointer;
+  }
+
+  &-inner {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    padding: 0 46px;
+
+    height: 100%;
+  }
+
+  &-listItem a,
+  .socials {
+    font-size: 13px;
+    color: #0E172F;
+    letter-spacing: 1.05px;
+    line-height: 20px;
+  }
+
+  .socials {
+    margin: 28px 0 65px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    line-height: 20px;
+
+    a {
+      margin-left: 11px;
+      line-height: initial;
+      line-height: 10px;
+    }
+  }
+}
+
+.art {
+  &-1 {
+    background: url('../images/1.png') no-repeat center center;
+    background-size: contain;
+    width: 10.062%;
+    height: 20.937%;
+
+    position: absolute;
+    left: 9.7%;
+    bottom: 13.56%;
+  }
+
+  &-2 {
+    background: url('../images/2.png') no-repeat center center;
+    background-size: contain;
+    width: 13.25%;
+    height: 27.52%;
+
+    position: absolute;
+    left: 12.2%;
+    bottom: 38%;
+  }
+
+  &-3 {
+    background: url('../images/3.png') no-repeat center center;
+    background-size: contain;
+    width: 11.125%;
+    height: 24.062%;
+
+    position: absolute;
+    top: 9%;
+    left: 17%;
+  }
+
+  &-4 {
+    background: url('../images/4.png') no-repeat center center;
+    background-size: contain;
+    width: 13.312%;
+    height: 21.77%;
+
+    position: absolute;
+    top: 41.1%;
+    left: 25%;
+  }
+
+  &-5 {
+    background: url('../images/5.png') no-repeat center center;
+    background-size: contain;
+    width: 17.187%;
+    height: 17.187%;
+
+    position: absolute;
+    top: 17.9%;
+    left: 29.5%;
+  }
+
+  &-6 {
+    background: url('../images/6.png') no-repeat center center;
+    background-size: contain;
+    width: 8.187%;
+    height: 13.333%;
+
+    position: absolute;
+    top: 46.8%;
+    left: 38.7%;
+  }
+
+  &-7 {
+    background: url('../images/7.png') no-repeat center center;
+    background-size: contain;
+    width: 42.0625%;
+    height: 33.083%;
+
+    position: absolute;
+    left: 39%;
+    top: 24%;
+  }
+
+  &-8 {
+    background: url('../images/8.png') no-repeat center center;
+    background-size: contain;
+    width: 16.9375%;
+    height: 21.666%;
+
+    position: absolute;
+    left: 53.7%;
+    bottom: 33.3%;
+  }
+
+  &-9 {
+    background: url('../images/9.png') no-repeat center center;
+    background-size: contain;
+    width: 22.75%;
+    height: 14.99%;
+
+    position: absolute;
+    top: 19.3%;
+    right: 26.1%;
+  }
+
+  &-10 {
+    background: url('../images/10.png') no-repeat center center;
+    background-size: contain;
+    width: 6.5625%;
+    height: 16.95%;
+
+    position: absolute;
+    top: 44.2%;
+    right: 19.9%;
+  }
+
+  &-11 {
+    background: url('../images/11.png') no-repeat center center;
+    background-size: contain;
+    width: 12.125%;
+    height: 17.395%;
+
+    position: absolute;
+    top: 19.1%;
+    right: 13.7%;
+  }
+
+  &-12 {
+    background: url('../images/12.png') no-repeat center center;
+    background-size: contain;
+    width: 8.75%;
+    height: 16.875%;
+
+    position: absolute;
+    top: 40.3%;
+    right: 10.3%;
+  }
+
+  &-13 {
+    background: url('../images/13.png') no-repeat center center;
+    background-size: contain;
+    width: 6.3125%;
+    height: 12.8125%;
+
+    position: absolute;
+    bottom: 25.2%;
+    right: 16.6%;
+  }
+
+  &-1,
+  &-2,
+  &-3,
+  &-4,
+  &-5,
+  &-6,
+  &-7,
+  &-8,
+  &-9,
+  &-10,
+  &-11,
+  &-12,
+  &-13 {
+    transition: transform 0.6s ease;
+    will-change: transform;
+  }
+}
+
+.animations-active {
+
+  .art-1 {
+    transform: translate3d(-100%, 200%, 0);
+  }
+  .art-2 {
+    transform: translate3d(-150%, 52%, 0);
+  }
+  .art-3 {
+    transform: translate3d(-208%,-44%, 0);
+  }
+  .art-4 {
+    transform: translate3d(-218%,-80%, 0);
+  }
+  .art-5 {
+    transform: translate3d(-100%,-200%, 0);
+  }
+  .art-6 {
+    transform: translate3d(-342%,-395%, 0);
+  }
+  .art-7 {
+    transform: translate3d(108.8%,2%, 0);
+  }
+  .art-8 {
+    transform: translate3d(50%,-310%, 0);
+  }
+  .art-9 {
+    transform: translate3d(146%,-84%, 0);
+  }
+  .art-10 {
+    transform: translate3d(235%,210%, 0);
+  }
+  .art-11 {
+    transform: translate3d(250%,-250%, 0);
+  }
+  .art-12 {
+    transform: translate3d(150%,129%, 0);
+  }
+  .art-13 {
+    transform: translate3d(336%,160%, 0);
+  }
+
+}
+
+.bubbles {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  opacity: 0.01;
+  transition: opacity 0.3s ease;
+  transition-delay: 0.25s;
+  will-change: opacity;
+  width: 80%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { width: 0 !important }
+
+  &-active {
+    opacity: 0.99;
+  }
+
+  &-overflow {
+    overflow-y: scroll;
+  }
+
+  .bubble-xs,
+  .bubble-s,
+  .bubble-m,
+  .bubble-l {
+    position: absolute;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 8px 8px 0px rgba(0,0,0,0.22);
+  }
+
+  .bubble-xs {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bubble-s {
+    width: 185px;
+    height: 185px;
+  }
+
+  .bubble-m {
+    width: 253px;
+    height: 253px;
+  }
+
+  .bubble-l {
+    width: 350px;
+    height: 350px;
+  }
+
+  .bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    width: 100%;
+  }
+
+  .bubble-inner {
+    position: absolute;
+  }
+
+  .bubble-m .title {
+    font-size: 16px;
+    color: rgba(255,255,255,0.70);
+    letter-spacing: 0px;
+    line-height: 22px;
+  }
+
+  .bubble-m .subtitle {
+    margin-top: 19px;
+
+    position: relative;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 1.29px;
+    line-height: 18px;
+
+    margin-left: 20px;
+
+    &:before {
+      content: '—';
+      position: absolute;
+      color: #fff;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .bubble-m .bubble-inner {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .bubble-l .bubble-inner {
+    bottom: 26%;
+    left: 10%;
+  }
+
+  .bubble-l .title {
+    font-size: 24px;
+    color: #FFFFFF;
+    letter-spacing: 1.95px;
+    line-height: 20px;
+  }
+
+  .bubble-l .subtitle {
+    margin-top: 14px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 1.73px;
+    line-height: 18px;
+  }
+
+  .bubble-1 {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    .bg {
+      background: url('../images/photo-4.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
+  .bubble-2 {
+    top: 40%;
+    right: 50%;
+    .bg {
+      background: url('../images/photo-3.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
+  .bubble-3 {
+    background: #26386F;
+    bottom: 0;
+
+    .bubble-inner {
+      width: 80%;
+    }
+  }
+
+  .bubble-4 {
+    background: #0E172F;
+    right: 10%;
+
+    .bubble-inner {
+      width: 70%;
+    }
+  }
+
+  .bubble-5 {
+    top: 5%;
+    left: 5%;
+    .bg {
+      background: url('../images/photo-2.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
+}
+
+.footer {
+  background: url('../images/Footer.png') no-repeat center center;
+  background-size: contain;
+  width: 64.875%;
+  height: 44.791%;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+}
