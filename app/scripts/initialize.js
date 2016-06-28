@@ -74,11 +74,11 @@ $(document).ready(() => {
     let scrolledBase = parent.scrollTop();
 
     let scrolled = (0 - (scrolledBase * .25));
-    bubbleNodesSrv.parentXL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    //bubbleNodesSrv.parentXL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
     scrolled = (0 - (scrolledBase * .5));
-    bubbleNodesSrv.parentL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    //bubbleNodesSrv.parentL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
     scrolled = (0 - (scrolledBase * .75));
-    bubbleNodesSrv.parentM.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    //bubbleNodesSrv.parentM.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
   });
 
   //$('.footer').bind('scroll', event => event.stopImmediatePropagation());
