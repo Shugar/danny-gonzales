@@ -7,10 +7,12 @@
   transition: opacity 0.3s ease;
   transition-delay: 0.25s;
   will-change: opacity;
-  width: 80%;
+  width: 75%;
   height: 100%;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
+  height: 100% !important;
+
   &::-webkit-scrollbar { width: 0 !important }
 
   &-active {
