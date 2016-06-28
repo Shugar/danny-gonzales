@@ -69,12 +69,25 @@ export function setPosts() {
 
 //====================Bubbles===========
 
-export const sizes = [
-  350,
-  300,
-  250,
-  200,
-  160
+export const BUBBLE_TYPE_XL = "bubble_type_xl";
+export const BUBBLE_TYPE_L  = "bubble_type_l";
+export const BUBBLE_TYPE_M  = "bubble_type_m";
+export const BUBBLE_TYPE_S  = "bubble_type_s";
+export const BUBBLE_TYPE_XS = "bubble_type_xs";
+
+export class BubbleType {
+  constructor(name = BUBBLE_TYPE_M, size = 250) {
+    this.name = name;
+    this.size = size;
+  }
+}
+
+export const bubbleTypes = [
+  new BubbleType(BUBBLE_TYPE_XL,  350),
+  new BubbleType(BUBBLE_TYPE_L,   300),
+  new BubbleType(BUBBLE_TYPE_M,   250),
+  new BubbleType(BUBBLE_TYPE_S,   200),
+  new BubbleType(BUBBLE_TYPE_XS,  160)
 ];
 
 export let bubbles = [];
@@ -82,6 +95,7 @@ export let bubbles = [];
 export class Bubble {
   constructor() {
     this.post = new Post();
+    this.type = new BubbleType();
     this.size = 0;
     this.x = 0;
     this.y = 0;
@@ -97,14 +111,15 @@ export function checkIntersection(bubble1, bubble2) {
 
 export function setBubbles(width) {
   let containerWidth = width;
-  let coeff = 1000 / width;
-  let containerHeight = coeff * postNum * 110;
+  let coeff = 1100 / width;
+  let containerHeight = coeff * postNum * 120;
 
   for (let i = 1; i <= postNum; i++) {
     let bubble = new Bubble();
     bubble.post = posts[i - 1];
-    let ind = Math.floor(Math.random() * sizes.length);
-    bubble.size = Math.floor(sizes[ind] * (coeff > 1 ? 1 : 1/coeff));
+    let ind = Math.floor(Math.random() * bubbleTypes.length);
+    bubble.type = bubbleTypes[ind];
+    bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
 
     let check = true;
     do {
@@ -116,7 +131,7 @@ export function setBubbles(width) {
       }
     } while (!check);
     
-    bubbles.push(bubble);
+    bubbles[i - 1] = bubble;
   }
   
   return bubbles;
@@ -128,7 +143,7 @@ export let bubbleNodes = [];
 export function setNodes(parent) {
   for (let bubble of bubbles) {
     let elm = document.createElement('div');
-    elm.className = 'bubble bubble-' + bubble.size;
+    elm.className = 'bubble ' + bubble.type.name;
     elm.style.left = bubble.x + 'px';
     elm.style.top = bubble.y + 'px';
     elm.style.width = bubble.size + 'px';
@@ -148,5 +163,17 @@ export function setNodes(parent) {
 
     parent.appendChild(elm);
     bubbleNodes.push(elm);
+  }
+}
+
+export function updateNodeDim() {
+  for (let i = 0; i < bubbles.length; i++) {
+    let node = bubbleNodes[i];
+    let bubble = bubbles[i];
+    node.className = 'bubble ' + bubble.type.name;
+    node.style.left = bubble.x + 'px';
+    node.style.top = bubble.y + 'px';
+    node.style.width = bubble.size + 'px';
+    node.style.height = bubble.size + 'px';
   }
 }

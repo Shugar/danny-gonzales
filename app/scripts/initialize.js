@@ -1,4 +1,25 @@
-import {setPosts, setBubbles, setNodes} from './posts';
+import {setPosts, setBubbles, setNodes, updateNodeDim,
+  BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './posts';
+
+function debounce(func, threshold, execAsap) {
+  var timeout;
+
+  return function debounced () {
+    var obj = this, args = arguments;
+    function delayed () {
+      if (!execAsap)
+        func.apply(obj, args);
+      timeout = null;
+    };
+
+    if (timeout)
+      clearTimeout(timeout);
+    else if (execAsap)
+      func.apply(obj, args);
+
+    timeout = setTimeout(delayed, threshold || 100);
+  };
+}
 
 function setMouseListeners() {
   let navShow = () => {
@@ -24,13 +45,25 @@ function setMouseListeners() {
   });
 }
 
-let bubbleElms = [];
-
 $(document).ready(() => {
   setMouseListeners();
 
   setPosts();
   setBubbles($('.bubbles').width());
   setNodes(document.querySelector('.bubbles'));
+});
 
+$(window).on('resize', debounce(() => {
+  //setBubbles($('.bubbles').width());
+  //updateNodeDim();
+}, 250, false));
+
+
+$(window).bind('scroll', () => {
+  console.log('scroll bind!!!');
+  let scrolled = $(window).scrollTop();
+  $(BUBBLE_TYPE_XL).css('top', - (scrolled * .25) + 'px');
+  $(BUBBLE_TYPE_L).css('top', - (scrolled * .5) + 'px');
+  $(BUBBLE_TYPE_M).css('top', - (scrolled * .75) + 'px');
+  $(BUBBLE_TYPE_S).css('top', - (scrolled * .9) + 'px');
 });
