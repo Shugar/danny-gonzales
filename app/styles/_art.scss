@@ -7,6 +7,11 @@
   width: 1920px;
   height: 985px;
 
+  @media (max-width: 1600px) {
+    width: 1300px;
+    height: 660px;
+  }
+
   &-1 {
     background: url('../images/1.png') no-repeat center center;
     width: 10.062%;

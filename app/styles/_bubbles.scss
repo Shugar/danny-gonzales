@@ -39,6 +39,10 @@
 
     .bubble-inner {
       position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 75%;
+      transform: translate(-50%,-50%);
 
       .title {
         color: #FFFFFF;
@@ -50,20 +54,24 @@
     }
   }
 
-  .bubble-xs {
-    width: 150px;
-    height: 150px;
+  .bubble_type_s {
+    .bubble-inner {
+      display: none;
+    }
   }
 
-  .bubble-s {
-    width: 185px;
-    height: 185px;
+  .bubble_type_m {
+    .title {
+      font-size: 12px;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 11px;
+    }
   }
 
-  .bubble-m {
-    width: 253px;
-    height: 253px;
-
+  .bubble_type_l {
     .bubble-inner {
       left: 50%;
       top: 50%;
@@ -77,40 +85,36 @@
       }
 
       .subtitle {
-        margin-top: 19px;
-        margin-left: 20px;
 
         position: relative;
         font-size: 12px;
         letter-spacing: 1.29px;
         line-height: 18px;
 
-        &:before {
-          content: '—';
-          position: absolute;
-          color: #fff;
-          left: -20px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
+        // &:before {
+        //   content: '—';
+        //   position: absolute;
+        //   color: #fff;
+        //   left: -20px;
+        //   top: 50%;
+        //   transform: translateY(-50%);
+        // }
       }
     }
   }
 
   .bubble_type_xl {
     .bubble-inner {
-      bottom: 26%;
-      left: 10%;
 
       .title {
-        font-size: 24px;
+        font-size: 16px;
         letter-spacing: 1.95px;
         line-height: 20px;
       }
 
       .subtitle {
         margin-top: 14px;
-        font-size: 16px;
+        font-size: 12px;
         letter-spacing: 1.73px;
         line-height: 18px;
       }

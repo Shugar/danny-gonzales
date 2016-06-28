@@ -34,7 +34,7 @@ export function setPosts() {
   post = new Post();
   post.type = POST_TYPE_PRESS;
   post.text = 'Alternative Apparel Makes A Splash on Abbott Kinney';
-  post.subtitle = '- Refinery 29';
+  post.subtitle = '— REFINERY 29';
   post.background = '#0E172F';
   posts[4] = post;
   posts[8] = post;
@@ -51,7 +51,7 @@ export function setPosts() {
   post = new Post();
   post.type = POST_TYPE_PRESS;
   post.text = 'Wise Sons Jewish Deli Outpost at the CJM';
-  post.subtitle = 'San Francisco';
+  post.subtitle = '— SAN FRANCISCO EATE';
   post.background = '#26386F';
   posts[3] = post;
   posts[7] = post;
@@ -158,7 +158,7 @@ export function setNodes(parent) {
     let elmText = document.createElement('div');
     elmText.className = 'title';
     elmText.innerHTML = bubble.post.text;
-    elm.appendChild(elmText);
+    elmInner.appendChild(elmText);
 
     let elmSubtitle = document.createElement('div');
     elmSubtitle.className = 'subtitle';
