@@ -7,11 +7,6 @@
   width: 1920px;
   height: 985px;
 
-  @media (max-width: 1600px) {
-    width: 1300px;
-    height: 660px;
-  }
-
   &-1 {
     background: url('../images/1.png') no-repeat center center;
     width: 10.062%;
@@ -212,5 +207,138 @@
 
   .art-13 {
     transform: translate3d(336%, 160%, 0);
+  }
+}
+
+
+@media (max-width: 1600px) {
+  width: 1300px;
+  height: 660px;
+}
+
+@media (max-width: 768px) {
+  .art {
+    position: static;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+  }
+
+  .art-1 {
+    top: -1.8%;
+    left: 45%;
+
+    width: 21.7%;
+  }
+
+  .art-2 {
+    top: 14.6%;
+    left: 5.4%;
+
+    width: 28.4%;
+  }
+
+  .art-3 {
+    height: 16.8%;
+    width: 30%;
+
+    left: -7.2%;
+    top: -0.4%;
+  }
+
+  .art-4 {
+    width: 30%;
+
+    top: 54.5%;
+    left: -6.5%;
+  }
+
+  .art-5a {
+    top: 3.7%;
+    left: 22%;
+
+    height: 13.6%;
+    width: 17%;
+  }
+
+  .art-5b {
+    top: 41.8%;
+    left: 9.8%;
+
+    height: 12%;
+    width: 27%;
+  }
+
+  .art-6 {
+    width: 25%;
+    height: 10%;
+    top: initial;
+    bottom: 19%;
+    left: 15.2%;
+  }
+
+  .art-7 {
+    width: 90%;
+    height: 39%;
+
+    top: initial;
+    left: 24%;
+    bottom: 21%;
+  }
+
+  .art-8 {
+    width: 36%;
+    height: 30%;
+
+    top: 55%;
+    left: initial;
+    right: 2.1%;
+    bottom: initial;
+  }
+
+  .art-9 {
+    top: 37.8%;
+    right: -5%;
+
+    width: 50%;
+    height: 20%;
+  }
+
+  .art-10 {
+    width: 13.4%;
+    height: 20%;
+
+    top: 23.7%;
+    right: 8.4%;
+    bottom: initial;
+
+  }
+
+  .art-11 {
+    width: 26%;
+    height: 19.8%;
+
+    top: 18.5%;
+    left: 40.4%;
+  }
+
+  .art-12 {
+    bottom: initial;
+    top: 2%;
+    right: -2.3%;
+
+    height: 12%;
+    width: 20%;
+  }
+
+  .art-13 {
+    bottom: initial;
+    top: 13.8%;
+    right: 13%;
+
+    height: 13%;
+    width: 13.8%;
   }
 }
