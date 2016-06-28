@@ -27,6 +27,7 @@
     overflow: hidden;
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 8px 8px 0px rgba(0,0,0,0.22);
     background-color: #3498db;
+
     .bg {
       position: absolute;
       top: 50%;
@@ -49,36 +50,54 @@
     }
   }
 
-  .bubble-200 {
-    .title {
-      font-size: 16px;
-      color: rgba(255,255,255,0.70);
-      letter-spacing: 0px;
-      line-height: 22px;
-    }
+  .bubble-xs {
+    width: 150px;
+    height: 150px;
+  }
 
-    .subtitle {
-      margin-top: 19px;
-      margin-left: 20px;
+  .bubble-s {
+    width: 185px;
+    height: 185px;
+  }
 
-      position: relative;
-      font-size: 12px;
-      letter-spacing: 1.29px;
-      line-height: 18px;
+  .bubble-m {
+    width: 253px;
+    height: 253px;
 
-      &:before {
-        content: '—';
-        position: absolute;
-        color: #fff;
-        left: -20px;
-        top: 50%;
-        transform: translateY(-50%);
+    .bubble-inner {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+
+      .title {
+        font-size: 16px;
+        color: rgba(255,255,255,0.70);
+        letter-spacing: 0px;
+        line-height: 22px;
+      }
+
+      .subtitle {
+        margin-top: 19px;
+        margin-left: 20px;
+
+        position: relative;
+        font-size: 12px;
+        letter-spacing: 1.29px;
+        line-height: 18px;
+
+        &:before {
+          content: '—';
+          position: absolute;
+          color: #fff;
+          left: -20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
     }
   }
 
-  .bubble-300,
-  .bubble-350 {
+  .bubble_type_l {
     .bubble-inner {
       bottom: 26%;
       left: 10%;
@@ -97,4 +116,55 @@
       }
     }
   }
+
+
+  .bubble-1 {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .bg {
+      background: url('../images/photo-4.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
+  .bubble-2 {
+    top: 40%;
+    right: 50%;
+
+    .bg {
+      background: url('../images/photo-3.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
+  .bubble-3 {
+    background: #26386F;
+    bottom: 0;
+
+    .bubble-inner {
+      width: 80%;
+    }
+  }
+
+  .bubble-4 {
+    background: #0E172F;
+    right: 10%;
+
+    .bubble-inner {
+      width: 70%;
+    }
+  }
+
+  .bubble-5 {
+    top: 5%;
+    left: 5%;
+
+    .bg {
+      background: url('../images/photo-2.png') no-repeat center center;
+      background-size: contain;
+    }
+  }
+
 }

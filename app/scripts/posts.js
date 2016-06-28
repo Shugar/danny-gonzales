@@ -73,9 +73,10 @@ export const BUBBLE_TYPE_XL = "bubble_type_xl";
 export const BUBBLE_TYPE_L  = "bubble_type_l";
 export const BUBBLE_TYPE_M  = "bubble_type_m";
 export const BUBBLE_TYPE_S  = "bubble_type_s";
+export const BUBBLE_TYPE_XS = "bubble_type_xs";
 
 export class BubbleType {
-  constructor(name = BUBBLE_TYPE_L, size = 253) {
+  constructor(name = BUBBLE_TYPE_M, size = 250) {
     this.name = name;
     this.size = size;
   }
@@ -83,9 +84,10 @@ export class BubbleType {
 
 export const bubbleTypes = [
   new BubbleType(BUBBLE_TYPE_XL,  350),
-  new BubbleType(BUBBLE_TYPE_L,   253),
-  new BubbleType(BUBBLE_TYPE_M,   185),
-  new BubbleType(BUBBLE_TYPE_S,   150)
+  new BubbleType(BUBBLE_TYPE_L,   300),
+  new BubbleType(BUBBLE_TYPE_M,   250),
+  new BubbleType(BUBBLE_TYPE_S,   200),
+  new BubbleType(BUBBLE_TYPE_XS,  160)
 ];
 
 export let bubbles = [];
@@ -117,8 +119,7 @@ export function setBubbles(width) {
     bubble.post = posts[i - 1];
     let ind = Math.floor(Math.random() * bubbleTypes.length);
     bubble.type = bubbleTypes[ind];
-    bubble.size = bubble.type.size;
-    //bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
+    bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
 
     let check = true;
     do {
@@ -146,20 +147,23 @@ export function setNodes(parent) {
     elm.style.top = bubble.y + 'px';
     elm.style.width = bubble.size + 'px';
     elm.style.height = bubble.size + 'px';
-    elm.absoluteTop = bubble.y;
 
     elm.style.background = bubble.post.background;
     elm.style.backgroundSize = 'contain';
 
+    let elmInner = document.createElement('div');
+    elmInner.className = 'bubble-inner';
+    elm.appendChild(elmInner);
+
     let elmText = document.createElement('div');
     elmText.className = 'title';
     elmText.innerHTML = bubble.post.text;
-    elm.appendChild(elmText);
+    elmInner.appendChild(elmText);
 
     let elmSubtitle = document.createElement('div');
     elmSubtitle.className = 'subtitle';
     elmSubtitle.innerHTML = bubble.post.subtitle;
-    elm.appendChild(elmSubtitle);
+    elmInner.appendChild(elmSubtitle);
 
     parent.appendChild(elm);
     bubbleNodes.push(elm);
