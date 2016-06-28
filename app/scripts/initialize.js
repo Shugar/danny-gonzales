@@ -51,19 +51,23 @@ $(document).ready(() => {
   setPosts();
   setBubbles($('.bubbles').width());
   setNodes(document.querySelector('.bubbles'));
-});
 
-$(window).on('resize', debounce(() => {
-  //setBubbles($('.bubbles').width());
-  //updateNodeDim();
-}, 250, false));
+  $(window).on('resize', debounce(() => {
+    //setBubbles($('.bubbles').width());
+    //updateNodeDim();
+  }, 250, false));
 
 
-$(window).bind('scroll', () => {
-  console.log('scroll bind!!!');
-  let scrolled = $(window).scrollTop();
-  $(BUBBLE_TYPE_XL).css('top', - (scrolled * .25) + 'px');
-  $(BUBBLE_TYPE_L).css('top', - (scrolled * .5) + 'px');
-  $(BUBBLE_TYPE_M).css('top', - (scrolled * .75) + 'px');
-  $(BUBBLE_TYPE_S).css('top', - (scrolled * .9) + 'px');
+  $('.bubbles').bind('scroll', () => {
+    return;
+    
+    let scrolled = $('.bubbles').scrollTop();
+    
+    let offset = - scrolled * .25;
+    $(BUBBLE_TYPE_XL).css('top', (0 - (scrolled * .25)) + 'px');
+    $(BUBBLE_TYPE_L).css('top', (0 - (scrolled * .5)) + 'px');
+    $(BUBBLE_TYPE_M).css('top', (0 - (scrolled * .75)) + 'px');
+    //$(BUBBLE_TYPE_S).css('top', (0 - (scrolled * .9)) + 'px');
+  });
+
 });
