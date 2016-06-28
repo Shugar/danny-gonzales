@@ -1,4 +1,12 @@
 .art {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  transform: translate;
+  width: 1920px;
+  height: 985px;
+
   &-1 {
     background: url('../images/1.png') no-repeat center center;
     width: 10.062%;
