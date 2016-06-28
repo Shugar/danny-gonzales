@@ -211,12 +211,14 @@
 }
 
 
-@media (max-width: 1600px) {
-  width: 1300px;
-  height: 660px;
+@media (max-width: 1300px) {
+  .art {
+    width: 1226px;
+    height: 706px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 667px) {
   .art {
     position: static;
     left: 0;

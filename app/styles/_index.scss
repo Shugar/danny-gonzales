@@ -25,7 +25,20 @@ body {
   transform: translate3d(-50%,0,0);
 }
 
-@media (min-width: 320px) and (max-width: 768px) {
+@media (min-width: 1300px) {
+  .footer {
+    width: 55%;
+    bottom: -10px;
+  }
+}
+
+@media (min-width: 668px) and (max-width: 960px) {
+  .footer {
+    width: 80%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 667px) {
   .footer {
     height: 25%;
     width: 106%;
