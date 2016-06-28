@@ -109,7 +109,7 @@ export class BubbleNodesService {
     $('.bubbles').masonry({
       // options
       itemSelector: '.bubble',
-      columnWidth: 300
+      columnWidth: 200
     });
 
     return this.bubbleNodes;
