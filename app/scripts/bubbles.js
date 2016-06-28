@@ -74,6 +74,7 @@ export class BubblesService {
   
   process() {
     this.setBubbles();
+
     return this.bubbles;
   }
 }

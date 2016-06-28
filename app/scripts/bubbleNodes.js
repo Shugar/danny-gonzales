@@ -1,3 +1,4 @@
+
 import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
 
 export class BubbleNodesService {
@@ -15,6 +16,7 @@ export class BubbleNodesService {
   }
   
   setParents() {
+    /*
     this.parentXL = document.createElement('div');
     this.parentXL.className = 'bubbles-xl';
     this.parentXL.style.position = 'absolute';
@@ -38,17 +40,19 @@ export class BubbleNodesService {
     this.parentS.style.position = 'absolute';
     this.parentS.style.top = 0;
     this.parent.appendChild(this.parentS);
+    */
+
+    this.parentXL = this.parentL = this.parentM = this.parentS = this.parent;
   }
 
   setNodes() {
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
       elm.className = 'bubble ' + bubble.type.name;
-      elm.style.left = bubble.x + 'px';
-      elm.style.top = bubble.y + 'px';
+      //elm.style.left = bubble.x + 'px';
+      //elm.style.top = bubble.y + 'px';
       elm.style.width = bubble.size + 'px';
       elm.style.height = bubble.size + 'px';
-      elm.absoluteTop = bubble.y;
 
       elm.style.background = bubble.post.background;
       elm.style.backgroundSize = 'contain';
@@ -101,6 +105,13 @@ export class BubbleNodesService {
   process() {
     this.setParents();
     this.setNodes();
+
+    $('.bubbles').masonry({
+      // options
+      itemSelector: '.bubble',
+      columnWidth: 300
+    });
+
     return this.bubbleNodes;
   }
 }
