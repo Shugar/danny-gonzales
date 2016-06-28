@@ -1,0 +1,100 @@
+.bubbles {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow-y: scroll;
+  opacity: 0.01;
+  transition: opacity 0.3s ease;
+  transition-delay: 0.25s;
+  will-change: opacity;
+  width: 80%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { width: 0 !important }
+
+  &-active {
+    opacity: 0.99;
+  }
+
+  &-overflow {
+    overflow-y: scroll;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 8px 8px 0px rgba(0,0,0,0.22);
+    background-color: #3498db;
+    .bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      height: 100%;
+      width: 100%;
+    }
+
+    .bubble-inner {
+      position: absolute;
+
+      .title {
+        color: #FFFFFF;
+      }
+
+      .subtitle {
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .bubble-200 {
+    .title {
+      font-size: 16px;
+      color: rgba(255,255,255,0.70);
+      letter-spacing: 0px;
+      line-height: 22px;
+    }
+
+    .subtitle {
+      margin-top: 19px;
+      margin-left: 20px;
+
+      position: relative;
+      font-size: 12px;
+      letter-spacing: 1.29px;
+      line-height: 18px;
+
+      &:before {
+        content: '—';
+        position: absolute;
+        color: #fff;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .bubble-300,
+  .bubble-350 {
+    .bubble-inner {
+      bottom: 26%;
+      left: 10%;
+
+      .title {
+        font-size: 24px;
+        letter-spacing: 1.95px;
+        line-height: 20px;
+      }
+
+      .subtitle {
+        margin-top: 14px;
+        font-size: 16px;
+        letter-spacing: 1.73px;
+        line-height: 18px;
+      }
+    }
+  }
+}

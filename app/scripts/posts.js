@@ -25,7 +25,7 @@ export function setPosts() {
   let post = new Post();
   post.text = 'Junk Food Clothing';
   post.subtitle = 'Venice Beach, CA';
-  post.background = 'url("../images/photo-2.png")';
+  post.background = 'url("../images/photo-2.png") center center no-repeat';
   posts[0] = post;
   posts[2] = post;
   posts[13] = post;
@@ -42,7 +42,7 @@ export function setPosts() {
   posts[15] = post;
 
   post = new Post();
-  post.background = 'url("../images/photo-4.png")';
+  post.background = 'url("../images/photo-4.png") center center no-repeat';
   posts[1] = post;
   posts[5] = post;
   posts[10] = post;
@@ -60,7 +60,7 @@ export function setPosts() {
 
   post = new Post();
   post.type = POST_TYPE_INSTAGRAM;
-  post.background = 'url("../images/photo-1.png")';
+  post.background = 'url("../images/photo-1.png") center center no-repeat';
   posts[6] = post;
   posts[9] = post;
   posts[11] = post;
@@ -111,7 +111,11 @@ export function checkIntersection(bubble1, bubble2) {
 
 export function setBubbles(width) {
   let containerWidth = width;
+<<<<<<< f17b90f5d47218a4d901fb52ca1795502dd5d074
   let coeff = 1100 / width;
+=======
+  let coeff = 1500 / width;
+>>>>>>> hothothot
   let containerHeight = coeff * postNum * 120;
 
   for (let i = 1; i <= postNum; i++) {
@@ -130,10 +134,9 @@ export function setBubbles(width) {
         check = check && checkIntersection(bubble, bubbles[j]);
       }
     } while (!check);
-    
     bubbles[i - 1] = bubble;
   }
-  
+
   return bubbles;
 }
 
@@ -150,6 +153,7 @@ export function setNodes(parent) {
     elm.style.height = bubble.size + 'px';
 
     elm.style.background = bubble.post.background;
+    elm.style.backgroundSize = 'contain';
 
     let elmText = document.createElement('div');
     elmText.className = 'title';

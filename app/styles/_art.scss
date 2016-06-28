@@ -1,0 +1,203 @@
+.art {
+  &-1 {
+    background: url('../images/1.png') no-repeat center center;
+    width: 10.062%;
+    height: 20.937%;
+
+    left: 9.7%;
+    bottom: 13.56%;
+  }
+
+  &-2 {
+    background: url('../images/2.png') no-repeat center center;
+    width: 13.25%;
+    height: 27.52%;
+
+    left: 12.2%;
+    bottom: 38%;
+  }
+
+  &-3 {
+    background: url('../images/3.png') no-repeat center center;
+    width: 11.125%;
+    height: 24.062%;
+
+    top: 9%;
+    left: 17%;
+  }
+
+  &-4 {
+    background: url('../images/4.png') no-repeat center center;
+    width: 13.312%;
+    height: 21.77%;
+
+    top: 41.1%;
+    left: 25%;
+  }
+
+  &-5a {
+    background: url('../images/5a.png') no-repeat center center;
+    width: 3.625%;
+    height: 16.458%;
+
+    top: 19%;
+    left: 31%;
+  }
+
+  &-5b {
+    background: url('../images/5b.png') no-repeat center center;
+    width: 12.062%;
+    height: 16.458%;
+
+    top: 18.5%;
+    left: 35.5%;
+  }
+
+  &-6 {
+    background: url('../images/6.png') no-repeat center center;
+    width: 8.187%;
+    height: 13.333%;
+
+    top: 46.8%;
+    left: 38.7%;
+  }
+
+  &-7 {
+    background: url('../images/7.png') no-repeat center center;
+    width: 42.0625%;
+    height: 33.083%;
+
+    left: 39%;
+    top: 24%;
+  }
+
+  &-8 {
+    background: url('../images/8.png') no-repeat center center;
+    width: 16.9375%;
+    height: 21.666%;
+
+    left: 53.7%;
+    bottom: 33.3%;
+  }
+
+  &-9 {
+    background: url('../images/9.png') no-repeat center center;
+    width: 22.75%;
+    height: 14.99%;
+
+    top: 19.3%;
+    right: 26.1%;
+  }
+
+  &-10 {
+    background: url('../images/10.png') no-repeat center center;
+    width: 6.5625%;
+    height: 16.95%;
+
+    top: 44.2%;
+    right: 19.9%;
+  }
+
+  &-11 {
+    background: url('../images/11.png') no-repeat center center;
+    width: 12.125%;
+    height: 17.395%;
+
+    top: 19.1%;
+    right: 13.7%;
+  }
+
+  &-12 {
+    background: url('../images/12.png') no-repeat center center;
+    width: 8.75%;
+    height: 16.875%;
+
+    top: 40.3%;
+    right: 10.3%;
+  }
+
+  &-13 {
+    background: url('../images/13.png') no-repeat center center;
+    width: 6.3125%;
+    height: 12.8125%;
+
+    bottom: 25.2%;
+    right: 16.6%;
+  }
+
+  &-1,
+  &-2,
+  &-3,
+  &-4,
+  &-5a,
+  &-5b,
+  &-6,
+  &-7,
+  &-8,
+  &-9,
+  &-10,
+  &-11,
+  &-12,
+  &-13 {
+    background-size: contain;
+    position: absolute;
+    transition: transform 0.6s ease;
+    will-change: transform;
+  }
+}
+
+.animations-active {
+
+  .art-1 {
+    transform: translate3d(-100%, 200%, 0);
+  }
+
+  .art-2 {
+    transform: translate3d(-150%, 52%, 0);
+  }
+
+  .art-3 {
+    transform: translate3d(-208%, -44%, 0);
+  }
+
+  .art-4 {
+    transform: translate3d(-218%, -80%, 0);
+  }
+
+  .art-5a,
+  .art-5b {
+    transform: translate3d(-100%, -250%, 0);
+  }
+
+  .art-6 {
+    transform: translate3d(-342%, -395%, 0);
+  }
+
+  .art-7 {
+    transform: translate3d(108.8%, 2%, 0);
+  }
+
+  .art-8 {
+    transform: translate3d(50%, -310%, 0);
+  }
+
+  .art-9 {
+    transform: translate3d(146%, -84%, 0);
+  }
+
+  .art-10 {
+    transform: translate3d(235%, 210%, 0);
+  }
+
+  .art-11 {
+    transform: translate3d(250%, -250%, 0);
+  }
+
+  .art-12 {
+    transform: translate3d(150%, 129%, 0);
+  }
+
+  .art-13 {
+    transform: translate3d(336%, 160%, 0);
+  }
+}
