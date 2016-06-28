@@ -37,10 +37,12 @@ $(document).ready(() => {
   for (let bubble of bubbles) {
     let elm = document.createElement('div');
     elm.className = 'bubble';
-    elm.style.left = bubble.x - bubble.radius;
-    elm.style.top = bubble.y - bubble.radius;
-    elm.style.width = bubble.radius * 2;
-    elm.style.height = bubble.radius * 2;
+    elm.style.left = bubble.x - bubble.radius + 'px';
+    elm.style.top = bubble.y - bubble.radius + 'px';
+    elm.style.width = bubble.radius * 2 + 'px';
+    elm.style.height = bubble.radius * 2 + 'px';
+
+    console.log(bubble.radius * 2)
 
     parentElem.appendChild(elm);
     bubbleElms.push(elm);
