@@ -310,7 +310,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  overflow: hidden;
+  overflow-y: scroll;
   opacity: 0.01;
   transition: opacity 0.3s ease;
   transition-delay: 0.25s;
