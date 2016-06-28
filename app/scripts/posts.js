@@ -128,7 +128,7 @@ export let bubbleNodes = [];
 export function setNodes(parent) {
   for (let bubble of bubbles) {
     let elm = document.createElement('div');
-    elm.className = 'bubble';
+    elm.className = 'bubble bubble-' + bubble.size;
     elm.style.left = bubble.x + 'px';
     elm.style.top = bubble.y + 'px';
     elm.style.width = bubble.size + 'px';
