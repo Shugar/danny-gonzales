@@ -111,12 +111,8 @@ export function checkIntersection(bubble1, bubble2) {
 
 export function setBubbles(width) {
   let containerWidth = width;
-<<<<<<< f17b90f5d47218a4d901fb52ca1795502dd5d074
-  let coeff = 1100 / width;
-=======
-  let coeff = 1500 / width;
->>>>>>> hothothot
-  let containerHeight = coeff * postNum * 120;
+  let coeff = 1300 / width;
+  let containerHeight = coeff * postNum * 150;
 
   for (let i = 1; i <= postNum; i++) {
     let bubble = new Bubble();
