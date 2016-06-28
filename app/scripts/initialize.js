@@ -1,5 +1,6 @@
-import {setPosts, setBubbles, setNodes, updateNodeDim,
-  BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './posts';
+import {Post, PostsService} from './posts';
+import {BubbleType, Bubble, BubblesService} from './bubbles';
+import {BubbleNodesService} from './bubbleNodes';
 
 function debounce(func, threshold, execAsap) {
   var timeout;
@@ -20,6 +21,10 @@ function debounce(func, threshold, execAsap) {
     timeout = setTimeout(delayed, threshold || 100);
   };
 }
+
+let postSrv;
+let bubbleSrv;
+let bubbleNodesSrv;
 
 function setMouseListeners() {
   let navShow = () => {
@@ -48,26 +53,33 @@ function setMouseListeners() {
 $(document).ready(() => {
   setMouseListeners();
 
-  setPosts();
-  setBubbles($('.bubbles').width());
-  setNodes(document.querySelector('.bubbles'));
+  let parent = $('.bubbles');
 
+  postSrv = new PostsService();
+  let posts = postSrv.process();
+
+  bubbleSrv = new BubblesService(posts, parent.width());
+  let bubbles = bubbleSrv.process();
+
+  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'));
+  let bubblesNodes = bubbleNodesSrv.process();
+
+  /*
   $(window).on('resize', debounce(() => {
-    //setBubbles($('.bubbles').width());
-    //updateNodeDim();
+    bubblesNodes.updateNodeDim();
   }, 250, false));
+  */
 
+  parent.bind('scroll', () => {
+    let scrolledBase = parent.scrollTop();
 
-  $('.bubbles').bind('scroll', () => {
-    return;
-    
-    let scrolled = $('.bubbles').scrollTop();
-    
-    let offset = - scrolled * .25;
-    $(BUBBLE_TYPE_XL).css('top', (0 - (scrolled * .25)) + 'px');
-    $(BUBBLE_TYPE_L).css('top', (0 - (scrolled * .5)) + 'px');
-    $(BUBBLE_TYPE_M).css('top', (0 - (scrolled * .75)) + 'px');
-    //$(BUBBLE_TYPE_S).css('top', (0 - (scrolled * .9)) + 'px');
+    let scrolled = (0 - (scrolledBase * .25));
+    bubbleNodesSrv.parentXL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    scrolled = (0 - (scrolledBase * .5));
+    bubbleNodesSrv.parentL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    scrolled = (0 - (scrolledBase * .75));
+    bubbleNodesSrv.parentM.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
   });
 
+  //$('.footer').bind('scroll', event => event.stopImmediatePropagation());
 });

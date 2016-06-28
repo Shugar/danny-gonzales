@@ -27,6 +27,6 @@ module.exports = {
         require('autoprefixer')(['> 1%', 'last 8 versions', 'ie 9'])
       ]
     },
-    babel: {presets: ['es2015']}
+    babel: {presets: ['es2015', 'stage-0']}
   }
 };
