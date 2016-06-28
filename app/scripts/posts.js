@@ -157,8 +157,8 @@ export function setNodes(parent) {
     elm.appendChild(elmText);
 
     let elmSubtitle = document.createElement('div');
-    elmText.className = 'subtitle';
-    elmText.innerHTML = bubble.post.subtitle;
+    elmSubtitle.className = 'subtitle';
+    elmSubtitle.innerHTML = bubble.post.subtitle;
     elm.appendChild(elmSubtitle);
 
     parent.appendChild(elm);
