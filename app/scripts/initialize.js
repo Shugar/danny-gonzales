@@ -136,7 +136,7 @@ $(document).ready(() => {
   let bubblesNodes = bubbleNodesSrv.process();
 
   bubblesParent.bind('scroll', onScroll);
-  
+
 
   /*
   $(window).on('resize', debounce(() => {
