@@ -3,10 +3,10 @@ import {BubbleType, Bubble, BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
 
 function debounce(func, threshold, execAsap) {
-  var timeout;
+  let timeout;
 
   return function debounced () {
-    var obj = this, args = arguments;
+    let obj = this, args = arguments;
     function delayed () {
       if (!execAsap)
         func.apply(obj, args);
@@ -70,17 +70,33 @@ $(document).ready(() => {
   }, 600, false));
   */
 
+  let lastScroll = 0;
+
+  let screenHeight = $(window).height();
+
+  let filterVisible = function() {
+    let elm = $(this);
+    let top = elm.offset().top;
+
+    let seeY1 = parent.scrollTop();
+    let seeY2 = screenHeight + seeY1;
+
+    return (top + elm.height() >= seeY1 && top <= seeY2);
+  };
+
   parent.bind('scroll', () => {
     let scrolledBase = parent.scrollTop();
+    let scrollDiff = scrolledBase - lastScroll;
+    lastScroll = scrolledBase;
 
     let scrolled = (0 - (scrolledBase * .2));
-    $('.bubble_type_l').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+    $('.bubble_type_l').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 
     scrolled = (0 - (scrolledBase * .4));
-    $('.bubble_type_m').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+    $('.bubble_type_m').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 
     scrolled = (0 - (scrolledBase * .6));
-    $('.bubble_type_s').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+    $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
   });
 
   //$('.footer').bind('scroll', event => event.stopImmediatePropagation());
