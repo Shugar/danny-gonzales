@@ -1,0 +1,161 @@
+.lightbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 9999;
+
+  display: none;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  .count {
+    position: absolute;
+    top: 10px;
+    left: 26px;
+
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 1.29px;
+    line-height: 18px;
+  }
+
+  .slide-next,
+  .slide-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 27px;
+    height: 18px;
+    opacity: 0.7;
+    transition: opacity 0.1s ease;
+    will-change: opacity;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .slide-next {
+    background: url('../images/next.svg') no-repeat center center;
+    background-size: contain;
+
+    right: 40px;
+  }
+
+  .slide-prev {
+    background: url('../images/prev.svg') no-repeat center center;
+    background-size: contain;
+
+    left: 40px;
+  }
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+  }
+
+  .controls {
+    position: absolute;
+    top: 15px;
+    right: 26px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+
+    .close-button {
+      cursor: pointer;
+      background: url('../images/cross-lightbox.svg') no-repeat center center;
+      background-size: contain;
+      height: 14px;
+      width: 14px;
+    }
+
+    .go-fullscreen {
+      margin-right: 26px;
+      cursor: pointer;
+      background: url('../images/fullscreen.svg') no-repeat center center;
+      background-size: contain;
+      height: 14px;
+      width: 17px;
+    }
+  }
+
+  &-inner {
+    width: 56%;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: scroll;
+    padding: 60px 0;
+  }
+
+  .image img {
+    width: 100%;
+  }
+
+  .title {
+    margin-top: 20px;
+
+    font-size: 20px;
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    line-height: 22px;
+  }
+
+  .subtitle {
+    margin-top: 2px;
+
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 1.29px;
+    line-height: 18px;
+  }
+
+  .text {
+    margin-top: 10px;
+
+    font-size: 13px;
+    color: #FFFFFF;
+    letter-spacing: 1.4px;
+    line-height: 18px;
+  }
+}
+
+
+.ig-lightbox {
+
+  .lightbox-inner {
+    width: 32%;
+  }
+
+  .title {
+    margin-top: 19px;
+
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    line-height: 22px;
+  }
+}
+
+.lightbox-active {
+  display: flex;
+}
