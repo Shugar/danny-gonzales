@@ -47,6 +47,19 @@ function setMouseListeners() {
     $('.nav-toggle').removeClass('toggle-active');
   };
 
+  let bioLightboxShow = () => {
+    $('.nav').removeClass('nav-active');
+    $('.nav-toggle').removeClass('toggle-active');
+    $('.bio-lightbox').addClass('lightbox-active')
+  }
+
+  let bioLightboxHide = () => {
+    $('.bio-lightbox').removeClass('lightbox-active');
+  }
+
+  $('.bio-link').click(bioLightboxShow);
+  $('.bio-lightbox .close-button').click(bioLightboxHide);
+
   $('.nav-close').click(navHide);
   $('html, body').click(navHide);
 
