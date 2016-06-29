@@ -15,6 +15,7 @@ export class LightboxService {
 
   init() {
     $('.lightbox .close-button').click(this.hideLightbox);
+    $('.lightbox .bg').click(this.hideLightbox);
 
     $('.go-fullscreen').click(() => {
       let el = document.body;
