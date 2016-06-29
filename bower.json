@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "public/app.js",
   "dependencies": {
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "scrollmagic": "^2.0.5"
   },
   "overrides": {}
 }
