@@ -4,6 +4,11 @@ module.exports = {
       joinTo: {
         'javascripts/vendor.js': /^(?!app)/,
         'javascripts/app.js': /^app/
+      },
+      order: {
+        before: [
+          'bower_components/dist/jquery.js'
+        ]
       }
     },
     stylesheets: {
