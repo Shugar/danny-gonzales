@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100px" height="85px" viewBox="0 0 100 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="noun_25140_cc" fill="#FFFFFF">
+            <g id="noun_25138_cc">
+                <g id="Group">
+                    <g id="Shape">
+                        <polygon points="100 30.808 86.142 30.808 86.142 13.858 69.192 13.858 69.192 0 100 0"></polygon>
+                        <polygon points="100 84.157 69.192 84.157 69.192 70.3 86.142 70.3 86.142 53.348 100 53.348"></polygon>
+                        <polygon points="30.809 84.156 0 84.156 0 53.348 13.858 53.348 13.858 70.299 30.809 70.299"></polygon>
+                        <polygon points="13.858 30.808 0 30.808 0 0 30.809 0 30.809 13.858 13.858 13.858"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

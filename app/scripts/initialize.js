@@ -43,10 +43,39 @@ function setMouseListeners() {
     $('.nav').removeClass('nav-active');
     $('.nav-toggle').removeClass('toggle-active');
   };
+
+  let lightboxShow = () => {
+    $('.lightbox').addClass('lightbox-active')
+  }
+
+  let lightboxHide = () => {
+    $('.lightbox').removeClass('lightbox-active');
+  }
+
+  $('.bubbles').click(lightboxShow);
+  $('.lightbox .close-button').click(lightboxHide);
+
   $('.nav-close').click(navHide);
   $('html, body').click(navHide);
 
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
+
+  $('.go-fullscreen').click(() => {
+    let el = document.body;
+    let requestMethod = el.requestFullScreen || el.webkitRequestFullScreen
+    || el.mozRequestFullScreen || el.msRequestFullScreen;
+
+    if (requestMethod) {
+      requestMethod.call(el);
+    } else if (typeof window.ActiveXObject !== "undefined") {
+      let wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+        wscript.SendKeys("{F11}");
+      }
+    }
+  });
+
+  $('.lightbox').bind('mousewheel', event => event.stopPropagation());
 
   $(document).bind('mousewheel', () => {
     $('.art').addClass('animations-active');
