@@ -34,47 +34,55 @@ export class BubblesService {
     let a1 = bubble1.x + bubble1.size/2 - (bubble2.x + bubble2.size/2);
     let a2 = bubble1.y + bubble1.size/2 - (bubble2.y + bubble2.size/2);
     let distance = Math.sqrt(a1 * a1 + a2 * a2);
-    return (distance > (bubble1.size + bubble2.size) / 2.3);
+    return (distance > (bubble1.size + bubble2.size) / 1.7);
   }
 
   posts = [];
   bubbles = [];
+  height = 0;
   
   constructor(posts, width) {
     this.posts = posts;
     this.width = width;
   }
   
-  setBubbles() {
-    let containerWidth = this.width;
-    let coeff = 1300 / this.width;
-    let containerHeight = coeff * this.posts.length * 140;
+  setBubbles(grow = 1) {
+    let coeff = 1100 / this.width;
+    this.height = coeff * this.posts.length * 30 * grow;
 
-    for (let i = 1; i <= this.posts.length; i++) {
+    for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
-      bubble.post = this.posts[i - 1];
+      bubble.post = this.posts[i];
       let ind = Math.floor(Math.random() * this.bubbleTypes.length);
       bubble.type = this.bubbleTypes[ind];
       bubble.size = bubble.type.size;
       //bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
 
+      let attempt = 0;
       let check = true;
       do {
-        bubble.x = Math.floor(Math.random() * (containerWidth - bubble.size));
-        bubble.y = Math.floor(Math.random() * (containerHeight - bubble.size));
+        bubble.x = Math.floor(Math.random() * (this.width - bubble.size));
+        bubble.y = Math.floor(Math.random() * (this.height - bubble.size));
         check = true;
-        for (let j = 0; j < i - 1; j++) {
+        for (let j = 0; j < i; j++) {
           check = check && BubblesService.checkIntersection(bubble, this.bubbles[j]);
         }
+
+        attempt++;
+        if (attempt / this.posts.length > 30) {
+          this.bubbles = [];
+          this.setBubbles(grow * 1.07);
+          return;
+        }
+        
       } while (!check);
 
-      this.bubbles[i - 1] = bubble;
+      this.bubbles[i] = bubble;
     }
   }
   
   process() {
     this.setBubbles();
-
     return this.bubbles;
   }
 }

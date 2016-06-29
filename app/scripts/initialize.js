@@ -67,18 +67,20 @@ $(document).ready(() => {
   /*
   $(window).on('resize', debounce(() => {
     bubblesNodes.updateNodeDim();
-  }, 250, false));
+  }, 600, false));
   */
 
   parent.bind('scroll', () => {
     let scrolledBase = parent.scrollTop();
 
-    let scrolled = (0 - (scrolledBase * .25));
-    //bubbleNodesSrv.parentXL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
-    scrolled = (0 - (scrolledBase * .5));
-    //bubbleNodesSrv.parentL.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
-    scrolled = (0 - (scrolledBase * .75));
-    //bubbleNodesSrv.parentM.style.transform = 'translate3d(0, ' + scrolled + 'px, 0)';
+    let scrolled = (0 - (scrolledBase * .2));
+    $('.bubble_type_l').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+
+    scrolled = (0 - (scrolledBase * .4));
+    $('.bubble_type_m').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+
+    scrolled = (0 - (scrolledBase * .6));
+    $('.bubble_type_s').css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
   });
 
   //$('.footer').bind('scroll', event => event.stopImmediatePropagation());

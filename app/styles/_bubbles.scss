@@ -25,7 +25,7 @@
   }
 
   .bubble {
-    margin: 20px;
+    position: absolute;
     border-radius: 100%;
     overflow: hidden;
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 8px 8px 0px rgba(0,0,0,0.22);
