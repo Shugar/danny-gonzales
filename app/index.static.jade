@@ -14,47 +14,71 @@ head
     require('scripts/initialize');
 
 body
-  .lightbox.gallery-lightbox
+  //- .lightbox.gallery-lightbox
+  //-   .bg
+  //-   .count
+  //-     | 1 / 11
+  //- 
+  //-   .controls
+  //-     .go-fullscreen
+  //-     .close-button
+  //- 
+  //-   .slide-prev
+  //-   .slide-next
+  //- 
+  //-   .lightbox-inner
+  //-     .image
+  //-       img(src="images/lightbox.png")
+  //- 
+  //-     .title
+  //-       | Junk Food Clothing
+  //-     .subtitle
+  //-       | VENICE BEACH, CA
+  //-     .text
+  //-       | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  //- 
+  //- .lightbox.ig-lightbox
+  //-   .bg
+  //-   .count
+  //-     | 1 / 11
+  //- 
+  //-   .controls
+  //-     .go-fullscreen
+  //-     .close-button
+  //- 
+  //-   .slide-prev
+  //-   .slide-next
+  //- 
+  //-   .lightbox-inner
+  //-     .image
+  //-       img(src="images/ig.png")
+  //- 
+  //-     .title
+  //-       | Taking a few days off... Starting right now.
+
+  .bio-lightbox
     .bg
-    .count
-      | 1 / 11
-
-    .controls
-      .go-fullscreen
-      .close-button
-
-    .slide-prev
-    .slide-next
-
     .lightbox-inner
       .image
-        img(src="images/lightbox.png")
+      .info
+        .close-button
+        .title
+          | DANNY GONZALES
 
-      .title
-        | Junk Food Clothing
-      .subtitle
-        | VENICE BEACH, CA
-      .text
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .text
+          | Brooklyn-born, Manhattan-bred and now calling the West Coast home, Danny Gonzales mixes bicoastal sophistication with a well-traveled, eclectic point of view to create fresh and inviting retail environments, restaurants and office interiors for clients across the United States and the globe.
 
-  .lightbox.ig-lightbox
-    .bg
-    .count
-      | 1 / 11
+        .text
+          | With a career that crosses fashion and design and an unbridled enthusiasm for raw, natural beauty, Danny has worked with some of the world’s leading brands to shape their image through his unique and immersive approach to visual merchandising and retail design. The results are eclectic, authentic spaces that entice visitors to linger a little longer and emotionally connect within the tailored environments that Danny creates to make each brand’s products shine.
 
-    .controls
-      .go-fullscreen
-      .close-button
+        .text
+          | With more than two decades of experience, an obvious passion for his work and an infectious sense of humor, Danny is just as likely to arrive for a day’s work dressed to the nines in au courant fashion as he is in a t-shirt and jeans full of paint and wood shavings. Always working, Danny draws inspiration from his leisurely pastimes, which include travel, visiting museums to marvel at fine art and scouring the world’s best flea markets and antique shops.
 
-    .slide-prev
-    .slide-next
-
-    .lightbox-inner
-      .image
-        img(src="images/ig.png")
-
-      .title
-        | Taking a few days off... Starting right now.
+        .socials
+          a(href="#")
+            img(src="../images/pinterest-bio.svg")
+          a(href="#")
+            img(src="../images/instagram-bio.svg")
 
   .art
     .art-1
@@ -77,7 +101,7 @@ body
 
     .nav-inner
       .nav-list
-        .nav-listItem
+        .nav-listItem.bio-link
           a(href="#") Bio
         .nav-listItem
           a(href="#") Projects

@@ -1,4 +1,5 @@
-.lightbox {
+.lightbox,
+.bio-lightbox {
   position: absolute;
   top: 0;
   left: 0;
@@ -163,4 +164,79 @@
 
 .lightbox-active {
   display: flex;
+}
+
+
+
+.bio-lightbox {
+
+  .bg {
+    background: rgba(255,255,255,0.9);
+  }
+
+  .lightbox-inner {
+    width: 75%;
+    max-height: 75%;
+
+    position: relative;
+    padding: 0;
+    flex-flow: row nowrap;
+    background: #0E172F;
+    box-shadow: 0px 15px 25px 0px rgba(0,0,0,0.22), 0px 19px 100px 0px rgba(0,0,0,0.30);
+  }
+
+  .close-button {
+    cursor: pointer;
+    background: url('../images/close-bio.svg') no-repeat center center;
+    background-size: contain;
+    height: 14px;
+    width: 14px;
+
+    position: absolute;
+    right: 11px;
+    top: 9px;
+  }
+
+  .image,
+  .info {
+    width: 50%;
+  }
+
+  .image {
+    background: url('../images/danny.png') no-repeat center center;
+    background-size: cover;
+  }
+
+  .info {
+    padding: 20px 30px 20px 30px;
+
+    overflow-y: scroll;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 15px;
+    color: #FFFFFF;
+  }
+
+  .text {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 1.51px;
+    line-height: 18px;
+  }
+
+  .socials {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-right: 28px;
+    }
+  }
 }

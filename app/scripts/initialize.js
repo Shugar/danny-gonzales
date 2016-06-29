@@ -52,8 +52,21 @@ function setMouseListeners() {
     $('.lightbox').removeClass('lightbox-active');
   }
 
+  let bioLightboxShow = () => {
+    $('.nav').removeClass('nav-active');
+    $('.nav-toggle').removeClass('toggle-active');
+    $('.bio-lightbox').addClass('lightbox-active')
+  }
+
+  let bioLightboxHide = () => {
+    $('.bio-lightbox').removeClass('lightbox-active');
+  }
+
   $('.bubbles').click(lightboxShow);
   $('.lightbox .close-button').click(lightboxHide);
+
+  $('.bio-link').click(bioLightboxShow);
+  $('.bio-lightbox .close-button').click(bioLightboxHide);
 
   $('.nav-close').click(navHide);
   $('html, body').click(navHide);
