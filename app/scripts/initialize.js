@@ -105,11 +105,11 @@ function scrollMagicInit() {
   window.controller = new ScrollMagic.Controller();
 
   let scene = new ScrollMagic.Scene({
-    triggerElement: "#body",
+    triggerElement: "body",
     triggerHook: 'onLeave'
   })
-    //.setTween('#footer', 0.5, {backgroundColor: "green", scale: 2.5})
-    .addIndicators({name: "1 (duration: 0)"})
+    .setTween('.footer', 0.5, {backgroundColor: "green", scale: 2.5})
+    //.addIndicators({name: "1 (duration: 0)"})
     .addTo(window.controller);
 }
 
@@ -119,7 +119,7 @@ $(document).ready(() => {
 
   setMouseListeners();
   setBioLightbox();
-  //scrollMagicInit();
+  scrollMagicInit();
 
   bubblesParent = $('.bubbles');
 

@@ -7,7 +7,7 @@ module.exports = {
       },
       order: {
         before: [
-          'bower_components/dist/jquery.js'
+          'bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
         ]
       }
     },
