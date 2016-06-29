@@ -113,8 +113,16 @@
     &::-webkit-scrollbar { width: 0 !important }
   }
 
+  .image {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
   .image img {
-    width: 100%;
+    // width: 100%;
+    max-width: 100%;
   }
 
   .title {
