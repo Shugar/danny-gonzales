@@ -82,19 +82,22 @@ function filterVisible() {
   let seeY1 = bubblesParent.scrollTop();
   let seeY2 = screenHeight + seeY1;
 
-  return (top + elm.height() >= seeY1 && top <= seeY2);
+  top += seeY1;
+
+  console.log((top + elm.height() >= seeY1 && top <= seeY2), top, seeY1, seeY2, this);
+  return top + elm.height() >= seeY1 && top <= seeY2;
 }
 
 function onScroll() {
   let scrolledBase = bubblesParent.scrollTop();
 
-  let scrolled = (0 - (scrolledBase * .15));
-  $('.bubble_type_l').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+  let scrolled = scrolledBase * .1;
+  $('.bubble_type_xl').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 
-  scrolled = (0 - (scrolledBase * .3));
+  scrolled = (0 - (scrolledBase * .1));
   $('.bubble_type_m').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 
-  scrolled = (0 - (scrolledBase * .45));
+  scrolled = (0 - (scrolledBase * .2));
   $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 }
 
