@@ -29,7 +29,16 @@ export class PostsService {
     post.text = 'Junk Food Clothing';
     post.subtitle = 'Venice Beach, CA';
     post.backgroundImage = '../images/photo-2.png';
-    post.images = ['images/photo-2.png'];
+    post.images = [
+      'images/photo-2.png',
+      'images/photo-5.png',
+      'images/photo-6.png',
+      'images/photo-7.png',
+      'images/photo-8.png',
+      'images/photo-9.png',
+      'images/photo-10.png',
+      'images/photo-11.png'
+    ];
     this.posts[0] = post;
     this.posts[2] = post;
     this.posts[13] = post;
@@ -47,7 +56,16 @@ export class PostsService {
 
     post = new Post();
     post.backgroundImage = '../images/photo-4.png';
-    post.images = ['images/photo-4.png'];
+    post.images = [
+      'images/photo-4.png',
+      'images/photo-5.png',
+      'images/photo-6.png',
+      'images/photo-7.png',
+      'images/photo-8.png',
+      'images/photo-9.png',
+      'images/photo-10.png',
+      'images/photo-11.png'
+    ];
     this.posts[1] = post;
     this.posts[5] = post;
     this.posts[10] = post;
@@ -66,13 +84,22 @@ export class PostsService {
     post = new Post();
     post.type = POST_TYPE_INSTAGRAM;
     post.backgroundImage = '../images/photo-1.png';
-    post.images = ['images/photo-1.png'];
+    post.images = [
+      'images/photo-1.png',
+      'images/photo-5.png',
+      'images/photo-6.png',
+      'images/photo-7.png',
+      'images/photo-8.png',
+      'images/photo-9.png',
+      'images/photo-10.png',
+      'images/photo-11.png'
+    ];
     this.posts[6] = post;
     this.posts[9] = post;
     this.posts[11] = post;
     this.posts[12] = post;
   }
-  
+
   process() {
     this.setPosts();
     return this.posts;

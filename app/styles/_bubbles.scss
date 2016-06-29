@@ -10,6 +10,8 @@
   transition-delay: 0.25s;
   will-change: opacity;
 
+  pointer-events: none;
+
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
@@ -18,6 +20,7 @@
 
   &-active {
     opacity: 0.99;
+    pointer-events: initial;
   }
 
   &-overflow {
