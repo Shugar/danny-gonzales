@@ -105,6 +105,11 @@
     flex-flow: column nowrap;
     overflow-y: scroll;
     padding: 60px 0;
+
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { width: 0 !important }
   }
 
   .image img {
