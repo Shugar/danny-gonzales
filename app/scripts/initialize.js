@@ -1,6 +1,16 @@
-import {Post, PostsService} from './posts';
-import {BubbleType, Bubble, BubblesService} from './bubbles';
+import {PostsService} from './posts';
+import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
+
+
+let screenHeight = 0;
+
+let postSrv;
+let bubbleSrv;
+let bubbleNodesSrv;
+
+let bubblesParent;
+
 
 function debounce(func, threshold, execAsap) {
   let timeout;
@@ -21,10 +31,6 @@ function debounce(func, threshold, execAsap) {
     timeout = setTimeout(delayed, threshold || 100);
   };
 }
-
-let postSrv;
-let bubbleSrv;
-let bubbleNodesSrv;
 
 function setMouseListeners() {
   let navShow = () => {
@@ -50,54 +56,53 @@ function setMouseListeners() {
   });
 }
 
+function filterVisible() {
+  let elm = $(this);
+  let top = elm.offset().top;
+
+  let seeY1 = bubblesParent.scrollTop();
+  let seeY2 = screenHeight + seeY1;
+
+  return (top + elm.height() >= seeY1 && top <= seeY2);
+}
+
+function onScroll() {
+  let scrolledBase = bubblesParent.scrollTop();
+
+  let scrolled = (0 - (scrolledBase * .15));
+  $('.bubble_type_l').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+
+  scrolled = (0 - (scrolledBase * .3));
+  $('.bubble_type_m').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+
+  scrolled = (0 - (scrolledBase * .45));
+  $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
+}
+
+
 $(document).ready(() => {
+  screenHeight = $(window).height();
+
   setMouseListeners();
 
-  let parent = $('.bubbles');
+  bubblesParent = $('.bubbles');
 
   postSrv = new PostsService();
   let posts = postSrv.process();
 
-  bubbleSrv = new BubblesService(posts, parent.width());
+  bubbleSrv = new BubblesService(posts, bubblesParent.width());
   let bubbles = bubbleSrv.process();
 
   bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'));
   let bubblesNodes = bubbleNodesSrv.process();
+
+  bubblesParent.bind('scroll', onScroll);
 
   /*
   $(window).on('resize', debounce(() => {
     bubblesNodes.updateNodeDim();
   }, 600, false));
   */
-
-  let lastScroll = 0;
-
-  let screenHeight = $(window).height();
-
-  let filterVisible = function() {
-    let elm = $(this);
-    let top = elm.offset().top;
-
-    let seeY1 = parent.scrollTop();
-    let seeY2 = screenHeight + seeY1;
-
-    return (top + elm.height() >= seeY1 && top <= seeY2);
-  };
-
-  parent.bind('scroll', () => {
-    let scrolledBase = parent.scrollTop();
-    let scrollDiff = scrolledBase - lastScroll;
-    lastScroll = scrolledBase;
-
-    let scrolled = (0 - (scrolledBase * .2));
-    $('.bubble_type_l').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-
-    scrolled = (0 - (scrolledBase * .4));
-    $('.bubble_type_m').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-
-    scrolled = (0 - (scrolledBase * .6));
-    $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-  });
 
   //$('.footer').bind('scroll', event => event.stopImmediatePropagation());
 });
