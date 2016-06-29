@@ -8,7 +8,10 @@ export class Post {
     this.type = POST_TYPE_PROJECT;
     this.text = '';
     this.subtitle = '';
-    this.background = '';
+    this.backgroundColor = '';
+    this.backgroundImage = '';
+
+    this.images = [];
   }
 }
 
@@ -25,7 +28,8 @@ export class PostsService {
     let post = new Post();
     post.text = 'Junk Food Clothing';
     post.subtitle = 'Venice Beach, CA';
-    post.background = 'url("../images/photo-2.png") center center no-repeat';
+    post.backgroundImage = '../images/photo-2.png';
+    post.images = ['images/photo-2.png'];
     this.posts[0] = post;
     this.posts[2] = post;
     this.posts[13] = post;
@@ -35,14 +39,15 @@ export class PostsService {
     post.type = POST_TYPE_PRESS;
     post.text = 'Alternative Apparel Makes A Splash on Abbott Kinney';
     post.subtitle = '— REFINERY 29';
-    post.background = '#0E172F';
+    post.backgroundColor = '#0E172F';
     this.posts[4] = post;
     this.posts[8] = post;
     this.posts[12] = post;
     this.posts[15] = post;
 
     post = new Post();
-    post.background = 'url("../images/photo-4.png") center center no-repeat';
+    post.backgroundImage = '../images/photo-4.png';
+    post.images = ['images/photo-4.png'];
     this.posts[1] = post;
     this.posts[5] = post;
     this.posts[10] = post;
@@ -52,7 +57,7 @@ export class PostsService {
     post.type = POST_TYPE_PRESS;
     post.text = 'Wise Sons Jewish Deli Outpost at the CJM';
     post.subtitle = '— SAN FRANCISCO EATE';
-    post.background = '#26386F';
+    post.backgroundColor = '#26386F';
     this.posts[3] = post;
     this.posts[7] = post;
     this.posts[14] = post;
@@ -60,7 +65,8 @@ export class PostsService {
 
     post = new Post();
     post.type = POST_TYPE_INSTAGRAM;
-    post.background = 'url("../images/photo-1.png") center center no-repeat';
+    post.backgroundImage = '../images/photo-1.png';
+    post.images = ['images/photo-1.png'];
     this.posts[6] = post;
     this.posts[9] = post;
     this.posts[11] = post;

@@ -9,10 +9,13 @@ export class BubbleNodesService {
   parentL;
   parentM;
   parentS;
+
+  onClick = null;
   
-  constructor(bubbles, parent) {
+  constructor(bubbles, parent, onClick) {
     this.bubbles = bubbles;
     this.parent = parent;
+    this.onClick = onClick;
   }
   
   setParents() {
@@ -50,8 +53,10 @@ export class BubbleNodesService {
       elm.style.width = bubble.size + 'px';
       elm.style.height = bubble.size + 'px';
 
-      elm.style.background = bubble.post.background;
-      elm.style.backgroundSize = 'contain';
+      if (bubble.post.backgroundColor.length)
+        elm.style.backgroundColor = bubble.post.backgroundColor;
+      if (bubble.post.backgroundImage.length)
+        elm.style.backgroundImage = 'url("' + bubble.post.backgroundImage + '")';
 
       let elmInner = document.createElement('div');
       elmInner.className = 'bubble-inner';
@@ -86,6 +91,8 @@ export class BubbleNodesService {
         this.parent.appendChild(elm);
 
       this.bubbleNodes.push(elm);
+
+      $(elm).click(() => this.onClick(bubble.post));
     }
   }
 

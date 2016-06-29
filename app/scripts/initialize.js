@@ -1,9 +1,12 @@
 import {PostsService} from './posts';
 import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
+import {LightboxService} from './lightbox';
 
 
 let screenHeight = 0;
+
+let lightboxSrv;
 
 let postSrv;
 let bubbleSrv;
@@ -44,38 +47,10 @@ function setMouseListeners() {
     $('.nav-toggle').removeClass('toggle-active');
   };
 
-  let lightboxShow = () => {
-    $('.lightbox').addClass('lightbox-active')
-  }
-
-  let lightboxHide = () => {
-    $('.lightbox').removeClass('lightbox-active');
-  }
-
-  $('.bubbles').click(lightboxShow);
-  $('.lightbox .close-button').click(lightboxHide);
-
   $('.nav-close').click(navHide);
   $('html, body').click(navHide);
 
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
-
-  $('.go-fullscreen').click(() => {
-    let el = document.body;
-    let requestMethod = el.requestFullScreen || el.webkitRequestFullScreen
-    || el.mozRequestFullScreen || el.msRequestFullScreen;
-
-    if (requestMethod) {
-      requestMethod.call(el);
-    } else if (typeof window.ActiveXObject !== "undefined") {
-      let wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
-        wscript.SendKeys("{F11}");
-      }
-    }
-  });
-
-  $('.lightbox').bind('mousewheel', event => event.stopPropagation());
 
   $(document).bind('mousewheel', () => {
     $('.art').addClass('animations-active');
@@ -108,13 +83,29 @@ function onScroll() {
   $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
 }
 
+function scrollMagicInit() {
+  window.controller = new ScrollMagic.Controller();
+
+  let scene = new ScrollMagic.Scene({
+    triggerElement: "#body",
+    triggerHook: 'onLeave'
+  })
+    //.setTween('#footer', 0.5, {backgroundColor: "green", scale: 2.5})
+    .addIndicators({name: "1 (duration: 0)"})
+    .addTo(window.controller);
+}
+
 
 $(document).ready(() => {
   screenHeight = $(window).height();
 
   setMouseListeners();
+  scrollMagicInit();
 
   bubblesParent = $('.bubbles');
+
+  lightboxSrv = new LightboxService();
+  lightboxSrv.init();
 
   postSrv = new PostsService();
   let posts = postSrv.process();
@@ -122,10 +113,11 @@ $(document).ready(() => {
   bubbleSrv = new BubblesService(posts, bubblesParent.width());
   let bubbles = bubbleSrv.process();
 
-  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'));
+  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'), (...args) => lightboxSrv.callLightbox(...args));
   let bubblesNodes = bubbleNodesSrv.process();
 
   bubblesParent.bind('scroll', onScroll);
+  
 
   /*
   $(window).on('resize', debounce(() => {
