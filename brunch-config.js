@@ -4,6 +4,18 @@ module.exports = {
       joinTo: {
         'javascripts/vendor.js': /^(?!app)/,
         'javascripts/app.js': /^app/
+      },
+      order: {
+        before: [
+          'bower_components/jquery/dist/jquery.js',
+          'bower_components/gsap/src/uncompressed/TweenMax.js',
+          'bower_components/velocity/velocity.js',
+          'bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+          'vendor/animation.velocity.js',
+          'vendor/animation.gsap.js',
+          'vendor/debug.addIndicators.js',
+          'vendor/jquery.ScrollMagic.js',
+        ]
       }
     },
     stylesheets: {

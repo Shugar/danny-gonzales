@@ -5,7 +5,9 @@
   "dependencies": {
     "jquery": "^3.0.0",
     "scrollmagic": "^2.0.5",
-    "gsap": "^1.18.5"
+    "gsap": "^1.18.5",
+    "velocity": "^1.2.3"
+
   },
   "overrides": {}
 }
