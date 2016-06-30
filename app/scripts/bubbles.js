@@ -39,14 +39,16 @@ export class BubblesService {
 
   posts = [];
   bubbles = [];
-  height = 0;
+  height = 1;
+  width = 1;
   
-  constructor(posts, width) {
-    this.posts = posts;
+  constructor(width) {
     this.width = width;
   }
   
   setBubbles(grow = 1) {
+    this.bubbles = [];
+    
     let coeff = 1100 / this.width;
     this.height = coeff * this.posts.length * 30 * grow;
 
@@ -81,7 +83,8 @@ export class BubblesService {
     }
   }
   
-  process() {
+  process(posts) {
+    this.posts = posts;
     this.setBubbles();
     return this.bubbles;
   }

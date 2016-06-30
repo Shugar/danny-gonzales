@@ -1,4 +1,4 @@
-import {PostsService} from './posts';
+import {PostsService, POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS} from './posts';
 import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
 import {LightboxService} from './lightbox';
@@ -58,6 +58,16 @@ function setMouseListeners() {
       $(this).addClass('bubbles-overflow');
     });
   });
+
+  let filterPostsClick = type => {
+    navHide();
+    onFilterPosts(type);
+  };
+
+  $('.nav .home-link')    .click(() => filterPostsClick());
+  $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
+  $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
+  $('.nav .gallery-link') .click(() => filterPostsClick(POST_TYPE_INSTAGRAM));
 }
 
 function setBioLightbox() {
@@ -71,7 +81,7 @@ function setBioLightbox() {
     $('.bio-lightbox').removeClass('lightbox-active');
   };
 
-  $('.bio-link').click(bioLightboxShow);
+  $('.nav .bio-link').click(bioLightboxShow);
   $('.bio-lightbox .close-button').click(bioLightboxHide);
 }
 
@@ -112,6 +122,11 @@ function scrollMagicInit() {
     .addTo(window.controller);
 }
 
+function onFilterPosts(type) {
+  let posts = postSrv.getFilteredPosts(type);
+  let bubbles = bubbleSrv.process(posts);
+  bubbleNodesSrv.process(bubbles);
+}
 
 $(document).ready(() => {
   screenHeight = $(window).height();
@@ -127,24 +142,21 @@ $(document).ready(() => {
   postSrv = new PostsService();
   let posts = postSrv.process();
 
-  bubbleSrv = new BubblesService(posts, bubblesParent.width());
-  let bubbles = bubbleSrv.process();
+  bubbleSrv = new BubblesService(bubblesParent.width());
+  let bubbles = bubbleSrv.process(posts);
 
   let bubbleClick = post => {
     lightboxSrv.callLightbox(post);
   };
 
-  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'), bubbleClick);
-  let bubblesNodes = bubbleNodesSrv.process();
+  bubbleNodesSrv = new BubbleNodesService(document.querySelector('.bubbles'), bubbleClick);
+  bubbleNodesSrv.process(bubbles);
 
   bubblesParent.bind('scroll', onScroll);
-
 
   /*
   $(window).on('resize', debounce(() => {
     bubblesNodes.updateNodeDim();
   }, 600, false));
   */
-
-  //$('.footer').bind('scroll', event => event.stopImmediatePropagation());
 });

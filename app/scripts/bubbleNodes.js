@@ -5,45 +5,20 @@ export class BubbleNodesService {
   bubbles = [];
   bubbleNodes = [];
 
-  parentXL;
-  parentL;
-  parentM;
-  parentS;
-
   onClick = null;
   
-  constructor(bubbles, parent, onClick) {
-    this.bubbles = bubbles;
+  constructor(parent, onClick) {
     this.parent = parent;
     this.onClick = onClick;
   }
-  
-  setParents() {
-    this.parentXL = document.createElement('div');
-    this.parentXL.className = 'bubbles-xl';
-    this.parentXL.style.position = 'absolute';
-    this.parentXL.style.top = 0;
-    this.parent.appendChild(this.parentXL);
 
-    this.parentL = document.createElement('div');
-    this.parentL.className = 'bubbles-l';
-    this.parentL.style.position = 'absolute';
-    this.parentL.style.top = 0;
-    this.parent.appendChild(this.parentL);
-
-    this.parentM = document.createElement('div');
-    this.parentM.className = 'bubbles-m';
-    this.parentM.style.position = 'absolute';
-    this.parentM.style.top = 0;
-    this.parent.appendChild(this.parentM);
-
-    this.parentS = document.createElement('div');
-    this.parentS.className = 'bubbles-s';
-    this.parentS.style.position = 'absolute';
-    this.parentS.style.top = 0;
-    this.parent.appendChild(this.parentS);
+  clearNodes() {
+    while (this.parent.firstChild) {
+      this.parent.removeChild(this.parent.firstChild);
+    }
+    this.bubbleNodes = [];
   }
-
+  
   setNodes() {
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
@@ -72,23 +47,7 @@ export class BubbleNodesService {
       elmSubtitle.innerHTML = bubble.post.subtitle;
       elmInner.appendChild(elmSubtitle);
 
-      /*
-      switch (bubble.type.name) {
-        case BUBBLE_TYPE_XL:
-          this.parentXL.appendChild(elm);
-          break;
-        case BUBBLE_TYPE_L:
-          this.parentL.appendChild(elm);
-          break;
-        case BUBBLE_TYPE_M:
-          this.parentM.appendChild(elm);
-          break;
-        case BUBBLE_TYPE_S:
-          this.parentS.appendChild(elm);
-          break;
-      }
-      */
-        this.parent.appendChild(elm);
+      this.parent.appendChild(elm);
 
       this.bubbleNodes.push(elm);
 
@@ -108,17 +67,10 @@ export class BubbleNodesService {
     }
   }
   
-  process() {
-    //this.setParents();
+  process(bubbles) {
+    this.bubbles = bubbles;
+    this.clearNodes();
     this.setNodes();
-
-    /*
-    $('.bubbles').masonry({
-      // options
-      itemSelector: '.bubble',
-      columnWidth: 200
-    });
-    */
     return this.bubbleNodes;
   }
 }

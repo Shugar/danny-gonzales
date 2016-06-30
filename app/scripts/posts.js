@@ -90,4 +90,13 @@ export class PostsService {
     this.setPosts();
     return this.posts;
   }
+  
+  getFilteredPosts(type) {
+    let res = [];
+    for (let post of this.posts) {
+      if (!type || post.type == type)
+        res.push(post);
+    }
+    return res;
+  }
 }
