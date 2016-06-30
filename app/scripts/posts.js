@@ -31,13 +31,8 @@ export class PostsService {
     post.backgroundImage = '../images/photo-2.png';
     post.images = [
       'images/photo-2.png',
-      'images/photo-5.png',
-      'images/photo-6.png',
-      'images/photo-7.png',
-      'images/photo-8.png',
-      'images/photo-9.png',
-      'images/photo-10.png',
-      'images/photo-11.png'
+      'images/photo-10.jpg',
+      'images/photo-11.jpeg'
     ];
     this.posts[0] = post;
     this.posts[2] = post;
@@ -58,13 +53,11 @@ export class PostsService {
     post.backgroundImage = '../images/photo-4.png';
     post.images = [
       'images/photo-4.png',
-      'images/photo-5.png',
-      'images/photo-6.png',
-      'images/photo-7.png',
-      'images/photo-8.png',
-      'images/photo-9.png',
-      'images/photo-10.png',
-      'images/photo-11.png'
+      'images/photo-8.jpg',
+      'images/photo-9.jpg',
+      'images/photo-5.jpg',
+      'images/photo-6.jpg',
+      'images/photo-7.jpg'
     ];
     this.posts[1] = post;
     this.posts[5] = post;
@@ -85,14 +78,7 @@ export class PostsService {
     post.type = POST_TYPE_INSTAGRAM;
     post.backgroundImage = '../images/photo-1.png';
     post.images = [
-      'images/photo-1.png',
-      'images/photo-5.png',
-      'images/photo-6.png',
-      'images/photo-7.png',
-      'images/photo-8.png',
-      'images/photo-9.png',
-      'images/photo-10.png',
-      'images/photo-11.png'
+      'images/photo-1.png'
     ];
     this.posts[6] = post;
     this.posts[9] = post;

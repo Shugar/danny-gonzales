@@ -84,7 +84,6 @@ function filterVisible() {
 
   top += seeY1;
 
-  console.log((top + elm.height() >= seeY1 && top <= seeY2), top, seeY1, seeY2, this);
   return top + elm.height() >= seeY1 && top <= seeY2;
 }
 
@@ -124,7 +123,6 @@ $(document).ready(() => {
   bubblesParent = $('.bubbles');
 
   lightboxSrv = new LightboxService();
-  lightboxSrv.init();
 
   postSrv = new PostsService();
   let posts = postSrv.process();
@@ -132,7 +130,11 @@ $(document).ready(() => {
   bubbleSrv = new BubblesService(posts, bubblesParent.width());
   let bubbles = bubbleSrv.process();
 
-  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'), (...args) => lightboxSrv.callLightbox(...args));
+  let bubbleClick = post => {
+    lightboxSrv.callLightbox(post);
+  };
+
+  bubbleNodesSrv = new BubbleNodesService(bubbles, document.querySelector('.bubbles'), bubbleClick);
   let bubblesNodes = bubbleNodesSrv.process();
 
   bubblesParent.bind('scroll', onScroll);

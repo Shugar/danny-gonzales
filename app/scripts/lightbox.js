@@ -6,18 +6,22 @@ export const LIGHTBOX_INSTAGRAM = ".ig-lightbox";
 
 export class LightboxService {
   type = LIGHTBOX_GALLERY;
-  count = 1;
-  
+  current = 0;
+
   title = '';
   subtitle = '';
   text = '';
-  
+  images = [];
 
-  init() {
+  constructor() {
+    this.initListeners();
+  }
+
+  initListeners() {
     $('.lightbox .close-button').click(this.hideLightbox);
     $('.lightbox .bg').click(this.hideLightbox);
 
-    $('.go-fullscreen').click(() => {
+    $('.lightbox .go-fullscreen').click(() => {
       let el = document.body;
       let requestMethod =
         el.requestFullScreen ||
@@ -36,10 +40,17 @@ export class LightboxService {
     });
 
     $('.lightbox').bind('mousewheel', event => event.stopPropagation());
+
+    $('.lightbox .slide-prev').click(() => {
+      this.onPrev();
+    });
+
+    $('.lightbox .slide-next').click(() => {
+      this.onNext();
+    });
   }
 
   showLightbox() {
-    //$('.lightbox').addClass('lightbox-active');
     $(this.type).addClass('lightbox-active');
   }
 
@@ -47,28 +58,52 @@ export class LightboxService {
     $('.lightbox').removeClass('lightbox-active');
 
     this.type = LIGHTBOX_GALLERY;
-    this.count = 1;
+    this.images = [];
+    this.current = 0;
     this.title = '';
     this.subtitle = '';
     this.text = '';
   }
 
+  onPrev() {
+    if (this.current > 0)
+      this.current--;
+    else
+      this.current = this.images.length - 1;
+    this.updateImage();
+  }
+
+  onNext() {
+    if (this.current < this.images.length - 1)
+      this.current++;
+    else
+      this.current = 0;
+    this.updateImage();
+  }
+
+  updateImage() {
+    $(this.type + ' img').attr('src', this.images[this.current]);
+    let cur = this.current + 1;
+    $('.lightbox .count').html(cur + ' / ' + this.images.length);
+  }
+
   callLightbox(post) {
-    this.type = LIGHTBOX_GALLERY;
-    if (post.type == POST_TYPE_INSTAGRAM)
+    if (post.type == POST_TYPE_INSTAGRAM) {
       this.type = LIGHTBOX_INSTAGRAM;
+    } else {
+      this.type = LIGHTBOX_GALLERY;
+      this.images = post.images;
+    }
 
     this.title = post.title;
     this.subtitle = post.subtitle;
     this.text = post.text;
 
-    console.log(this);
-    console.log(this.type + ' .title');
     $(this.type + ' .title').html(this.title);
     $(this.type + ' .subtitle').html(this.subtitle);
     $(this.type + ' .text').html(this.text);
     if (post.images.length)
-      $(this.type + ' img').attr('src', post.images[0]);
+      this.updateImage();
 
     this.showLightbox();
   }
