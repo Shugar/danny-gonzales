@@ -111,15 +111,16 @@ function onScroll() {
 }
 
 function scrollMagicInit() {
-  window.controller = new ScrollMagic.Controller();
+  let controller = new ScrollMagic.Controller({container: ".bubbles"});
 
   let scene = new ScrollMagic.Scene({
-    triggerElement: "body",
-    triggerHook: 'onLeave'
+    triggerElement: ".bubbles",
+    triggerHook: 0,
+    duration: 300
   })
-    .setTween('.footer', 0.5, {backgroundColor: "green", scale: 2.5})
-    //.addIndicators({name: "1 (duration: 0)"})
-    .addTo(window.controller);
+    .setTween('.footer', {scale: 2.5})
+    .addIndicators({name: "1"})
+    .addTo(controller);
 }
 
 function onFilterPosts(type) {
@@ -133,7 +134,6 @@ $(document).ready(() => {
 
   setMouseListeners();
   setBioLightbox();
-  //scrollMagicInit();
 
   bubblesParent = $('.bubbles');
 
@@ -153,6 +153,8 @@ $(document).ready(() => {
   bubbleNodesSrv.process(bubbles);
 
   bubblesParent.bind('scroll', onScroll);
+
+  scrollMagicInit();
 
   /*
   $(window).on('resize', debounce(() => {
