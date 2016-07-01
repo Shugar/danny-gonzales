@@ -177,6 +177,10 @@ $(document).ready(() => {
 
   scrollMagicInit();
 
+  $('.art').css({
+    width: $(window).width() + 'px',
+    height: $(window).height() + 'px'
+  })
 
   $(window).on('resize', debounce(() => {
     $('.art').css({
