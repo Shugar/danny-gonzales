@@ -41,8 +41,10 @@ export class BubblesService {
   bubbles = [];
   height = 1;
   width = 1;
-  
-  constructor(width) {
+  screenHeight = 1;
+
+  constructor(screenHeight, width) {
+    this.screenHeight = screenHeight;
     this.width = width;
   }
   
@@ -50,7 +52,7 @@ export class BubblesService {
     this.bubbles = [];
     
     let coeff = 1100 / this.width;
-    this.height = coeff * this.posts.length * 30 * grow;
+    this.height = this.screenHeight + Math.round(coeff * Math.sqrt(this.posts.length) * 30 * grow);
 
     for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
@@ -64,7 +66,7 @@ export class BubblesService {
       let check = true;
       do {
         bubble.x = Math.floor(Math.random() * (this.width - bubble.size));
-        bubble.y = Math.floor(Math.random() * (this.height - bubble.size));
+        bubble.y = this.screenHeight + Math.floor(Math.random() * (this.height - bubble.size));
         check = true;
         for (let j = 0; j < i; j++) {
           check = check && BubblesService.checkIntersection(bubble, this.bubbles[j]);

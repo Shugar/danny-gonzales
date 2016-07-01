@@ -13,8 +13,8 @@ export class BubbleNodesService {
   }
 
   clearNodes() {
-    while (this.parent.firstChild) {
-      this.parent.removeChild(this.parent.firstChild);
+    for (let elm of document.querySelectorAll('.bubbles .bubble')) {
+      this.parent.removeChild(elm);
     }
     this.bubbleNodes = [];
   }

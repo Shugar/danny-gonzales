@@ -53,7 +53,7 @@ function setMouseListeners() {
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
   $(document).bind('mousewheel', () => {
-    $('.art').addClass('animations-active');
+    //$('.art').addClass('animations-active');
     $('.bubbles').addClass('bubbles-active').delay(500).queue(() => {
       $(this).addClass('bubbles-overflow');
     });
@@ -113,12 +113,32 @@ function onScroll() {
 function scrollMagicInit() {
   let controller = new ScrollMagic.Controller({container: ".bubbles"});
 
+  let timeline = new TimelineLite();
+  let tweens = [
+    TweenLite.to('.art-1',  1, {left: 0,      top: '100%',  xPercent: -100, yPercent: 100 }),
+    TweenLite.to('.art-2',  1, {left: 0,      top: '50%',   xPercent: -50}),
+    TweenLite.to('.art-3',  1, {left: 0,      top: '-5%',   xPercent: -50}),
+    TweenLite.to('.art-4',  1, {left: 0,      top: '25%',   xPercent: -40}),
+    TweenLite.to('.art-5a', 1, {left: '40%',  top: 0,       xPercent: 50,   yPercent: -100  }),
+    TweenLite.to('.art-5b', 1, {left: '50%',  top: 0,       xPercent: 50,   yPercent: -100  }),
+    TweenLite.to('.art-6',  1, {left: '6%',   top: 0,                       yPercent: -40   }),
+    TweenLite.to('.art-7',  1, {left: '100%', top: '20%',   xPercent: -35}),
+    TweenLite.to('.art-8',  1, {left: '100%', top: '100%',  xPercent: 100}),
+    TweenLite.to('.art-9',  1, {left: '100%', top: '2%',    xPercent: -70}),
+    TweenLite.to('.art-10', 1, {left: '100%', top: '80%',   xPercent: -130}),
+    TweenLite.to('.art-11', 1, {left: '100%', top: '-10%',                  yPercent: -100}),
+    TweenLite.to('.art-12', 1, {left: '100%', top: '60%',   xPercent: -60}),
+    TweenLite.to('.art-13', 1, {left: '100%', top: '80%',   xPercent: -10,  yPercent: 10})
+  ];
+  timeline
+    .add(tweens);
+
   let scene = new ScrollMagic.Scene({
-    triggerElement: ".bubbles",
+    triggerElement: ".trigger",
     triggerHook: 0,
     duration: 300
   })
-    .setTween('.footer', {scale: 2.5})
+    .setTween(timeline)
     .addIndicators({name: "1"})
     .addTo(controller);
 }
@@ -142,7 +162,7 @@ $(document).ready(() => {
   postSrv = new PostsService();
   let posts = postSrv.process();
 
-  bubbleSrv = new BubblesService(bubblesParent.width());
+  bubbleSrv = new BubblesService(screenHeight, bubblesParent.width());
   let bubbles = bubbleSrv.process(posts);
 
   let bubbleClick = post => {
@@ -152,7 +172,7 @@ $(document).ready(() => {
   bubbleNodesSrv = new BubbleNodesService(document.querySelector('.bubbles'), bubbleClick);
   bubbleNodesSrv.process(bubbles);
 
-  bubblesParent.bind('scroll', onScroll);
+  //bubblesParent.bind('scroll', onScroll);
 
   scrollMagicInit();
 
