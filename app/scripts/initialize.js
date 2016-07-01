@@ -133,7 +133,7 @@ $(document).ready(() => {
 
   setMouseListeners();
   setBioLightbox();
-  scrollMagicInit();
+  //scrollMagicInit();
 
   bubblesParent = $('.bubbles');
 

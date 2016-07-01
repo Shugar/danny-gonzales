@@ -4,11 +4,6 @@ module.exports = {
       joinTo: {
         'javascripts/vendor.js': /^(?!app)/,
         'javascripts/app.js': /^app/
-      },
-      order: {
-        before: [
-          'bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
-        ]
       }
     },
     stylesheets: {
