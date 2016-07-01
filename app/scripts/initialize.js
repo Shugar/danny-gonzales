@@ -115,20 +115,21 @@ function scrollMagicInit() {
 
   let timeline = new TimelineLite();
   let tweens = [
-    TweenLite.to('.art-1',  1, {left: 0,      top: '100%',  xPercent: -100, yPercent: 100 }),
-    TweenLite.to('.art-2',  1, {left: 0,      top: '50%',   xPercent: -50}),
-    TweenLite.to('.art-3',  1, {left: 0,      top: '-5%',   xPercent: -50}),
-    TweenLite.to('.art-4',  1, {left: 0,      top: '25%',   xPercent: -40}),
-    TweenLite.to('.art-5a', 1, {left: '40%',  top: 0,       xPercent: 50,   yPercent: -100  }),
-    TweenLite.to('.art-5b', 1, {left: '50%',  top: 0,       xPercent: 50,   yPercent: -100  }),
-    TweenLite.to('.art-6',  1, {left: '6%',   top: 0,                       yPercent: -40   }),
-    TweenLite.to('.art-7',  1, {left: '100%', top: '20%',   xPercent: -35}),
-    TweenLite.to('.art-8',  1, {left: '100%', top: '100%',  xPercent: 100}),
-    TweenLite.to('.art-9',  1, {left: '100%', top: '2%',    xPercent: -70}),
-    TweenLite.to('.art-10', 1, {left: '100%', top: '80%',   xPercent: -130}),
-    TweenLite.to('.art-11', 1, {left: '100%', top: '-10%',                  yPercent: -100}),
-    TweenLite.to('.art-12', 1, {left: '100%', top: '60%',   xPercent: -60}),
-    TweenLite.to('.art-13', 1, {left: '100%', top: '80%',   xPercent: -10,  yPercent: 10})
+    TweenLite.to('.art-1',  1, {xPercent: -100, yPercent: 200 }),
+    TweenLite.to('.art-2',  1, {xPercent: -150, yPercent: 52 }),
+    TweenLite.to('.art-3',  1, {xPercent: -208, yPercent: -44 }),
+    TweenLite.to('.art-4',  1, {xPercent: -218, yPercent: -80 }),
+    TweenLite.to('.art-5a', 1, {xPercent: -100, yPercent: -250 }),
+    TweenLite.to('.art-5b', 1, {xPercent: -100, yPercent: -250 }),
+    TweenLite.to('.art-6',  1, {xPercent: -342, yPercent: 395 }),
+    TweenLite.to('.art-7',  1, {xPercent: 108.8,yPercent: 2 }),
+    TweenLite.to('.art-8',  1, {xPercent: 50,   yPercent: -310 }),
+    TweenLite.to('.art-9',  1, {xPercent: 146,  yPercent: -84 }),
+    TweenLite.to('.art-10', 1, {xPercent: 235,  yPercent: 210 }),
+    TweenLite.to('.art-11', 1, {xPercent: 250,  yPercent: -250 }),
+    TweenLite.to('.art-12', 1, {xPercent: 150,  yPercent: 129 }),
+    TweenLite.to('.art-13', 1, {xPercent: 336,  yPercent: 160 })
+
   ];
   timeline
     .add(tweens);
@@ -176,9 +177,13 @@ $(document).ready(() => {
 
   scrollMagicInit();
 
-  /*
+
   $(window).on('resize', debounce(() => {
-    bubblesNodes.updateNodeDim();
+    $('.art').css({
+      width: $(window).width() + 'px',
+      height: $(window).height() + 'px'
+    })
+
   }, 600, false));
-  */
+
 });
