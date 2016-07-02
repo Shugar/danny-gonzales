@@ -5,6 +5,9 @@ export const BUBBLE_TYPE_L  = "bubble_type_l";
 export const BUBBLE_TYPE_M  = "bubble_type_m";
 export const BUBBLE_TYPE_S  = "bubble_type_s";
 
+const AVAIL_WIDTH = 0.85;
+const UPPER_RESERVE = 1.8;
+
 export class BubbleType {
   constructor(name = BUBBLE_TYPE_L, size = 253) {
     this.name = name;
@@ -52,7 +55,8 @@ export class BubblesService {
     this.bubbles = [];
     
     let coeff = 1100 / this.width;
-    this.height = this.screenHeight + Math.round(coeff * Math.sqrt(this.posts.length) * 30 * grow);
+    let reserve = UPPER_RESERVE * this.screenHeight;
+    this.height = reserve + Math.round(coeff * Math.sqrt(this.posts.length) * 30 * grow);
 
     for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
@@ -65,9 +69,9 @@ export class BubblesService {
       let attempt = 0;
       let check = true;
       do {
-        let availWidth = this.width * 0.85 - bubble.size;
+        let availWidth = this.width * AVAIL_WIDTH - bubble.size;
         bubble.x = Math.floor(this.width / 2 + (Math.random() * availWidth - availWidth / 2) - bubble.size / 2);
-        bubble.y = this.screenHeight + Math.floor(Math.random() * (this.height - bubble.size));
+        bubble.y = reserve + Math.floor(Math.random() * (this.height - bubble.size));
         check = true;
         for (let j = 0; j < i; j++) {
           check = check && BubblesService.checkIntersection(bubble, this.bubbles[j]);
