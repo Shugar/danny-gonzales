@@ -119,7 +119,6 @@ function scrollMagicInit() {
       triggerHook: 'onEnter',
       duration: '120%'
     })
-
       .setTween(bubble, {y: '200', z: '0.01'})
       .addTo(controller);
   }
