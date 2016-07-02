@@ -24,6 +24,8 @@ body {
   left: 50%;
   transform: translate3d(-50%,0,0);
 
+  z-index: 100;
+
   .image-1 {
     background: url('../images/Footer.png') no-repeat center center;
     background-size: contain;

@@ -42,13 +42,24 @@
     }
   }
 
+  .bubble:hover {
+    animation-name: bubbleHover;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+  }
+
   .bubble_type_s {
+    z-index: 3;
+
     .bubble-inner {
       display: none;
     }
   }
 
   .bubble_type_m {
+    z-index: 2;
+
     .title {
       font-size: 12px;
     }
@@ -60,6 +71,8 @@
   }
 
   .bubble_type_l {
+    z-index: 1;
+
     .bubble-inner {
       left: 50%;
       top: 50%;
@@ -92,6 +105,8 @@
   }
 
   .bubble_type_xl {
+    z-index: 0;
+
     .bubble-inner {
 
       .title {
@@ -109,54 +124,13 @@
     }
   }
 
+}
 
-  .bubble-1 {
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    .bg {
-      background: url('../images/photo-4.png') no-repeat center center;
-      background-size: contain;
-    }
+@keyframes bubbleHover {
+  25% {
+    margin-top: -10px;
   }
-
-  .bubble-2 {
-    top: 40%;
-    right: 50%;
-
-    .bg {
-      background: url('../images/photo-3.png') no-repeat center center;
-      background-size: contain;
-    }
+  75% {
+    margin-top: 10px;
   }
-
-  .bubble-3 {
-    background: #26386F;
-    bottom: 0;
-
-    .bubble-inner {
-      width: 80%;
-    }
-  }
-
-  .bubble-4 {
-    background: #0E172F;
-    right: 10%;
-
-    .bubble-inner {
-      width: 70%;
-    }
-  }
-
-  .bubble-5 {
-    top: 5%;
-    left: 5%;
-
-    .bg {
-      background: url('../images/photo-2.png') no-repeat center center;
-      background-size: contain;
-    }
-  }
-
 }

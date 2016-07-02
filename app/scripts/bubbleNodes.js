@@ -4,12 +4,14 @@ import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bub
 export class BubbleNodesService {
   bubbles = [];
   bubbleNodes = [];
+  screenHeight = 0;
 
   onClick = null;
   
-  constructor(parent, onClick) {
+  constructor(parent, onClick, screenHeight = 0) {
     this.parent = parent;
     this.onClick = onClick;
+    this.screenHeight = screenHeight;
   }
 
   clearNodes() {
@@ -20,6 +22,8 @@ export class BubbleNodesService {
   }
   
   setNodes() {
+    let topMax = 0;
+    
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
       elm.className = 'bubble ' + bubble.type.name;
@@ -27,6 +31,9 @@ export class BubbleNodesService {
       elm.style.top = bubble.y + 'px';
       elm.style.width = bubble.size + 'px';
       elm.style.height = bubble.size + 'px';
+
+      if (bubble.y + bubble.size > topMax)
+        topMax = bubble.y + bubble.size;
 
       if (bubble.post.backgroundColor.length)
         elm.style.backgroundColor = bubble.post.backgroundColor;
@@ -53,6 +60,17 @@ export class BubbleNodesService {
 
       $(elm).click(() => this.onClick(bubble.post));
     }
+
+    //to add bottom reserve
+    topMax += this.screenHeight / 2;
+    let elm = document.createElement('div');
+    elm.className = 'invis';
+    elm.style.position = 'absolute';
+    elm.style.left = 0;
+    elm.style.top = topMax + 'px';
+    elm.innerHTML = 'invis!';
+    elm.style.visibility = 'hidden';
+    this.parent.appendChild(elm);
   }
 
   updateNodeDim() {

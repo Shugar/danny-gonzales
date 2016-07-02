@@ -20,7 +20,7 @@ function debounce(func, threshold, execAsap) {
 
   return function debounced () {
     let obj = this, args = arguments;
-    function delayed () {
+    let delayed = () => {
       if (!execAsap)
         func.apply(obj, args);
       timeout = null;
@@ -173,7 +173,7 @@ $(document).ready(() => {
     lightboxSrv.callLightbox(post);
   };
 
-  bubbleNodesSrv = new BubbleNodesService(document.querySelector('.bubbles'), bubbleClick);
+  bubbleNodesSrv = new BubbleNodesService(bubblesParent.get(0), bubbleClick, screenHeight);
   bubbleNodesSrv.process(bubbles);
 
   scrollMagicInit();
