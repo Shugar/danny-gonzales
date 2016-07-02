@@ -78,31 +78,6 @@ function setBioLightbox() {
   $('.bio-lightbox .close-button').click(bioLightboxHide);
 }
 
-function filterVisible() {
-  let elm = $(this);
-  let top = elm.offset().top;
-
-  let seeY1 = bubblesParent.scrollTop();
-  let seeY2 = screenHeight + seeY1;
-
-  top += seeY1;
-
-  return top + elm.height() >= seeY1 && top <= seeY2;
-}
-
-function onScroll() {
-  let scrolledBase = bubblesParent.scrollTop();
-
-  let scrolled = scrolledBase * .1;
-  $('.bubble_type_xl').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-
-  scrolled = (0 - (scrolledBase * .1));
-  $('.bubble_type_m').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-
-  scrolled = (0 - (scrolledBase * .2));
-  $('.bubble_type_s').filter(filterVisible).css('transform', 'translate3d(0, ' + scrolled + 'px, 0)');
-}
-
 function scrollMagicInit() {
   let controller = new ScrollMagic.Controller({container: ".bubbles"});
 
@@ -200,14 +175,12 @@ $(document).ready(() => {
   bubbleNodesSrv = new BubbleNodesService(document.querySelector('.bubbles'), bubbleClick);
   bubbleNodesSrv.process(bubbles);
 
-  //bubblesParent.bind('scroll', onScroll);
-
   scrollMagicInit();
 
   $('.art').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
-  })
+  });
 
   $(window).on('resize', debounce(() => {
     $('.art').css({
