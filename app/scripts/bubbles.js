@@ -65,7 +65,8 @@ export class BubblesService {
       let attempt = 0;
       let check = true;
       do {
-        bubble.x = Math.floor(Math.random() * (this.width - bubble.size));
+        let availWidth = this.width * 0.85 - bubble.size;
+        bubble.x = Math.floor(this.width / 2 + (Math.random() * availWidth - availWidth / 2) - bubble.size / 2);
         bubble.y = this.screenHeight + Math.floor(Math.random() * (this.height - bubble.size));
         check = true;
         for (let j = 0; j < i; j++) {

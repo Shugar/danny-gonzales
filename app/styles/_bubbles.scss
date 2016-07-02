@@ -1,31 +1,10 @@
 .bubbles {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75%;
+  width: 100%;
   height: 100% !important;
-
-  opacity: 0.01;
-  transition: opacity 0.3s ease;
-  transition-delay: 0.25s;
-  will-change: opacity;
-
-  pointer-events: none;
 
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar { width: 0 !important }
-
-
-  &-active {
-    opacity: 0.99;
-    pointer-events: initial;
-  }
-
-  &-overflow {
-    overflow-y: scroll;
-  }
 
   .bubble {
     position: absolute;

@@ -52,13 +52,6 @@ function setMouseListeners() {
 
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
-  $(document).bind('mousewheel', () => {
-    //$('.art').addClass('animations-active');
-    $('.bubbles').addClass('bubbles-active').delay(500).queue(() => {
-      $(this).addClass('bubbles-overflow');
-    });
-  });
-
   let filterPostsClick = type => {
     navHide();
     onFilterPosts(type);
