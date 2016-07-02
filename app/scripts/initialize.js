@@ -111,6 +111,11 @@ function scrollMagicInit() {
     .addIndicators({name: "1"})
     .addTo(controller);
 
+  $('body .footer + div').css({'visibility': 'hidden'});
+
+  $('.bubbles .invis + div').css({'visibility': 'hidden'});
+
+
 
   let bubbles = document.querySelectorAll('.bubble_type_xl');
   for (let bubble of bubbles) {
