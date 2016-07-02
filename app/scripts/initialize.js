@@ -134,7 +134,7 @@ function scrollMagicInit() {
   timeline
     .add(tweens);
 
-  let artScene = new ScrollMagic.Scene({
+  new ScrollMagic.Scene({
     triggerElement: ".trigger",
     triggerHook: 0,
     duration: 300
@@ -143,15 +143,37 @@ function scrollMagicInit() {
     .addIndicators({name: "1"})
     .addTo(controller);
 
-  
+
   let bubbles = document.querySelectorAll('.bubble_type_xl');
   for (let bubble of bubbles) {
-    let parallaxScene = new ScrollMagic.Scene({
-      triggerElement: ".trigger",
-      triggerHook: 0,
-      duration: '200%'
+    new ScrollMagic.Scene({
+      triggerElement: bubble,
+      triggerHook: 'onEnter',
+      duration: '120%'
     })
-      .setTween(bubble, {y: '80%', ease: Linear.easeNone})
+      .setTween(bubble, {y: '50%', ease: Linear.easeNone})
+      .addTo(controller);
+  }
+
+  bubbles = document.querySelectorAll('.bubble_type_m');
+  for (let bubble of bubbles) {
+    new ScrollMagic.Scene({
+      triggerElement: bubble,
+      triggerHook: 'onEnter',
+      duration: '120%'
+    })
+      .setTween(bubble, {y: '-50%', ease: Linear.easeNone})
+      .addTo(controller);
+  }
+
+  bubbles = document.querySelectorAll('.bubble_type_s');
+  for (let bubble of bubbles) {
+    new ScrollMagic.Scene({
+      triggerElement: bubble,
+      triggerHook: 'onEnter',
+      duration: '120%'
+    })
+      .setTween(bubble, {y: '-100%', ease: Linear.easeNone})
       .addTo(controller);
   }
 }
