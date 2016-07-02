@@ -121,8 +121,8 @@ function scrollMagicInit() {
     TweenLite.to('.art-4',  1, {xPercent: -218, yPercent: -80 }),
     TweenLite.to('.art-5a', 1, {xPercent: -100, yPercent: -250 }),
     TweenLite.to('.art-5b', 1, {xPercent: -100, yPercent: -250 }),
-    TweenLite.to('.art-6',  1, {xPercent: -342, yPercent: 395 }),
-    TweenLite.to('.art-7',  1, {xPercent: 108.8,yPercent: 2 }),
+    TweenLite.to('.art-6',  1, {xPercent: -342, yPercent: -395 }),
+    TweenLite.to('.art-7',  1, {xPercent: 109,  yPercent: 2 }),
     TweenLite.to('.art-8',  1, {xPercent: 50,   yPercent: -310 }),
     TweenLite.to('.art-9',  1, {xPercent: 146,  yPercent: -84 }),
     TweenLite.to('.art-10', 1, {xPercent: 235,  yPercent: 210 }),
@@ -134,7 +134,7 @@ function scrollMagicInit() {
   timeline
     .add(tweens);
 
-  let scene = new ScrollMagic.Scene({
+  let artScene = new ScrollMagic.Scene({
     triggerElement: ".trigger",
     triggerHook: 0,
     duration: 300
@@ -142,6 +142,18 @@ function scrollMagicInit() {
     .setTween(timeline)
     .addIndicators({name: "1"})
     .addTo(controller);
+
+  
+  let bubbles = document.querySelectorAll('.bubble_type_xl');
+  for (let bubble of bubbles) {
+    let parallaxScene = new ScrollMagic.Scene({
+      triggerElement: ".trigger",
+      triggerHook: 0,
+      duration: '200%'
+    })
+      .setTween(bubble, {y: '80%', ease: Linear.easeNone})
+      .addTo(controller);
+  }
 }
 
 function onFilterPosts(type) {
