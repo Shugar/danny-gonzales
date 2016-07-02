@@ -85,6 +85,7 @@ function setBioLightbox() {
 
 //let timer;
 
+
 function setOthersListeneres() {
   //on 'F' goto fullscreen
   document.addEventListener("keydown", event => {
