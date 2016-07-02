@@ -54,9 +54,9 @@ export class BubblesService {
   setBubbles(grow = 1) {
     this.bubbles = [];
     
-    let coeff = 1100 / this.width;
+    let coeff = 1000 / this.width;
     let reserve = UPPER_RESERVE * this.screenHeight;
-    this.height = reserve + Math.round(coeff * Math.sqrt(this.posts.length) * 30 * grow);
+    this.height = reserve + Math.round(coeff * Math.sqrt(this.posts.length) * 25 * grow);
 
     for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
