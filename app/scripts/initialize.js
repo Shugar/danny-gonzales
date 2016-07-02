@@ -119,7 +119,8 @@ function scrollMagicInit() {
       triggerHook: 'onEnter',
       duration: '120%'
     })
-      .setTween(bubble, {y: '50%', ease: Linear.easeNone})
+
+      .setTween(bubble, {y: '200', z: '0.01'})
       .addTo(controller);
   }
 
@@ -130,7 +131,7 @@ function scrollMagicInit() {
       triggerHook: 'onEnter',
       duration: '120%'
     })
-      .setTween(bubble, {y: '-50%', ease: Linear.easeNone})
+      .setTween(bubble, {y: '-100', z: '0.01'})
       .addTo(controller);
   }
 
@@ -141,7 +142,7 @@ function scrollMagicInit() {
       triggerHook: 'onEnter',
       duration: '120%'
     })
-      .setTween(bubble, {y: '-100%', ease: Linear.easeNone})
+      .setTween(bubble, {y: '-200', z: '0.01'})
       .addTo(controller);
   }
 }
