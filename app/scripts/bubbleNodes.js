@@ -1,4 +1,3 @@
-
 import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
 
 export const ANIMATION_DURANTION = 2000;

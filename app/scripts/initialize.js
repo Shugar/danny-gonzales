@@ -3,6 +3,8 @@ import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
 import {LightboxService} from './lightbox';
 
+import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
+
 
 let screenHeight = 0;
 
@@ -130,7 +132,7 @@ function scrollMagicInit() {
 
 
 
-  let bubbles = document.querySelectorAll('.bubble_type_xl');
+  let bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_XL);
   for (let bubble of bubbles) {
     new ScrollMagic.Scene({
       triggerElement: bubble,
@@ -141,7 +143,7 @@ function scrollMagicInit() {
       .addTo(controller);
   }
 
-  bubbles = document.querySelectorAll('.bubble_type_m');
+  bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_M);
   for (let bubble of bubbles) {
     new ScrollMagic.Scene({
       triggerElement: bubble,
@@ -152,7 +154,7 @@ function scrollMagicInit() {
       .addTo(controller);
   }
 
-  bubbles = document.querySelectorAll('.bubble_type_s');
+  bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_S);
   for (let bubble of bubbles) {
     new ScrollMagic.Scene({
       triggerElement: bubble,
