@@ -69,6 +69,7 @@ function setMouseListeners() {
     onFilterPosts(type);
   };
 
+  $('.footer .logo')      .click(() => filterPostsClick());
   $('.nav .home-link')    .click(() => filterPostsClick());
   $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
   $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
