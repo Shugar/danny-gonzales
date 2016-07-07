@@ -6,7 +6,7 @@ export const BUBBLE_TYPE_M  = "bubble_type_m";
 export const BUBBLE_TYPE_S  = "bubble_type_s";
 
 const AVAIL_WIDTH = 0.85;
-const UPPER_RESERVE = 1.8;
+const UPPER_RESERVE = 1.3;
 
 export class BubbleType {
   constructor(name = BUBBLE_TYPE_L, size = 253) {
