@@ -39,6 +39,8 @@
     will-change: opacity;
     cursor: pointer;
 
+    user-select: none;
+
     &:hover {
       opacity: 1;
     }
