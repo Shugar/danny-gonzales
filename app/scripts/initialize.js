@@ -185,7 +185,7 @@ function onFilterPosts(type) {
   let posts = postSrv.getFilteredPosts(type);
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
-  bubblesParent.css('scroll-top', 0);
+  bubblesParent.get(0).scrollTop = screenHeight;
 
   scrollMagicUpdate();
 }
