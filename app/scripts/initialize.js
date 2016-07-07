@@ -14,6 +14,8 @@ let bubbleNodesSrv;
 
 let bubblesParent;
 
+let navIsShow = false;
+
 
 function debounce(func, threshold, execAsap) {
   let timeout;
@@ -36,19 +38,29 @@ function debounce(func, threshold, execAsap) {
 }
 
 function setMouseListeners() {
-  let navShow = () => {
-    $('.nav').addClass('nav-active');
-    $('.nav-toggle').addClass('toggle-active');
-  };
-  $('.nav-toggle').click(navShow);
-
   let navHide = () => {
+    navIsShow = false;
     $('.nav').removeClass('nav-active');
     $('.nav-toggle').removeClass('toggle-active');
   };
 
   $('.nav-close').click(navHide);
   $('html, body').click(navHide);
+
+  let navShow = () => {
+    navIsShow = true;
+    $('.nav').addClass('nav-active');
+    $('.nav-toggle').addClass('toggle-active');
+  };
+
+  let navSwitch = () => {
+    if (navIsShow)
+      navHide();
+    else
+      navShow();
+  };
+
+  $('.nav-toggle').click(navSwitch);
 
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
