@@ -16,6 +16,9 @@ let bubbleNodesSrv;
 
 let bubblesParent;
 
+let scrollMagicCtrl;
+let scrollMagicScenes = [];
+
 let navIsShow = false;
 
 
@@ -94,7 +97,7 @@ function setBioLightbox() {
 }
 
 function scrollMagicInit() {
-  let controller = new ScrollMagic.Controller({container: ".bubbles"});
+  scrollMagicCtrl = new ScrollMagic.Controller({container: ".bubbles"});
 
   let timeline = new TimelineLite();
   let tweens = [
@@ -124,52 +127,67 @@ function scrollMagicInit() {
   })
     .setTween(timeline)
     .addIndicators({name: "1"})
-    .addTo(controller);
+    .addTo(scrollMagicCtrl);
 
-  $('body .footer + div').css({'visibility': 'hidden'});
+  scrollMagicUpdate();
+}
 
-  $('.bubbles .invis + div').css({'visibility': 'hidden'});
+function scrollMagicClear() {
+  for (let scene of scrollMagicScenes) {
+    scene.remove();
+  }
+}
 
-
-
+function scrollMagicUpdate() {
   let bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_XL);
   for (let bubble of bubbles) {
-    new ScrollMagic.Scene({
+    let scene = new ScrollMagic.Scene({
       triggerElement: bubble,
       triggerHook: 'onEnter',
       duration: '120%'
     })
       .setTween(bubble, {y: '200', z: '0.01'})
-      .addTo(controller);
+      .addTo(scrollMagicCtrl);
+    scrollMagicScenes.push(scene);
   }
 
   bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_M);
   for (let bubble of bubbles) {
-    new ScrollMagic.Scene({
+    let scene = new ScrollMagic.Scene({
       triggerElement: bubble,
       triggerHook: 'onEnter',
       duration: '120%'
     })
       .setTween(bubble, {y: '-100', z: '0.01'})
-      .addTo(controller);
+      .addTo(scrollMagicCtrl);
+    scrollMagicScenes.push(scene);
   }
 
   bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_S);
   for (let bubble of bubbles) {
-    new ScrollMagic.Scene({
+    let scene = new ScrollMagic.Scene({
       triggerElement: bubble,
       triggerHook: 'onEnter',
       duration: '120%'
     })
       .setTween(bubble, {y: '-200', z: '0.01'})
-      .addTo(controller);
+      .addTo(scrollMagicCtrl);
+    scrollMagicScenes.push(scene);
   }
+
+  $('body .footer + div').css({'visibility': 'hidden'});
+  $('.bubbles .invis + div').css({'visibility': 'hidden'});
 }
 
 function onFilterPosts(type) {
+  scrollMagicClear();
+
   let posts = postSrv.getFilteredPosts(type);
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
+  bubblesParent.css('scroll-top', 0);
+
+  scrollMagicUpdate();
 }
 
 $(document).ready(() => {
@@ -207,7 +225,5 @@ $(document).ready(() => {
       width: $(window).width() + 'px',
       height: $(window).height() + 'px'
     })
-
   }, 600, false));
-
 });
