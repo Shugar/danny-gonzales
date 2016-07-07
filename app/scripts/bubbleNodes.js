@@ -1,6 +1,8 @@
 
 import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
 
+export const ANIMATION_DURANTION = 2000;
+
 export class BubbleNodesService {
   bubbles = [];
   bubbleNodes = [];
@@ -31,6 +33,15 @@ export class BubbleNodesService {
       elm.style.top = bubble.y + 'px';
       elm.style.width = bubble.size + 'px';
       elm.style.height = bubble.size + 'px';
+
+      let animDur = ANIMATION_DURANTION;
+      switch (bubble.type.name) {
+        case BUBBLE_TYPE_XL:  animDur += 500; break;
+        case BUBBLE_TYPE_M:   animDur -= 500; break;
+        case BUBBLE_TYPE_S:   animDur -= 1000;break;
+      }
+      animDur += Math.floor(Math.random() * 200);
+      elm.style.animationDuration = animDur + 'ms';
 
       if (bubble.y + bubble.size > topMax)
         topMax = bubble.y + bubble.size;
