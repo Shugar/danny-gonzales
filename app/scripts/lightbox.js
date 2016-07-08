@@ -41,13 +41,15 @@ export class LightboxService {
 
     $('.lightbox').bind('mousewheel', event => event.stopPropagation());
 
-    $('.lightbox .slide-prev').click(() => {
-      this.onPrev();
-    });
+    $('.lightbox .slide-prev').click(() => this.onPrev());
+    $('.lightbox .slide-next').click(() => this.onNext());
 
-    $('.lightbox .slide-next').click(() => {
-      this.onNext();
-    });
+    let swipe = new Hammer(
+      $('.lightbox .image').get(0),
+      {direction: Hammer.DIRECTION_HORIZONTAL}
+    );
+    swipe.on('swipeleft', () => this.onPrev());
+    swipe.on('swiperight', () => this.onNext());
   }
 
   showLightbox() {
