@@ -136,6 +136,17 @@ function onFilterPosts(type) {
   scrollMagicSrv.update();
 }
 
+function onResize() {
+  $('.art').css({
+    width: $(window).width() + 'px',
+    height: $(window).height() + 'px'
+  });
+
+  scrollMagicSrv.clear();
+  bubbleNodesSrv.process(bubbleSrv.bubbles);
+  scrollMagicSrv.update();
+}
+
 $(document).ready(() => {
   screenHeight = $(window).height();
 
@@ -148,17 +159,17 @@ $(document).ready(() => {
   lightboxSrv = new LightboxService();
 
   postSrv = new PostsService();
-  let posts = postSrv.process();
+  postSrv.process();
 
   bubbleSrv = new BubblesService(screenHeight, bubblesParent.width());
-  let bubbles = bubbleSrv.process(posts);
+  bubbleSrv.process(postSrv.posts);
 
   let bubbleClick = post => {
     lightboxSrv.callLightbox(post);
   };
 
   bubbleNodesSrv = new BubbleNodesService(bubblesParent.get(0), bubbleClick, screenHeight);
-  bubbleNodesSrv.process(bubbles);
+  bubbleNodesSrv.process(bubbleSrv.bubbles);
 
   scrollMagicSrv = new ScrollMagicService();
   scrollMagicSrv.init();
@@ -169,9 +180,6 @@ $(document).ready(() => {
   });
 
   $(window).on('resize', debounce(() => {
-    $('.art').css({
-      width: $(window).width() + 'px',
-      height: $(window).height() + 'px'
-    })
+    onResize();
   }, 600, false));
 });
