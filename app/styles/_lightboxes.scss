@@ -39,8 +39,6 @@
     will-change: opacity;
     cursor: pointer;
 
-    user-select: none;
-
     &:hover {
       opacity: 1;
     }
@@ -185,7 +183,7 @@
   }
 
   .lightbox-inner {
-    width: 75%;
+    width: 50%;
     max-height: 75%;
 
     position: relative;
@@ -212,15 +210,15 @@
     top: 9px;
   }
 
-  .image,
-  .info {
-    width: 50%;
-  }
-
-  .image {
-    background: url('../images/danny.png') no-repeat center center;
-    background-size: cover;
-  }
+  // .image,
+  // .info {
+  //   width: 50%;
+  // }
+  //
+  // .image {
+  //   background: url('../images/danny.png') no-repeat center center;
+  //   background-size: cover;
+  // }
 
   .info {
     padding: 20px 30px 20px 30px;
