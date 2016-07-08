@@ -18,28 +18,8 @@ let bubblesParent;
 
 let navIsShow = false;
 
-let contentClicked = false;
-document.addEventListener("keydown", (event) => {
-  $('.push-f').hide();
+let firstScroll = false;
 
-  let el = document.body;
-  let requestMethod =
-    el.requestFullScreen ||
-    el.webkitRequestFullScreen ||
-    el.mozRequestFullScreen ||
-    el.msRequestFullScreen;
-
-  if (event.which === 70) {
-    if (requestMethod) {
-      requestMethod.call(el);
-    } else if (typeof window.ActiveXObject !== "undefined") {
-      let wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
-        wscript.SendKeys("{F11}");
-      }
-    }
-  }
-});
 
 function setNavListeners() {
   let navHide = () => {
@@ -71,7 +51,11 @@ function setNavListeners() {
     onFilterPosts(type);
   };
 
-  $('.footer .logo')      .click(() => filterPostsClick());
+  $('.footer .logo').click(event => {
+    event.stopPropagation();
+    filterPostsClick();
+  });
+
   $('.nav .home-link')    .click(() => filterPostsClick());
   $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
   $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
@@ -93,6 +77,52 @@ function setBioLightbox() {
   $('.bio-lightbox .close-button').click(bioLightboxHide);
 }
 
+//let timer;
+
+function setOthersListeneres() {
+  //on 'F' goto fullscreen
+  document.addEventListener("keydown", event => {
+    $('.push-f').hide();
+
+    let el = document.body;
+    let requestMethod =
+      el.requestFullScreen ||
+      el.webkitRequestFullScreen ||
+      el.mozRequestFullScreen ||
+      el.msRequestFullScreen;
+
+    if (event.which === 70) {
+      if (requestMethod) {
+        requestMethod.call(el);
+      } else if (typeof window.ActiveXObject !== "undefined") {
+        let wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+          wscript.SendKeys("{F11}");
+        }
+      }
+    }
+  });
+
+  $(document).bind('mousewheel', () => {
+    if (!firstScroll)
+      $('.push-f').css('display', 'none');
+    firstScroll = true;
+
+    /*
+    clearTimeout(timer);
+    if (!document.body.classList.contains('disable-hover'))
+      document.body.classList.add('disable-hover');
+
+    timer = setTimeout(() => document.body.classList.remove('disable-hover'), 500);
+    */
+  });
+
+  $(document).click(() => {
+    if (bubblesParent.get(0).scrollTop == 0)
+      bubblesParent.get(0).scrollTop = screenHeight;
+  });
+}
+
 function onFilterPosts(type) {
   scrollMagicSrv.clear();
 
@@ -100,6 +130,8 @@ function onFilterPosts(type) {
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
   bubblesParent.get(0).scrollTop = screenHeight;
+
+  firstScroll = false;
 
   scrollMagicSrv.update();
 }
@@ -109,6 +141,7 @@ $(document).ready(() => {
 
   setNavListeners();
   setBioLightbox();
+  setOthersListeneres();
 
   bubblesParent = $('.bubbles');
 
@@ -142,16 +175,3 @@ $(document).ready(() => {
     })
   }, 600, false));
 });
-
-
-/*
-let body = document.body;
-let timer;
-window.addEventListener('scroll', () => {
-  clearTimeout(timer);
-  if (!body.classList.contains('disable-hover'))
-    body.classList.add('disable-hover');
-
-  timer = setTimeout(() => body.classList.remove('disable-hover'), 500);
-}, false);
-*/
