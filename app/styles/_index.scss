@@ -13,8 +13,18 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+
 .disable-hover {
   pointer-events: none;
+
+.push-f {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: #903c90;
+  font-size: 14px;
 }
 
 .footer {

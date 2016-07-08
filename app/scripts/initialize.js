@@ -19,7 +19,27 @@ let bubblesParent;
 let navIsShow = false;
 
 let contentClicked = false;
+document.addEventListener("keydown", (event) => {
+  $('.push-f').hide();
 
+  let el = document.body;
+  let requestMethod =
+    el.requestFullScreen ||
+    el.webkitRequestFullScreen ||
+    el.mozRequestFullScreen ||
+    el.msRequestFullScreen;
+
+  if (event.which === 70) {
+    if (requestMethod) {
+      requestMethod.call(el);
+    } else if (typeof window.ActiveXObject !== "undefined") {
+      let wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+        wscript.SendKeys("{F11}");
+      }
+    }
+  }
+});
 
 function setNavListeners() {
   let navHide = () => {
@@ -42,10 +62,10 @@ function setNavListeners() {
       navShow();
   };
   $('.nav-toggle').click(navSwitch);
-  
+
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
-  
+
   let filterPostsClick = type => {
     navHide();
     onFilterPosts(type);
