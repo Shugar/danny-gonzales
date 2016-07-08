@@ -37,7 +37,7 @@ export class BubblesService {
     let a1 = bubble1.x + bubble1.size/2 - (bubble2.x + bubble2.size/2);
     let a2 = bubble1.y + bubble1.size/2 - (bubble2.y + bubble2.size/2);
     let distance = Math.sqrt(a1 * a1 + a2 * a2);
-    return (distance > (bubble1.size + bubble2.size) / 1.7);
+    return (distance > (bubble1.size + bubble2.size) / 1.85);
   }
 
   posts = [];
@@ -56,7 +56,7 @@ export class BubblesService {
     
     let coeff = 1000 / this.width;
     let reserve = UPPER_RESERVE * this.screenHeight;
-    this.height = reserve + Math.round(coeff * Math.sqrt(this.posts.length) * 25 * grow);
+    this.height = reserve + Math.round(Math.sqrt(this.posts.length) * grow);
 
     for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
@@ -64,7 +64,7 @@ export class BubblesService {
       let ind = Math.floor(Math.random() * this.bubbleTypes.length);
       bubble.type = this.bubbleTypes[ind];
       bubble.size = bubble.type.size;
-      //bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
+      bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
 
       let attempt = 0;
       let check = true;
@@ -80,7 +80,7 @@ export class BubblesService {
         attempt++;
         if (attempt / this.posts.length > 30) {
           this.bubbles = [];
-          this.setBubbles(grow * 1.07);
+          this.setBubbles(grow + 3);
           return;
         }
         
