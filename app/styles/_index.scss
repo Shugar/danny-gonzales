@@ -26,6 +26,14 @@ body {
 
   color: #903c90;
   font-size: 14px;
+
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &-disabled {
+    opacity: 0;
+  }
 }
 
 .footer {
