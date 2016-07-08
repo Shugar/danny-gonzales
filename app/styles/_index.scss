@@ -13,6 +13,10 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.disable-hover {
+  pointer-events: none;
+}
+
 .footer {
   width: 64.875%;
   height: 44.791%;
