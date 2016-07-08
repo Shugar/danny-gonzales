@@ -9,10 +9,14 @@ import {debounce} from './utils';
 let screenHeight = 0;
 
 let postSrv;
+let posts = [];
+
 let bubbleSrv;
 let bubbleNodesSrv;
 let lightboxSrv;
 let scrollMagicSrv;
+
+let type = null;
 
 let bubblesParent;
 
@@ -56,10 +60,10 @@ function setNavListeners() {
     filterPostsClick();
   });
 
-  $('.nav .home-link')    .click(() => filterPostsClick());
-  $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
-  $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
-  $('.nav .gallery-link') .click(() => filterPostsClick(POST_TYPE_INSTAGRAM));
+  $('.nav .home-link')    .click(() => filterPostsClick(type = null));
+  $('.nav .projects-link').click(() => filterPostsClick(type = POST_TYPE_PROJECT));
+  $('.nav .press-link')   .click(() => filterPostsClick(type = POST_TYPE_PRESS));
+  $('.nav .gallery-link') .click(() => filterPostsClick(type = POST_TYPE_INSTAGRAM));
 }
 
 function setBioLightbox() {
@@ -126,7 +130,8 @@ function setOthersListeneres() {
 function onFilterPosts(type) {
   scrollMagicSrv.clear();
 
-  let posts = postSrv.getFilteredPosts(type);
+  posts = postSrv.getFilteredPosts(type);
+  bubbleSrv.width = bubblesParent.width();
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
   bubblesParent.get(0).scrollTop = screenHeight;
@@ -142,9 +147,7 @@ function onResize() {
     height: $(window).height() + 'px'
   });
 
-  scrollMagicSrv.clear();
-  bubbleNodesSrv.process(bubbleSrv.bubbles);
-  scrollMagicSrv.update();
+  onFilterPosts(type);
 }
 
 $(document).ready(() => {
@@ -159,10 +162,10 @@ $(document).ready(() => {
   lightboxSrv = new LightboxService();
 
   postSrv = new PostsService();
-  postSrv.process();
+  posts = postSrv.process();
 
   bubbleSrv = new BubblesService(screenHeight, bubblesParent.width());
-  bubbleSrv.process(postSrv.posts);
+  bubbleSrv.process(posts);
 
   let bubbleClick = post => {
     lightboxSrv.callLightbox(post);
