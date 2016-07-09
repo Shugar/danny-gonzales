@@ -5,9 +5,6 @@ import {LightboxService} from './lightbox';
 import {ScrollMagicService} from './ScrollMagicSrv';
 import {debounce} from './utils';
 
-//require('smoothscroll-polyfill').polyfill();
-
-
 let screenHeight = 0;
 
 let postSrv;
@@ -125,19 +122,20 @@ function setOthersListeneres() {
   });
 
   $(document).click(() => {
-    //if (document.querySelector('body').scrollTop == 0)
-      //window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
+    if (document.body.scrollTop == 0)
+      TweenLite.to(document.body, 1, {scrollTo: {y: screenHeight}});
   });
 }
 
-function onFilterPosts(type) {
+function onFilterPosts(type, scroll = true) {
   scrollMagicSrv.clear();
 
   posts = postSrv.getFilteredPosts(type);
   bubbleSrv.width = bubblesParent.width();
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
-  //window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
+  if (scroll)
+    TweenLite.to(document.body, 1, {scrollTo: {y: screenHeight}});
 
   firstScroll = false;
 
@@ -145,13 +143,12 @@ function onFilterPosts(type) {
 }
 
 function onResize() {
-  console.log('resize!');
   $('.art').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
   });
 
-  onFilterPosts(type);
+  onFilterPosts(type, false);
 }
 
 $(document).ready(() => {
