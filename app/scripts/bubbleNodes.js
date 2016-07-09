@@ -1,6 +1,6 @@
 import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
 
-export const ANIMATION_DURANTION = 2000;
+export const ANIMATION_DURANTION = 3000;
 
 export class BubbleNodesService {
   bubbles = [];
@@ -35,7 +35,7 @@ export class BubbleNodesService {
 
       let animDur = ANIMATION_DURANTION;
       switch (bubble.type.name) {
-        case BUBBLE_TYPE_XL:  animDur += 500; break;
+        case BUBBLE_TYPE_XL:  animDur += 750; break;
         case BUBBLE_TYPE_M:   animDur -= 500; break;
         case BUBBLE_TYPE_S:   animDur -= 1000;break;
       }
