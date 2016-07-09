@@ -109,7 +109,7 @@ function setOthersListeneres() {
 
   $(document).bind('mousewheel', () => {
     if (!firstScroll)
-      $('.push-f').addClass('push-f-disabled')
+      $('.push-f').addClass('push-f-disabled');
     firstScroll = true;
 
     /*
