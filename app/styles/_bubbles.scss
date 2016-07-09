@@ -6,49 +6,53 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
 
-  .bubble {
+  .bubble-container {
     position: absolute;
-    border-radius: 100%;
     overflow: hidden;
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12), 0px 8px 8px 0px rgba(0, 0, 0, 0.22);
-    background: #3498db center center no-repeat;
-    background-size: contain;
 
-    cursor: pointer;
+    .bubble {
+      border-radius: 100%;
+      overflow: hidden;
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12), 0px 8px 8px 0px rgba(0, 0, 0, 0.22);
+      background: #3498db center center no-repeat;
+      background-size: contain;
 
-    animation-name: bubbleHover;
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-    animation-timing-function: linear;
+      cursor: pointer;
 
-    .bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100%;
-      width: 100%;
-    }
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-name: bubbleHover;
 
-    .bubble-inner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 75%;
-      transform: translate(-50%, -50%);
-
-      .title {
-        color: #FFFFFF;
+      .bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
       }
 
-      .subtitle {
-        color: #FFFFFF;
+      .bubble-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 75%;
+        transform: translate(-50%, -50%);
+
+        .title {
+          color: #FFFFFF;
+        }
+
+        .subtitle {
+          color: #FFFFFF;
+        }
       }
     }
-  }
 
-  .bubble:hover {
-    animation-play-state: paused;
+    .bubble:hover {
+      animation-play-state: paused;
+    }
   }
 
   .bubble_type_s {
@@ -78,11 +82,11 @@
     .bubble-inner {
       left: 50%;
       top: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
 
       .title {
         font-size: 16px;
-        color: rgba(255,255,255,0.70);
+        color: rgba(255, 255, 255, 0.70);
         letter-spacing: 0px;
         line-height: 22px;
       }
@@ -125,14 +129,13 @@
       }
     }
   }
-
 }
 
 @keyframes bubbleHover {
-  25% {
-    margin-top: -10px;
+  0% {
+    transform: translate3d(0, 0px, 0);
   }
-  75% {
-    margin-top: 10px;
+  50% {
+    transform: translate3d(0, 20px, 0);
   }
 }
