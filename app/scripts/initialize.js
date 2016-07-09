@@ -5,6 +5,8 @@ import {LightboxService} from './lightbox';
 import {ScrollMagicService} from './ScrollMagicSrv';
 import {debounce} from './utils';
 
+//require('smoothscroll-polyfill').polyfill();
+
 
 let screenHeight = 0;
 
@@ -122,8 +124,8 @@ function setOthersListeneres() {
   });
 
   $(document).click(() => {
-    if (bubblesParent.get(0).scrollTop == 0)
-      bubblesParent.get(0).scrollTop = screenHeight;
+    if (document.querySelector('body').scrollTop == 0)
+      window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
   });
 }
 
@@ -134,7 +136,7 @@ function onFilterPosts(type) {
   bubbleSrv.width = bubblesParent.width();
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
-  bubblesParent.get(0).scrollTop = screenHeight;
+  window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
 
   firstScroll = false;
 

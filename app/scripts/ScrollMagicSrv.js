@@ -5,7 +5,7 @@ export class ScrollMagicService {
   scenes = [];
   
   init() {
-    this.controller = new ScrollMagic.Controller({container: ".bubbles"});
+    this.controller = new ScrollMagic.Controller();
 
     let timeline = new TimelineLite();
     let tweens = [
@@ -32,7 +32,7 @@ export class ScrollMagicService {
       duration: '70%'
     })
       .setTween(timeline)
-      .addIndicators({name: "1"})
+      //.addIndicators({name: "1"})
       .addTo(this.controller);
 
     this.update();

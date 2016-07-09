@@ -1,10 +1,10 @@
 .art {
-  position: absolute;
+  position: fixed;
   left: 50%;
-  transform: translate(-50%, -50%);
-  top: 50%;
+  transform: translate(-50%, 0);
+  top: 0;
   width: 1920px;
-  height: 985px;
+  //height: 985px;
 
   &-1 {
     background: url('../images/1.png') no-repeat center center;
@@ -155,7 +155,7 @@
 @media (max-width: 1300px) {
   .art {
     width: 1226px;
-    height: 706px;
+    //height: 706px;
   }
 }
 

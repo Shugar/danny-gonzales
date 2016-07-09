@@ -8,7 +8,7 @@
   width: 26%;
   height: 100%;
 
-  position: absolute;
+  position: fixed;
   left: 0%;
   top: 0%;
 
@@ -16,30 +16,6 @@
 
   &.nav-active {
     transform: translate3d(0,0,0);
-  }
-
-  &-toggle {
-    font-size: 13px;
-    color: #0E172F;
-    letter-spacing: 1.05px;
-    line-height: 20px;
-    font-weight: 100;
-    letter-spacing: 2px;
-
-    position: absolute;
-    bottom: 15px;
-    left: 46px;
-    border-bottom: 2px solid transparent;
-    will-change: border-bottom;
-    transition: border-bottom 0.3s ease;
-    transition-delay: 0.2s;
-
-    z-index: 999;
-    cursor: pointer;
-  }
-
-  &-toggle.toggle-active {
-    border-bottom: 2px solid #0E172F;
   }
 
   &-close {
@@ -92,6 +68,29 @@
   }
 }
 
+.nav-toggle {
+  font-size: 13px;
+  color: #0E172F;
+  letter-spacing: 1.05px;
+  line-height: 20px;
+  font-weight: 100;
+  letter-spacing: 2px;
+
+  position: fixed;
+  bottom: 15px;
+  left: 46px;
+  border-bottom: 2px solid transparent;
+  will-change: border-bottom;
+  transition: border-bottom 0.3s ease;
+  transition-delay: 0.2s;
+
+  z-index: 999;
+  cursor: pointer;
+}
+
+.nav-toggle.toggle-active {
+  border-bottom: 2px solid #0E172F;
+}
 
 @media (min-width: 0px) and (max-width: 768px) {
   .nav {

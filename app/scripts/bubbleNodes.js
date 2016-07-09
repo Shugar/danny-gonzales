@@ -75,9 +75,9 @@ export class BubbleNodesService {
     topMax += this.screenHeight / 2;
     let elm = document.createElement('div');
     elm.className = 'invis';
-    elm.style.position = 'absolute';
-    elm.style.left = 0;
-    elm.style.top = topMax + 'px';
+    //elm.style.position = 'absolute';
+    //elm.style.left = 0;
+    elm.style.height = topMax + 'px';
     elm.innerHTML = 'invis!';
     elm.style.visibility = 'hidden';
     this.parent.appendChild(elm);
