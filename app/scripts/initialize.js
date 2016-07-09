@@ -123,7 +123,7 @@ function setOthersListeneres() {
 
   $(document).click(() => {
     if (bubblesParent.get(0).scrollTop == 0)
-      bubblesParent.get(0).scrollTop = screenHeight;
+      TweenLite.to(bubblesParent.get(0), 1, {scrollTo: {y: screenHeight}});
   });
 }
 
@@ -134,7 +134,7 @@ function onFilterPosts(type) {
   bubbleSrv.width = bubblesParent.width();
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
-  bubblesParent.get(0).scrollTop = screenHeight;
+  TweenLite.to(bubblesParent.get(0), 1, {scrollTo: {y: screenHeight}});
 
   firstScroll = false;
 
