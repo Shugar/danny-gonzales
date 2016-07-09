@@ -27,11 +27,21 @@ export class BubbleNodesService {
     
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
-      elm.className = 'bubble ' + bubble.type.name;
+
+      elm.className = 'bubble-container ' + bubble.type.name;
       elm.style.left = bubble.x + 'px';
       elm.style.top = bubble.y + 'px';
-      elm.style.width = bubble.size + 'px';
-      elm.style.height = bubble.size + 'px';
+      let size = bubble.size * 1.2;
+      elm.style.width = size + 'px';
+      elm.style.height = size + 'px';
+
+      if (bubble.y + bubble.size > topMax)
+        topMax = bubble.y + bubble.size;
+
+      let elmBubble = document.createElement('div');
+      elmBubble.style.width = bubble.size + 'px';
+      elmBubble.style.height = bubble.size + 'px';
+      elmBubble.className = 'bubble';
 
       let animDur = ANIMATION_DURANTION;
       switch (bubble.type.name) {
@@ -40,19 +50,18 @@ export class BubbleNodesService {
         case BUBBLE_TYPE_S:   animDur -= 1000;break;
       }
       animDur += Math.floor(Math.random() * 200);
-      elm.style.animationDuration = animDur + 'ms';
-
-      if (bubble.y + bubble.size > topMax)
-        topMax = bubble.y + bubble.size;
+      elmBubble.style.animationDuration = animDur + 'ms';
 
       if (bubble.post.backgroundColor.length)
-        elm.style.backgroundColor = bubble.post.backgroundColor;
+        elmBubble.style.backgroundColor = bubble.post.backgroundColor;
       if (bubble.post.backgroundImage.length)
-        elm.style.backgroundImage = 'url("' + bubble.post.backgroundImage + '")';
+        elmBubble.style.backgroundImage = 'url("' + bubble.post.backgroundImage + '")';
+
+      elm.appendChild(elmBubble);
 
       let elmInner = document.createElement('div');
       elmInner.className = 'bubble-inner';
-      elm.appendChild(elmInner);
+      elmBubble.appendChild(elmInner);
 
       let elmText = document.createElement('div');
       elmText.className = 'title';
