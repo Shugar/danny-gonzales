@@ -125,8 +125,8 @@ function setOthersListeneres() {
   });
 
   $(document).click(() => {
-    if (document.querySelector('body').scrollTop == 0)
-      window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
+    //if (document.querySelector('body').scrollTop == 0)
+      //window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
   });
 }
 
@@ -137,7 +137,7 @@ function onFilterPosts(type) {
   bubbleSrv.width = bubblesParent.width();
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
-  window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
+  //window.scroll({ top: screenHeight, left: 0, behavior: 'smooth' });
 
   firstScroll = false;
 
@@ -145,6 +145,7 @@ function onFilterPosts(type) {
 }
 
 function onResize() {
+  console.log('resize!');
   $('.art').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
