@@ -16,7 +16,7 @@ export class BubbleNodesService {
   }
 
   clearNodes() {
-    for (let elm of document.querySelectorAll('.bubbles .bubble, .bubbles .invis')) {
+    for (let elm of document.querySelectorAll('.bubbles .bubble-container, .bubbles .invis')) {
       this.parent.removeChild(elm);
     }
     this.bubbleNodes = [];
