@@ -5,7 +5,7 @@ export const BUBBLE_TYPE_L  = "bubble_type_l";
 export const BUBBLE_TYPE_M  = "bubble_type_m";
 export const BUBBLE_TYPE_S  = "bubble_type_s";
 
-const AVAIL_WIDTH = 0.85;
+const AVAIL_WIDTH = 0.9;
 const UPPER_RESERVE = 1.3;
 
 export class BubbleType {
@@ -37,7 +37,7 @@ export class BubblesService {
     let a1 = bubble1.x + bubble1.size/2 - (bubble2.x + bubble2.size/2);
     let a2 = bubble1.y + bubble1.size/2 - (bubble2.y + bubble2.size/2);
     let distance = Math.sqrt(a1 * a1 + a2 * a2);
-    return (distance > (bubble1.size + bubble2.size) / 1.85);
+    return (distance > (bubble1.size + bubble2.size) / 2);
   }
 
   posts = [];
@@ -54,7 +54,7 @@ export class BubblesService {
   setBubbles(grow = 1) {
     this.bubbles = [];
     
-    let coeff = 1000 / this.width;
+    let coeff = 1500 / this.width;
     let reserve = UPPER_RESERVE * this.screenHeight;
     this.height = reserve + Math.round(Math.sqrt(this.posts.length) * grow);
 
