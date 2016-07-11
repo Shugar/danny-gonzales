@@ -5,8 +5,8 @@ export class ScrollMagicService {
   scenes = [];
 
   artEnded = false;
-  onArtEnded = null;
-  onArtStart = null;
+  //onArtEnded = null;
+  //onArtStart = null;
   
   constructor(onArtEnded, onArtStart) {
     
@@ -41,7 +41,10 @@ export class ScrollMagicService {
     })
       .setTween(timeline)
       .on('end', event => {
-        this.artEnded = true;
+        if (event.scrollDirection == "FORWARD")
+          this.artEnded = true;
+        else if (event.scrollDirection == "REVERSE")
+          this.artEnded = false;
       })
       .addTo(this.controller);
 

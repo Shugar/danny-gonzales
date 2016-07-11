@@ -188,7 +188,6 @@ function onMouseMove(event) {
 
   $('.art').each((index, elm) => {
     if (currentElm == elm) {
-      console.log('piu');
       let jqElm = $(currentElm);
       let x1 = event.pageX - jqElm.offset().left;
       let y1 = event.pageY - jqElm.offset().top;
