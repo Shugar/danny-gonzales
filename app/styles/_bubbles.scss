@@ -11,6 +11,8 @@
     position: absolute;
     overflow: hidden;
 
+    will-change: transform;
+
     .bubble {
       border-radius: 100%;
       overflow: hidden;

@@ -256,3 +256,90 @@
     }
   }
 }
+
+
+@media (max-width: 768px) {
+  .lightbox {
+
+    &-inner {
+      display: block;
+      margin-top: 40px;
+      width: 100%;
+
+      padding: 0 20px;
+      padding-bottom: 70px;
+    }
+
+    .image {
+      margin: 0 -20px;
+      min-height: 400px;
+      max-height: 400px;
+      overflow: hidden;
+
+      position: relative;
+
+      img {
+        width: 100%;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+
+    .slide-prev {
+      left: 0px;
+
+      &:after {
+        background: url("../images/prev.svg") no-repeat center center;
+        background-size: contain;
+        left: 20px;
+      }
+    }
+
+    .slide-next {
+      right: 0px;
+
+      &:after {
+        background: url("../images/next.svg") no-repeat center center;
+        background-size: contain;
+        right: 20px;
+      }
+    }
+
+    .slide-prev,
+    .slide-next {
+      bottom: 0px;
+      top: initial;
+      width: 50%;
+      background: #000;
+      height: 50px;
+      opacity: 1;
+      transform: none;
+
+      &:after {
+        position: absolute;
+        content: '';
+        width: 27px;
+        height: 18px;
+        display: block;
+
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .text {
+      font-weight: 200;
+      line-height: 22px;
+      font-size: 14px;
+    }
+  }
+
+  .ig-lightbox {
+    .lightbox-inner {
+      width: 100%;
+    }
+  }
+}
