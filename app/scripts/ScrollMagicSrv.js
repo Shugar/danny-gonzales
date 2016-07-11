@@ -13,7 +13,7 @@ export class ScrollMagicService {
   }
 
   init() {
-    this.controller = new ScrollMagic.Controller();
+    this.controller = new ScrollMagic.Controller({container: $('.bubbles').get(0)});
 
     let timeline = new TimelineLite();
     let tweens = [
