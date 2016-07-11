@@ -53,20 +53,24 @@ function setNavListeners() {
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
 
-  let filterPostsClick = type => {
+  let filterPostsClick = newType => {
+    if (type == newType || (!type && !newType))
+      return;
+    
+    type = newType;
     navHide();
     onFilterPosts(type);
   };
 
   $('.footer .logo').click(event => {
     event.stopPropagation();
-    filterPostsClick();
+    filterPostsClick(null);
   });
 
-  $('.nav .home-link')    .click(() => filterPostsClick(type = null));
-  $('.nav .projects-link').click(() => filterPostsClick(type = POST_TYPE_PROJECT));
-  $('.nav .press-link')   .click(() => filterPostsClick(type = POST_TYPE_PRESS));
-  $('.nav .gallery-link') .click(() => filterPostsClick(type = POST_TYPE_INSTAGRAM));
+  $('.nav .home-link')    .click(() => filterPostsClick(null));
+  $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
+  $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
+  $('.nav .gallery-link') .click(() => filterPostsClick(POST_TYPE_INSTAGRAM));
 }
 
 function setBioLightbox() {
@@ -152,6 +156,10 @@ function onResize() {
 let timeout = 0;
 let scrollStart = false;
 function onScroll() {
+  if (bubblesParent.get(0).scrollTop == 0) {
+    firstScroll = true;
+    bubblesParent.css('z-index', -1);
+  }
   if (firstScroll) {
     $('.push-f').addClass('push-f-disabled');
     bubblesParent.css('z-index', 0);
