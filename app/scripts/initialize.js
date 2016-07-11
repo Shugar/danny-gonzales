@@ -6,8 +6,8 @@ import {ScrollMagicService} from './ScrollMagicSrv';
 import {debounce, throttle} from './utils';
 
 
-const PARALLAX_WIDTH = 0.1;
-const PARALLAX_HEIGHT = 0.1;
+const PARALLAX_GLOBAL = 0.05;
+const PARALLAX_LOCAL = 0.2;
 
 const ARTS_NUM = 14;
 
@@ -197,15 +197,15 @@ function onMouseMove(event) {
       y1 = Math.min(1, Math.max(0, y1 / jqElm.height()));
 
       TweenLite.to(elm, 1, {
-          x: -(x - 0.5) * $(window).width() * PARALLAX_WIDTH    + (x1 - 0.5) * jqElm.width() * PARALLAX_WIDTH,
-          y: -(y - 0.5) * $(window).height() * PARALLAX_HEIGHT  + (y1 - 0.5) * jqElm.height() * PARALLAX_HEIGHT,
+          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL   + (x1 - 0.5) * jqElm.width() * PARALLAX_LOCAL,
+          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL  + (y1 - 0.5) * jqElm.height() * PARALLAX_LOCAL,
           z: 0.01
         }
       );
     } else {
       TweenLite.to(elm, 1, {
-          x: -(x - 0.5) * $(window).width() * PARALLAX_WIDTH,
-          y: -(y - 0.5) * $(window).height() * PARALLAX_HEIGHT,
+          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL,
+          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL,
           z: 0.01
         }
       );
