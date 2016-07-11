@@ -6,6 +6,11 @@ import {ScrollMagicService} from './ScrollMagicSrv';
 import {debounce, throttle} from './utils';
 
 
+const PARALLAX_WIDTH = 0.1;
+const PARALLAX_HEIGHT = 0.1;
+
+const ARTS_NUM = 14;
+
 let postSrv;
 let posts = [];
 
@@ -165,8 +170,26 @@ function onScrollEnd() {
   $('.bubbles .bubble').css('animation-play-state', 'running');
 }
 
-$(document).ready(() => {
+let parallaxX = 0;
+let parallaxY = 0;
+function onMouseMove(event) {
+  let x = Math.min(1, Math.max(0, event.clientX / $(window).width()));
+  let y = Math.min(1, Math.max(0, event.clientY / $(window).height()));
 
+  parallaxX = - (x - 0.5) * $(window).width() * PARALLAX_WIDTH;
+  parallaxY = - (y - 0.5) * $(window).height() * PARALLAX_HEIGHT;
+}
+
+function onAnimationFrame() {
+  $('.art').css('transform', 'translate3d(' + parallaxX + 'px, ' + parallaxY + 'px, 0)');
+
+  if (!scrollMagicSrv.artEnded)
+    requestAnimationFrame(onAnimationFrame);
+}
+
+
+
+$(document).ready(() => {
   setNavListeners();
   setBioLightbox();
   setOthersListeneres();
@@ -203,4 +226,7 @@ $(document).ready(() => {
   $(window).on('scroll', throttle(() => {
     onScroll();
   }, 100));
+
+  $(window).on('mousemove', onMouseMove);
+  requestAnimationFrame(onAnimationFrame);
 });

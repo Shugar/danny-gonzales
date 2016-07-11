@@ -4,6 +4,14 @@ export class ScrollMagicService {
   controller;
   scenes = [];
 
+  artEnded = false;
+  onArtEnded = null;
+  onArtStart = null;
+  
+  constructor(onArtEnded, onArtStart) {
+    
+  }
+
   init() {
     this.controller = new ScrollMagic.Controller();
 
@@ -32,6 +40,9 @@ export class ScrollMagicService {
       duration: '70%'
     })
       .setTween(timeline)
+      .on('end', event => {
+        this.artEnded = true;
+      })
       .addTo(this.controller);
 
     this.update();
