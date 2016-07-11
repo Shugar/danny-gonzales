@@ -226,6 +226,20 @@
 
   .POST_TYPE_PROJECT {
 
+    .title {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 90%;
+    }
+
+    .subtitle {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 90%;
+    }
+
     .bubble:hover .bg {
       opacity: 1;
     }
@@ -244,9 +258,6 @@
         font-size: 12px;
         letter-spacing: 1.95px;
         line-height: 16px;
-
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
 
       .subtitle {
