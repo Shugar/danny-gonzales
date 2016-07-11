@@ -5,7 +5,6 @@ import {LightboxService} from './lightbox';
 import {ScrollMagicService} from './ScrollMagicSrv';
 import {debounce, throttle} from './utils';
 
-let screenHeight = 0;
 
 let postSrv;
 let posts = [];
@@ -80,8 +79,6 @@ function setBioLightbox() {
   $('.bio-lightbox .close-button').click(bioLightboxHide);
 }
 
-//let timer;
-
 
 function setOthersListeneres() {
   //on 'F' goto fullscreen
@@ -123,7 +120,7 @@ function setOthersListeneres() {
 
   $(document).click(() => {
     if (document.body.scrollTop == 0)
-      TweenLite.to(document.body, 1, {scrollTo: {y: screenHeight}});
+      TweenLite.to(document.body, 1, {scrollTo: {y: $(window).height()}});
   });
 }
 
@@ -135,7 +132,7 @@ function onFilterPosts(type, scroll = true) {
   let bubbles = bubbleSrv.process(posts);
   bubbleNodesSrv.process(bubbles);
   if (scroll)
-    TweenLite.to(document.body, 1, {scrollTo: {y: screenHeight}});
+    TweenLite.to(document.body, 1, {scrollTo: {y: $(window).height()}});
 
   firstScroll = false;
 
@@ -143,7 +140,7 @@ function onFilterPosts(type, scroll = true) {
 }
 
 function onResize() {
-  $('.art').css({
+  $('.arts').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
   });
@@ -169,7 +166,6 @@ function onScrollEnd() {
 }
 
 $(document).ready(() => {
-  screenHeight = $(window).height();
 
   setNavListeners();
   setBioLightbox();
@@ -182,20 +178,20 @@ $(document).ready(() => {
   postSrv = new PostsService();
   posts = postSrv.process();
 
-  bubbleSrv = new BubblesService(screenHeight, bubblesParent.width());
+  bubbleSrv = new BubblesService($(window).height(), bubblesParent.width());
   bubbleSrv.process(posts);
 
   let bubbleClick = post => {
     lightboxSrv.callLightbox(post);
   };
 
-  bubbleNodesSrv = new BubbleNodesService(bubblesParent.get(0), bubbleClick, screenHeight);
+  bubbleNodesSrv = new BubbleNodesService(bubblesParent.get(0), bubbleClick, $(window).height());
   bubbleNodesSrv.process(bubbleSrv.bubbles);
 
   scrollMagicSrv = new ScrollMagicService();
   scrollMagicSrv.init();
 
-  $('.art').css({
+  $('.arts').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
   });

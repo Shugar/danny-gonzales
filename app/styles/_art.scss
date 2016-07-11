@@ -1,4 +1,4 @@
-.art {
+.arts {
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
@@ -6,7 +6,7 @@
   width: 1920px;
   //height: 985px;
 
-  &-1 {
+  .art-1 {
     background: url('../images/1.png') no-repeat center center;
     width: 10.062%;
     height: 20.937%;
@@ -15,7 +15,7 @@
     bottom: 13.56%;
   }
 
-  &-2 {
+  .art-2 {
     background: url('../images/2.png') no-repeat center center;
     width: 13.25%;
     height: 27.52%;
@@ -24,7 +24,7 @@
     bottom: 38%;
   }
 
-  &-3 {
+  .art-3 {
     background: url('../images/3.png') no-repeat center center;
     width: 11.125%;
     height: 24.062%;
@@ -33,7 +33,7 @@
     left: 17%;
   }
 
-  &-4 {
+  .art-4 {
     background: url('../images/4.png') no-repeat center center;
     width: 13.312%;
     height: 21.77%;
@@ -42,7 +42,7 @@
     left: 25%;
   }
 
-  &-5a {
+  .art-5 {
     background: url('../images/5a.png') no-repeat center center;
     width: 3.625%;
     height: 16.458%;
@@ -51,7 +51,7 @@
     left: 31%;
   }
 
-  &-5b {
+  .art-6 {
     background: url('../images/5b.png') no-repeat center center;
     width: 12.062%;
     height: 16.458%;
@@ -60,7 +60,7 @@
     left: 35.5%;
   }
 
-  &-6 {
+  .art-7 {
     background: url('../images/6.png') no-repeat center center;
     width: 8.187%;
     height: 13.333%;
@@ -69,7 +69,7 @@
     left: 38.7%;
   }
 
-  &-7 {
+  .art-8 {
     background: url('../images/7.png') no-repeat center center;
     width: 42.0625%;
     height: 33.083%;
@@ -78,7 +78,7 @@
     top: 24%;
   }
 
-  &-8 {
+  .art-9 {
     background: url('../images/8.png') no-repeat center center;
     width: 16.9375%;
     height: 21.666%;
@@ -87,7 +87,7 @@
     bottom: 33.3%;
   }
 
-  &-9 {
+  .art-10 {
     background: url('../images/9.png') no-repeat center center;
     width: 22.75%;
     height: 14.99%;
@@ -96,7 +96,7 @@
     right: 26.1%;
   }
 
-  &-10 {
+  .art-11 {
     background: url('../images/10.png') no-repeat center center;
     width: 6.5625%;
     height: 16.95%;
@@ -105,7 +105,7 @@
     right: 19.9%;
   }
 
-  &-11 {
+  .art-12 {
     background: url('../images/11.png') no-repeat center center;
     width: 12.125%;
     height: 17.395%;
@@ -114,7 +114,7 @@
     right: 13.7%;
   }
 
-  &-12 {
+  .art-13 {
     background: url('../images/12.png') no-repeat center center;
     width: 8.75%;
     height: 16.875%;
@@ -123,7 +123,7 @@
     right: 10.3%;
   }
 
-  &-13 {
+  .art-14 {
     background: url('../images/13.png') no-repeat center center;
     width: 6.3125%;
     height: 12.8125%;
@@ -132,20 +132,7 @@
     right: 16.6%;
   }
 
-  &-1,
-  &-2,
-  &-3,
-  &-4,
-  &-5a,
-  &-5b,
-  &-6,
-  &-7,
-  &-8,
-  &-9,
-  &-10,
-  &-11,
-  &-12,
-  &-13 {
+  .art {
     background-size: contain;
     position: absolute;
   }
@@ -153,14 +140,14 @@
 
 
 @media (max-width: 1300px) {
-  .art {
+  .arts {
     width: 1226px;
     //height: 706px;
   }
 }
 
 @media (max-width: 667px) {
-  .art {
+  .arts {
     position: static;
     left: 0;
     top: 0;
@@ -198,7 +185,7 @@
     left: -6.5%;
   }
 
-  .art-5a {
+  .art-5 {
     top: 3.7%;
     left: 22%;
 
@@ -206,7 +193,7 @@
     width: 17%;
   }
 
-  .art-5b {
+  .art-6 {
     top: 41.8%;
     left: 9.8%;
 
@@ -214,7 +201,7 @@
     width: 27%;
   }
 
-  .art-6 {
+  .art-7 {
     width: 25%;
     height: 10%;
     top: initial;
@@ -222,7 +209,7 @@
     left: 15.2%;
   }
 
-  .art-7 {
+  .art-8 {
     width: 90%;
     height: 39%;
 
@@ -231,7 +218,7 @@
     bottom: 21%;
   }
 
-  .art-8 {
+  .art-9 {
     width: 36%;
     height: 30%;
 
@@ -241,7 +228,7 @@
     bottom: initial;
   }
 
-  .art-9 {
+  .art-10 {
     top: 37.8%;
     right: -5%;
 
@@ -249,17 +236,16 @@
     height: 20%;
   }
 
-  .art-10 {
+  .art-11 {
     width: 13.4%;
     height: 20%;
 
     top: 23.7%;
     right: 8.4%;
     bottom: initial;
-
   }
 
-  .art-11 {
+  .art-12 {
     width: 26%;
     height: 19.8%;
 
@@ -267,7 +253,7 @@
     left: 40.4%;
   }
 
-  .art-12 {
+  .art-13 {
     bottom: initial;
     top: 2%;
     right: -2.3%;
@@ -276,7 +262,7 @@
     width: 20%;
   }
 
-  .art-13 {
+  .art-14 {
     bottom: initial;
     top: 13.8%;
     right: 13%;
