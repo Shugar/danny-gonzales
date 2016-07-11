@@ -1,6 +1,7 @@
 import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
 
 export const ANIMATION_DURANTION = 3000;
+export const MARGIN_LEFT = 8;
 
 export class BubbleNodesService {
   bubbles = [];
@@ -41,6 +42,7 @@ export class BubbleNodesService {
       let elmBubble = document.createElement('div');
       elmBubble.style.width = bubble.size + 'px';
       elmBubble.style.height = bubble.size + 'px';
+      elmBubble.style.marginLeft = MARGIN_LEFT + 'px';
       elmBubble.className = 'bubble';
 
       let animDur = ANIMATION_DURANTION;
