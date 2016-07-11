@@ -187,6 +187,15 @@
 
 
   .POST_TYPE_INSTAGRAM {
+    .bubble-inner {
+      display: initial;
+    }
+
+    .title,
+    .subtitle {
+      display: none;
+    }
+
     .instagram {
       background: url('../images/insta-icon.svg') no-repeat center center;
       background-size: contain;
@@ -202,6 +211,10 @@
 
     .bubble:hover .bg {
       opacity: 1;
+    }
+
+    &.bubble_type_s .bubble:after {
+      content: none;
     }
   }
 

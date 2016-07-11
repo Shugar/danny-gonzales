@@ -1,5 +1,6 @@
 .arts {
-  position: fixed;
+  position: absolute;
+  height: 100%;
   left: 50%;
   transform: translate(-50%, 0);
   top: 0;
@@ -141,135 +142,136 @@
 }
 
 
-@media (max-width: 1300px) {
+@media (min-width: 668px) and (max-width: 1300px) {
   .arts {
-    width: 1226px;
+    width: 1226px !important;
     //height: 706px;
   }
 }
 
 @media (max-width: 667px) {
   .arts {
-    position: static;
+    position: absolute;
+    overflow: hidden;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     transform: none;
-  }
 
-  .art-1 {
-    top: -1.8%;
-    left: 45%;
+    .art-1 {
+      top: -1.8%;
+      left: 45%;
 
-    width: 21.7%;
-  }
+      width: 21.7%;
+    }
 
-  .art-2 {
-    top: 14.6%;
-    left: 5.4%;
+    .art-2 {
+      top: 14.6%;
+      left: 5.4%;
 
-    width: 28.4%;
-  }
+      width: 28.4%;
+    }
 
-  .art-3 {
-    height: 16.8%;
-    width: 30%;
+    .art-3 {
+      height: 16.8%;
+      width: 30%;
 
-    left: -7.2%;
-    top: -0.4%;
-  }
+      left: -7.2%;
+      top: -0.4%;
+    }
 
-  .art-4 {
-    width: 30%;
+    .art-4 {
+      width: 30%;
 
-    top: 54.5%;
-    left: -6.5%;
-  }
+      top: 54.5%;
+      left: -6.5%;
+    }
 
-  .art-5 {
-    top: 3.7%;
-    left: 22%;
+    .art-5 {
+      top: 3.7%;
+      left: 22%;
 
-    height: 13.6%;
-    width: 17%;
-  }
+      height: 13.6%;
+      width: 17%;
+    }
 
-  .art-6 {
-    top: 41.8%;
-    left: 9.8%;
+    .art-6 {
+      top: 41.8%;
+      left: 9.8%;
 
-    height: 12%;
-    width: 27%;
-  }
+      height: 12%;
+      width: 27%;
+    }
 
-  .art-7 {
-    width: 25%;
-    height: 10%;
-    top: initial;
-    bottom: 19%;
-    left: 15.2%;
-  }
+    .art-7 {
+      width: 25%;
+      height: 10%;
+      top: initial;
+      bottom: 19%;
+      left: 15.2%;
+    }
 
-  .art-8 {
-    width: 90%;
-    height: 39%;
+    .art-8 {
+      width: 90%;
+      height: 39%;
 
-    top: initial;
-    left: 24%;
-    bottom: 21%;
-  }
+      top: initial;
+      left: 24%;
+      bottom: 21%;
+    }
 
-  .art-9 {
-    width: 36%;
-    height: 30%;
+    .art-9 {
+      width: 36%;
+      height: 35%;
 
-    top: 55%;
-    left: initial;
-    right: 2.1%;
-    bottom: initial;
-  }
+      top: 55%;
+      left: initial;
+      right: 2.1%;
+      bottom: initial;
+    }
 
-  .art-10 {
-    top: 37.8%;
-    right: -5%;
+    .art-10 {
+      top: 37.8%;
+      right: -5%;
 
-    width: 50%;
-    height: 20%;
-  }
+      width: 50%;
+      height: 20%;
+    }
 
-  .art-11 {
-    width: 13.4%;
-    height: 20%;
+    .art-11 {
+      width: 13.4%;
+      height: 20%;
 
-    top: 23.7%;
-    right: 8.4%;
-    bottom: initial;
-  }
+      top: 23.7%;
+      right: 8.4%;
+      bottom: initial;
+    }
 
-  .art-12 {
-    width: 26%;
-    height: 19.8%;
+    .art-12 {
+      width: 26%;
+      height: 19.8%;
 
-    top: 18.5%;
-    left: 40.4%;
-  }
+      top: 18.5%;
+      left: 40.4%;
+    }
 
-  .art-13 {
-    bottom: initial;
-    top: 2%;
-    right: -2.3%;
+    .art-13 {
+      bottom: initial;
+      top: 2%;
+      right: -2.3%;
 
-    height: 12%;
-    width: 20%;
-  }
+      height: 12%;
+      width: 20%;
+    }
 
-  .art-14 {
-    bottom: initial;
-    top: 13.8%;
-    right: 13%;
+    .art-14 {
+      bottom: initial;
+      top: 13.8%;
+      right: 13%;
 
-    height: 13%;
-    width: 13.8%;
+      height: 13%;
+      width: 13.8%;
+    }
   }
 }
