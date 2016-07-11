@@ -25,7 +25,7 @@ let bubblesParent;
 
 let navIsShow = false;
 
-let firstScroll = false;
+let firstScroll = true;
 
 
 function setNavListeners() {
@@ -109,24 +109,20 @@ function setOthersListeneres() {
     }
   });
 
-  $(document).bind('mousewheel', () => {
-    if (!firstScroll)
-      $('.push-f').addClass('push-f-disabled');
-    firstScroll = true;
-
-    /*
-    clearTimeout(timer);
-    if (!document.body.classList.contains('disable-hover'))
-      document.body.classList.add('disable-hover');
-
-    timer = setTimeout(() => document.body.classList.remove('disable-hover'), 500);
-    */
-  });
-
   $(document).click(() => {
     if (document.body.scrollTop == 0)
       TweenLite.to(document.body, 1, {scrollTo: {y: $(window).height()}});
   });
+
+  $(window).on('resize', debounce(() => {
+    onResize();
+  }, 500, false));
+
+  $(window).on('mousewheel', throttle(() => {
+    onScroll();
+  }, 100));
+
+  $(window).on('mousemove', onMouseMove);
 }
 
 function onFilterPosts(type, scroll = true) {
@@ -156,6 +152,11 @@ function onResize() {
 let timeout = 0;
 let scrollStart = false;
 function onScroll() {
+  if (firstScroll) {
+    $('.push-f').addClass('push-f-disabled');
+    bubblesParent.css('z-index', 0);
+    firstScroll = false;
+  }
   if (!scrollStart)
     onScrollStart();
   clearTimeout(timeout);
@@ -164,36 +165,56 @@ function onScroll() {
 function onScrollStart() {
   scrollStart = true;
   $('.bubbles .bubble').css('animation-play-state', 'paused');
+  //if (!document.body.classList.contains('disable-hover'))
+    //document.body.classList.add('disable-hover');
 }
 function onScrollEnd() {
   scrollStart = false;
   $('.bubbles .bubble').css('animation-play-state', 'running');
+  //document.body.classList.remove('disable-hover');
 }
 
-let parallaxX = 0;
-let parallaxY = 0;
 function onMouseMove(event) {
+  if (scrollMagicSrv.artEnded)
+    return;
+
+  let currentElm = document.elementFromPoint(event.clientX, event.clientY);
+  //let match = currentElm.className.match(/\d+/);
+  //if (match) {
+    //match[0];
+
   let x = Math.min(1, Math.max(0, event.clientX / $(window).width()));
   let y = Math.min(1, Math.max(0, event.clientY / $(window).height()));
 
-  parallaxX = - (x - 0.5) * $(window).width() * PARALLAX_WIDTH;
-  parallaxY = - (y - 0.5) * $(window).height() * PARALLAX_HEIGHT;
+  $('.art').each((index, elm) => {
+    if (currentElm == elm) {
+      console.log('piu');
+      let jqElm = $(currentElm);
+      let x1 = event.pageX - jqElm.offset().left;
+      let y1 = event.pageY - jqElm.offset().top;
+
+      x1 = Math.min(1, Math.max(0, x1 / jqElm.width()));
+      y1 = Math.min(1, Math.max(0, y1 / jqElm.height()));
+
+      TweenLite.to(elm, 1, {
+          x: -(x - 0.5) * $(window).width() * PARALLAX_WIDTH    + (x1 - 0.5) * jqElm.width() * PARALLAX_WIDTH,
+          y: -(y - 0.5) * $(window).height() * PARALLAX_HEIGHT  + (y1 - 0.5) * jqElm.height() * PARALLAX_HEIGHT,
+          z: 0.01
+        }
+      );
+    } else {
+      TweenLite.to(elm, 1, {
+          x: -(x - 0.5) * $(window).width() * PARALLAX_WIDTH,
+          y: -(y - 0.5) * $(window).height() * PARALLAX_HEIGHT,
+          z: 0.01
+        }
+      );
+    }
+  });
 }
-
-function onAnimationFrame() {
-  $('.art').css('transform', 'translate3d(' + parallaxX + 'px, ' + parallaxY + 'px, 0)');
-
-  if (!scrollMagicSrv.artEnded)
-    requestAnimationFrame(onAnimationFrame);
-}
-
 
 
 $(document).ready(() => {
-  setNavListeners();
-  setBioLightbox();
-  setOthersListeneres();
-
   bubblesParent = $('.bubbles');
 
   lightboxSrv = new LightboxService();
@@ -219,14 +240,7 @@ $(document).ready(() => {
     height: $(window).height() + 'px'
   });
 
-  $(window).on('resize', debounce(() => {
-    onResize();
-  }, 500, false));
-
-  $(window).on('scroll', throttle(() => {
-    onScroll();
-  }, 100));
-
-  $(window).on('mousemove', onMouseMove);
-  requestAnimationFrame(onAnimationFrame);
+  setNavListeners();
+  setBioLightbox();
+  setOthersListeneres();
 });
