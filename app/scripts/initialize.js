@@ -3,7 +3,7 @@ import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
 import {LightboxService} from './lightbox';
 import {ScrollMagicService} from './ScrollMagicSrv';
-import {debounce} from './utils';
+import {debounce, throttle} from './utils';
 
 let screenHeight = 0;
 
@@ -151,6 +151,23 @@ function onResize() {
   onFilterPosts(type, false);
 }
 
+let timeout = 0;
+let scrollStart = false;
+function onScroll() {
+  if (!scrollStart)
+    onScrollStart();
+  clearTimeout(timeout);
+  timeout = setTimeout(onScrollEnd, 120);
+}
+function onScrollStart() {
+  scrollStart = true;
+  $('.bubbles .bubble').css('animation-play-state', 'paused');
+}
+function onScrollEnd() {
+  scrollStart = false;
+  $('.bubbles .bubble').css('animation-play-state', 'running');
+}
+
 $(document).ready(() => {
   screenHeight = $(window).height();
 
@@ -185,5 +202,9 @@ $(document).ready(() => {
 
   $(window).on('resize', debounce(() => {
     onResize();
-  }, 600, false));
+  }, 500, false));
+
+  $(window).on('scroll', throttle(() => {
+    onScroll();
+  }, 100));
 });
