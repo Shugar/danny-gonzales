@@ -29,7 +29,7 @@ export class BubbleNodesService {
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
 
-      elm.className = 'bubble-container ' + bubble.type.name;
+      elm.className = 'bubble-container ' + bubble.type.name + ' ' + bubble.post.type;
       elm.style.left = bubble.x + 'px';
       elm.style.top = bubble.y + 'px';
       let size = bubble.size * 1.2;
