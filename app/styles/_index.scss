@@ -64,9 +64,9 @@ body {
     background-size: contain;
 
     position: absolute;
+    bottom: 7.2vw;
     left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translateX(-50%);
 
     pointer-events: auto;
     cursor: pointer;
@@ -90,15 +90,25 @@ body {
   }
 }
 
+@media (min-width: 668px) and (max-width: 960px) {
+  .footer {
+    width: 80%;
+
+    .logo {
+      bottom: 8.5vw;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .push-f {
     display: none;
   }
-}
 
-@media (min-width: 668px) and (max-width: 960px) {
   .footer {
-    width: 80%;
+    .logo {
+      bottom: 7vw;
+    }
   }
 }
 
@@ -107,5 +117,9 @@ body {
     height: 25%;
     width: 106%;
     bottom: -2px;
+
+    .logo {
+      bottom: 7.2vh;
+    }
   }
 }
