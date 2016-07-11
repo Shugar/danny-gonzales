@@ -17,9 +17,9 @@ export class BubbleNodesService {
   }
 
   clearNodes() {
-    for (let elm of document.querySelectorAll('.bubbles .bubble-container, .bubbles .invis')) {
-      this.parent.removeChild(elm);
-    }
+    $('.bubbles .bubble-container, .bubbles .invis').each((index, element) => {
+      this.parent.removeChild(element);
+    });
     this.bubbleNodes = [];
   }
 

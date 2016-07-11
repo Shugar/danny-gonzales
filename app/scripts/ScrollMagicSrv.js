@@ -49,8 +49,7 @@ export class ScrollMagicService {
   }
 
   update() {
-    let bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_XL);
-    for (let bubble of bubbles) {
+    $('.' + BUBBLE_TYPE_XL).each((index, bubble) => {
       let scene = new ScrollMagic.Scene({
         triggerElement: bubble,
         triggerHook: 'onEnter',
@@ -59,10 +58,9 @@ export class ScrollMagicService {
         .setTween(bubble, {y: '200', z: '0.01'})
         .addTo(this.controller);
       this.scenes.push(scene);
-    }
+    });
 
-    bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_M);
-    for (let bubble of bubbles) {
+    $('.' + BUBBLE_TYPE_M).each((index, bubble) => {
       let scene = new ScrollMagic.Scene({
         triggerElement: bubble,
         triggerHook: 'onEnter',
@@ -71,10 +69,9 @@ export class ScrollMagicService {
         .setTween(bubble, {y: '-100', z: '0.01'})
         .addTo(this.controller);
       this.scenes.push(scene);
-    }
+    });
 
-    bubbles = document.querySelectorAll('.' + BUBBLE_TYPE_S);
-    for (let bubble of bubbles) {
+    $('.' + BUBBLE_TYPE_S).each((index, bubble) => {
       let scene = new ScrollMagic.Scene({
         triggerElement: bubble,
         triggerHook: 'onEnter',
@@ -83,7 +80,7 @@ export class ScrollMagicService {
         .setTween(bubble, {y: '-200', z: '0.01'})
         .addTo(this.controller);
       this.scenes.push(scene);
-    }
+    });
 
 
     $('body .footer + div').css({'visibility': 'hidden'});
