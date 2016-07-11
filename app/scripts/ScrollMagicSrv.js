@@ -32,7 +32,6 @@ export class ScrollMagicService {
       duration: '70%'
     })
       .setTween(timeline)
-      //.addIndicators({name: "1"})
       .addTo(this.controller);
 
     this.update();
