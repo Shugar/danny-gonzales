@@ -3,7 +3,7 @@ import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bub
 export class ScrollMagicService {
   controller;
   scenes = [];
-  
+
   init() {
     this.controller = new ScrollMagic.Controller();
 
@@ -74,7 +74,7 @@ export class ScrollMagicService {
       this.scenes.push(scene);
     }
 
-    
+
     $('body .footer + div').css({'visibility': 'hidden'});
     $('.bubbles .invis + div').css({'visibility': 'hidden'});
   }
