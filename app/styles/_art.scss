@@ -140,9 +140,9 @@
 }
 
 
-@media (max-width: 1300px) {
+@media (min-width: 668px) and (max-width: 1300px) {
   .arts {
-    width: 1226px;
+    width: 1226px !important;
     //height: 706px;
   }
 }
@@ -221,7 +221,7 @@
 
     .art-9 {
       width: 36%;
-      height: 30%;
+      height: 35%;
 
       top: 55%;
       left: initial;
