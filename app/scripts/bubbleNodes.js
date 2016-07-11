@@ -9,7 +9,7 @@ export class BubbleNodesService {
   screenHeight = 0;
 
   onClick = null;
-  
+
   constructor(parent, onClick, screenHeight = 0) {
     this.parent = parent;
     this.onClick = onClick;
@@ -22,10 +22,10 @@ export class BubbleNodesService {
     }
     this.bubbleNodes = [];
   }
-  
+
   setNodes() {
     let topMax = 0;
-    
+
     for (let bubble of this.bubbles) {
       let elm = document.createElement('div');
 
@@ -70,6 +70,10 @@ export class BubbleNodesService {
       elmText.innerHTML = bubble.post.text;
       elmInner.appendChild(elmText);
 
+      let elmInstagram = document.createElement('div');
+      elmInstagram.className = 'instagram';
+      elmInner.appendChild(elmInstagram);
+
       let elmSubtitle = document.createElement('div');
       elmSubtitle.className = 'subtitle';
       elmSubtitle.innerHTML = bubble.post.subtitle;
@@ -105,7 +109,7 @@ export class BubbleNodesService {
       node.style.height = bubble.size + 'px';
     }
   }
-  
+
   process(bubbles) {
     this.bubbles = bubbles;
     this.clearNodes();
