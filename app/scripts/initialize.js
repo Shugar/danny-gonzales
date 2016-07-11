@@ -110,8 +110,8 @@ function setOthersListeneres() {
   });
 
   $(document).click(() => {
-    if (document.body.scrollTop == 0)
-      TweenLite.to(document.body, 1, {scrollTo: {y: $(window).height()}});
+    if (bubblesParent.get(0).scrollTop == 0)
+      TweenLite.to(bubblesParent, 1, {scrollTo: {y: $(window).height()}});
   });
 
   $(window).on('resize', debounce(() => {
