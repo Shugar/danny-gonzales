@@ -19,6 +19,14 @@ body {
     font-family: 'Gotham Rounded', sans-serif;
 }
 
+.body-playCursor {
+  cursor: url('../images/play.png'), default;
+}
+
+.body-pauseCursor {
+  cursor: url('../images/pause.png'), default;
+}
+
 a {
     text-decoration: none;
 }
