@@ -37,6 +37,13 @@
         transform: translate(-50%, -50%);
         height: 100%;
         width: 100%;
+
+        background: rgba(0,0,0,0.5);
+        opacity: 0.001;
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+
+        z-index: -1;
       }
 
       .bubble-inner {
@@ -63,24 +70,6 @@
       animation-play-state: paused;
     }
   }
-
-  .POST_TYPE_PRESS {
-
-    .bubble {
-      background: rgb(38, 56, 111);
-      transition: background 0.3s ease;
-      will-change: background;
-
-      &:hover {
-        background: rgb(14, 23, 47) !important;
-      }
-    }
-
-    .bubble-inner {
-      opacity: 1 !important;
-    }
-  }
-
 
   .bubble_type_s {
     z-index: 3;
@@ -157,6 +146,23 @@
     }
   }
 
+  .POST_TYPE_PRESS {
+
+    .bubble {
+      background: rgb(38, 56, 111);
+      transition: background 0.3s ease;
+      will-change: background;
+
+      &:hover {
+        background: rgb(14, 23, 47) !important;
+      }
+    }
+
+    .bubble-inner {
+      opacity: 1 !important;
+    }
+  }
+
 
   .POST_TYPE_INSTAGRAM {
     .instagram {
@@ -171,9 +177,17 @@
       top: 50%;
       transform: translate(-50%,-50%);
     }
+
+    .bubble:hover .bg {
+      opacity: 1;
+    }
   }
 
   .POST_TYPE_PROJECT {
+
+    .bubble:hover .bg {
+      opacity: 1;
+    }
 
     &.bubble_type_l .bubble-inner {
       top: 60%;

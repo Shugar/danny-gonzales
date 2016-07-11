@@ -74,6 +74,10 @@ export class BubbleNodesService {
       elmInstagram.className = 'instagram';
       elmInner.appendChild(elmInstagram);
 
+      let elmBg = document.createElement('div');
+      elmBg.className = 'bg';
+      elmBubble.appendChild(elmBg);
+
       let elmSubtitle = document.createElement('div');
       elmSubtitle.className = 'subtitle';
       elmSubtitle.innerHTML = bubble.post.subtitle;
