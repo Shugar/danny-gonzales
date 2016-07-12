@@ -40,6 +40,10 @@ export class PostsService {
       post.subtitle = $(elm).find('.subtitle').text();
       post.text     = $(elm).find('.content-text').text();
 
+      $(elm).find('.content-image img').each((index, elm) => {
+        post.images.push(elm.getAttribute('src'));
+      });
+
       this.posts.push(post);
     });
   }

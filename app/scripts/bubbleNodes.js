@@ -47,7 +47,7 @@ export class BubbleNodesService {
       if (bubble.post.backgroundColor.length)
         elmBubble.style.backgroundColor = bubble.post.backgroundColor;
       if (bubble.post.backgroundImage.length)
-        elmBubble.style.backgroundImage = 'url("' + bubble.post.backgroundImage + '")';
+        elmBubble.style.backgroundImage = bubble.post.backgroundImage;
 
       $(elm).click(() => this.onClick(bubble.post));
     });
