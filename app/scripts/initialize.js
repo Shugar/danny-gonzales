@@ -183,6 +183,13 @@ function onMouseMove(event) {
   });
 }
 
+$(window).on('load', () => {
+    let preloader = $('.preloader'),
+        text      = preloader.find('.preloader-text');
+    text.fadeOut();
+    preloader.delay(350).fadeOut('slow');
+});
+
 
 $(document).ready(() => {
   bubblesParent = $('.bubbles');

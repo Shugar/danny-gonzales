@@ -27,6 +27,34 @@ body {
   cursor: url('../images/pause.png'), default;
 }
 
+.preloader-active {
+  cursor: progress;
+}
+
+.preloader {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(255,255,255,1);
+  height: 100%;
+  width: 100%;
+
+  z-index: 99999;
+
+  &-text {
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+
 a {
     text-decoration: none;
 }
