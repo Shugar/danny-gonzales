@@ -78,31 +78,9 @@
   .bubble_type_s {
     z-index: 3;
 
-    .bubble-inner {
-      display: none;
-    }
-
-    .bubble:after {
-      content: 'MORE';
-      border: 2px #fff solid;
-      padding: 0 10px;
-      font-size: 16px;
-      line-height: 28px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #fff;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      opacity: 0.001;
-      transition: opacity 0.3s ease;
-      will-change: opacity;
-    }
-
-    .bubble:hover:after {
-      opacity: 0.999;
-    }
+    // .bubble-inner {
+    //   display: none;
+    // }
   }
 
   .bubble_type_m {
