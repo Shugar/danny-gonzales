@@ -1,96 +1,54 @@
+import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bubbles';
+
 export const POST_TYPE_PROJECT    = 'POST_TYPE_PROJECT';
 export const POST_TYPE_INSTAGRAM  = 'POST_TYPE_INSTAGRAM';
 export const POST_TYPE_PRESS      = 'POST_TYPE_PRESS';
 
+const postTypes = [POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS];
+const postSizes = [BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S];
+
 
 export class Post {
-  constructor() {
-    this.type = POST_TYPE_PROJECT;
-    this.text = '';
-    this.subtitle = '';
-    this.backgroundColor = '';
-    this.backgroundImage = '';
+  type = POST_TYPE_PROJECT;
+  size = BUBBLE_TYPE_L;
+  text = '';
+  subtitle = '';
+  backgroundColor = '';
+  backgroundImage = '';
 
-    this.images = [];
-  }
+  images = [];
 }
 
 export class PostsService {
   posts = [];
-  postNum = 20;
 
   setPosts() {
-    for (let i = 0; i < this.postNum; i++) {
+    $('.bubble-container').each((index, elm) => {
       let post = new Post();
+      for (let cls of elm.classList) {
+        if (postTypes.indexOf(cls) != -1)
+          post.type = cls;
+        else if (postSizes.indexOf(cls) != -1)
+          post.size = cls;
+      }
+
+      let bubbleStyles = $(elm).find('.bubble').get(0).style;
+      post.backgroundColor = bubbleStyles.backgroundColor;
+      post.backgroundImage = bubbleStyles.backgroundImage;
+
+      post.title    = $(elm).find('.title').text();
+      post.subtitle = $(elm).find('.subtitle').text();
+      post.text     = $(elm).find('.content-text').text();
+
       this.posts.push(post);
-    }
-
-    let post = new Post();
-    post.text = 'Junk Food Clothing';
-    post.subtitle = 'Venice Beach, CA';
-    post.backgroundImage = '../images/photo-2.png';
-    post.images = [
-      'images/photo-2.png',
-      'images/photo-10.jpg',
-      'images/photo-11.jpeg'
-    ];
-    this.posts[0] = post;
-    this.posts[2] = post;
-    this.posts[13] = post;
-    this.posts[19] = post;
-
-    post = new Post();
-    post.type = POST_TYPE_PRESS;
-    post.text = 'Alternative Apparel Makes A Splash on Abbott Kinney';
-    post.subtitle = '— REFINERY 29';
-    post.backgroundColor = '#0E172F';
-    this.posts[4] = post;
-    this.posts[8] = post;
-    this.posts[12] = post;
-    this.posts[15] = post;
-
-    post = new Post();
-    post.backgroundImage = '../images/photo-4.png';
-    post.images = [
-      'images/photo-4.png',
-      'images/photo-8.jpg',
-      'images/photo-9.jpg',
-      'images/photo-5.jpg',
-      'images/photo-6.jpg',
-      'images/photo-7.jpg'
-    ];
-    this.posts[1] = post;
-    this.posts[5] = post;
-    this.posts[10] = post;
-    this.posts[12] = post;
-
-    post = new Post();
-    post.type = POST_TYPE_PRESS;
-    post.text = 'Wise Sons Jewish Deli Outpost at the CJM';
-    post.subtitle = '— SAN FRANCISCO EATE';
-    post.backgroundColor = '#26386F';
-    this.posts[3] = post;
-    this.posts[7] = post;
-    this.posts[14] = post;
-    this.posts[18] = post;
-
-    post = new Post();
-    post.type = POST_TYPE_INSTAGRAM;
-    post.backgroundImage = '../images/photo-1.png';
-    post.images = [
-      'images/photo-1.png'
-    ];
-    this.posts[6] = post;
-    this.posts[9] = post;
-    this.posts[11] = post;
-    this.posts[12] = post;
+    });
   }
 
   process() {
     this.setPosts();
     return this.posts;
   }
-  
+
   getFilteredPosts(type) {
     let res = [];
     for (let post of this.posts) {

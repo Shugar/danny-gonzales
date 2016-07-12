@@ -51,24 +51,9 @@ function setNavListeners() {
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
 
-  let filterPostsClick = newType => {
-    if (type == newType || (!type && !newType))
-      return;
-    
-    type = newType;
-    navHide();
-    onFilterPosts(type);
-  };
-
   $('.footer .logo').click(event => {
     event.stopPropagation();
-    filterPostsClick(null);
   });
-
-  $('.nav .home-link')    .click(() => filterPostsClick(null));
-  $('.nav .projects-link').click(() => filterPostsClick(POST_TYPE_PROJECT));
-  $('.nav .press-link')   .click(() => filterPostsClick(POST_TYPE_PRESS));
-  $('.nav .gallery-link') .click(() => filterPostsClick(POST_TYPE_INSTAGRAM));
 }
 
 function setBioLightbox() {
@@ -130,28 +115,22 @@ function setOthersListeneres() {
   $(window).on('mousemove', onMouseMove);
 }
 
-function onFilterPosts(type, scroll = true) {
-  scrollMagicSrv.clear();
-
-  posts = postSrv.getFilteredPosts(type);
-  bubbleSrv.width = bubblesParent.width();
-  let bubbles = bubbleSrv.process(posts);
-  bubbleNodesSrv.process(bubbles);
-  if (scroll)
-    TweenLite.to(document.body, 1, {scrollTo: {y: $(window).height()}});
-
-  firstScroll = false;
-
-  scrollMagicSrv.update();
-}
-
 function onResize() {
   $('.arts').css({
     width: $(window).width() + 'px',
     height: $(window).height() + 'px'
   });
 
-  onFilterPosts(type, false);
+  scrollMagicSrv.clear();
+
+  posts = postSrv.getFilteredPosts(null);
+  bubbleSrv.width = bubblesParent.width();
+  let bubbles = bubbleSrv.process(posts);
+  bubbleNodesSrv.process(bubbles);
+
+  firstScroll = false;
+
+  scrollMagicSrv.update();
 }
 
 let timeout = 0;

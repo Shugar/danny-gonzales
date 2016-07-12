@@ -8,30 +8,23 @@ export const BUBBLE_TYPE_S  = "bubble_type_s";
 const AVAIL_WIDTH = 0.9;
 const UPPER_RESERVE = 1.3;
 
-export class BubbleType {
-  constructor(name = BUBBLE_TYPE_L, size = 253) {
-    this.name = name;
-    this.size = size;
-  }
-}
 
 export class Bubble {
-  constructor() {
-    this.post = new Post();
-    this.type = new BubbleType();
-    this.size = 0;
-    this.x = 0;
-    this.y = 0;
-  }
+  post = new Post();
+  size = 0;
+  x = 0;
+  y = 0;
 }
 
 export class BubblesService {
-  bubbleTypes = [
-    new BubbleType(BUBBLE_TYPE_XL,  350),
-    new BubbleType(BUBBLE_TYPE_L,   253),
-    new BubbleType(BUBBLE_TYPE_M,   185),
-    new BubbleType(BUBBLE_TYPE_S,   150)
-  ];
+  static getSize(type) {
+    switch (type) {
+      case(BUBBLE_TYPE_XL): return 350;
+      case(BUBBLE_TYPE_L):  return 253;
+      case(BUBBLE_TYPE_M):  return 185;
+      case(BUBBLE_TYPE_S):  return 150;
+    }
+  }
 
   static checkIntersection(bubble1, bubble2) {
     let a1 = bubble1.x + bubble1.size/2 - (bubble2.x + bubble2.size/2);
@@ -61,10 +54,8 @@ export class BubblesService {
     for (let i = 0; i < this.posts.length; i++) {
       let bubble = new Bubble();
       bubble.post = this.posts[i];
-      let ind = Math.floor(Math.random() * this.bubbleTypes.length);
-      bubble.type = this.bubbleTypes[ind];
-      bubble.size = bubble.type.size;
-      bubble.size = Math.floor(bubble.type.size * (coeff > 1 ? 1 : 1/coeff));
+      bubble.size = BubblesService.getSize(bubble.post.size);
+      bubble.size = Math.floor(bubble.size * (coeff > 1 ? 1 : 1/coeff));
 
       let attempt = 0;
       let check = true;

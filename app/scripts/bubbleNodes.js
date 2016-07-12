@@ -5,7 +5,6 @@ export const MARGIN_LEFT = 8;
 
 export class BubbleNodesService {
   bubbles = [];
-  bubbleNodes = [];
   screenHeight = 0;
 
   onClick = null;
@@ -16,20 +15,12 @@ export class BubbleNodesService {
     this.screenHeight = screenHeight;
   }
 
-  clearNodes() {
-    $('.bubbles .bubble-container, .bubbles .invis').each((index, element) => {
-      this.parent.removeChild(element);
-    });
-    this.bubbleNodes = [];
-  }
-
   setNodes() {
     let topMax = 0;
 
-    for (let bubble of this.bubbles) {
-      let elm = document.createElement('div');
+    $('.bubble-container').each((index, elm) => {
+      let bubble = this.bubbles[index];
 
-      elm.className = 'bubble-container ' + bubble.type.name + ' ' + bubble.post.type;
       elm.style.left = bubble.x + 'px';
       elm.style.top = bubble.y + 'px';
       let size = bubble.size * 1.2;
@@ -39,14 +30,13 @@ export class BubbleNodesService {
       if (bubble.y + bubble.size > topMax)
         topMax = bubble.y + bubble.size;
 
-      let elmBubble = document.createElement('div');
+      let elmBubble = $(elm).find('.bubble').get(0);
       elmBubble.style.width = bubble.size + 'px';
       elmBubble.style.height = bubble.size + 'px';
       elmBubble.style.marginLeft = MARGIN_LEFT + 'px';
-      elmBubble.className = 'bubble';
 
       let animDur = ANIMATION_DURANTION;
-      switch (bubble.type.name) {
+      switch (bubble.post.size) {
         case BUBBLE_TYPE_XL:  animDur += 750; break;
         case BUBBLE_TYPE_M:   animDur -= 500; break;
         case BUBBLE_TYPE_S:   animDur -= 1000;break;
@@ -59,36 +49,8 @@ export class BubbleNodesService {
       if (bubble.post.backgroundImage.length)
         elmBubble.style.backgroundImage = 'url("' + bubble.post.backgroundImage + '")';
 
-      elm.appendChild(elmBubble);
-
-      let elmInner = document.createElement('div');
-      elmInner.className = 'bubble-inner';
-      elmBubble.appendChild(elmInner);
-
-      let elmText = document.createElement('div');
-      elmText.className = 'title';
-      elmText.innerHTML = bubble.post.text;
-      elmInner.appendChild(elmText);
-
-      let elmInstagram = document.createElement('div');
-      elmInstagram.className = 'instagram';
-      elmInner.appendChild(elmInstagram);
-
-      let elmBg = document.createElement('div');
-      elmBg.className = 'bg';
-      elmBubble.appendChild(elmBg);
-
-      let elmSubtitle = document.createElement('div');
-      elmSubtitle.className = 'subtitle';
-      elmSubtitle.innerHTML = bubble.post.subtitle;
-      elmInner.appendChild(elmSubtitle);
-
-      this.parent.appendChild(elm);
-
-      this.bubbleNodes.push(elm);
-
       $(elm).click(() => this.onClick(bubble.post));
-    }
+    });
 
     //to add bottom reserve
     topMax += this.screenHeight / 2;
@@ -102,22 +64,8 @@ export class BubbleNodesService {
     this.parent.appendChild(elm);
   }
 
-  updateNodeDim() {
-    for (let i = 0; i < this.bubbles.length; i++) {
-      let node = this.bubbleNodes[i];
-      let bubble = this.bubbles[i];
-      node.className = 'bubble ' + bubble.type.name;
-      node.style.left = bubble.x + 'px';
-      node.style.top = bubble.y + 'px';
-      node.style.width = bubble.size + 'px';
-      node.style.height = bubble.size + 'px';
-    }
-  }
-
   process(bubbles) {
     this.bubbles = bubbles;
-    this.clearNodes();
     this.setNodes();
-    return this.bubbleNodes;
   }
 }
