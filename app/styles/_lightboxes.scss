@@ -118,12 +118,24 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+
     min-height: 400px;
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
   }
 
   .image img {
     // width: 100%;
     max-width: 100%;
+
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .title {
