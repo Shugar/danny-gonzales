@@ -195,7 +195,7 @@ function onMouseMove(event) {
   let y = Math.min(1, Math.max(0, event.clientY / $(window).height()));
 
   $('.art').each((index, elm) => {
-    if (currentElm == elm) {
+    if (currentElm = elm) {
       let jqElm = $(currentElm);
       let x1 = event.pageX - jqElm.offset().left;
       let y1 = event.pageY - jqElm.offset().top;
@@ -204,8 +204,8 @@ function onMouseMove(event) {
       y1 = Math.min(1, Math.max(0, y1 / jqElm.height()));
 
       TweenLite.to(elm, 1, {
-          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL   + (x1 - 0.5) * jqElm.width() * PARALLAX_LOCAL,
-          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL  + (y1 - 0.5) * jqElm.height() * PARALLAX_LOCAL,
+          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL   - (x1 - 0.5) * jqElm.width() * PARALLAX_LOCAL,
+          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL  - (y1 - 0.5) * jqElm.height() * PARALLAX_LOCAL,
           z: 0.01
         }
       );
