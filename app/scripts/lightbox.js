@@ -104,8 +104,19 @@ export class LightboxService {
     $(this.type + ' .title').html(this.title);
     $(this.type + ' .subtitle').html(this.subtitle);
     $(this.type + ' .text').html(this.text);
-    if (post.images.length)
+
+    if (post.images.length > 0) {
       this.updateImage();
+      if (post.images.length == 1) {
+        $('.lightbox .count').hide();
+        $('.lightbox .slide-prev').hide();
+        $('.lightbox .slide-next').hide();
+      } else {
+        $('.lightbox .count').show();
+        $('.lightbox .slide-prev').show();
+        $('.lightbox .slide-next').show();
+      }
+    }
 
     this.showLightbox();
   }
