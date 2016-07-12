@@ -9,8 +9,6 @@ import {debounce, throttle} from './utils';
 const PARALLAX_GLOBAL = 0.05;
 const PARALLAX_LOCAL = 0.2;
 
-const ARTS_NUM = 14;
-
 let postSrv;
 let posts = [];
 
@@ -114,8 +112,11 @@ function setOthersListeneres() {
   });
 
   $(document).click(() => {
-    if (bubblesParent.get(0).scrollTop == 0)
+    if (bubblesParent.get(0).scrollTop == 0) {
       TweenLite.to(bubblesParent, 1, {scrollTo: {y: $(window).height()}});
+      $('.push-f').addClass('push-f-disabled');
+      $('body').removeClass('body-playCursor');
+    }
   });
 
   $(window).on('resize', debounce(() => {
@@ -158,9 +159,10 @@ let scrollStart = false;
 function onScroll() {
   if (firstScroll) {
     $('.push-f').addClass('push-f-disabled');
+    $('body').removeClass('body-playCursor');
     firstScroll = false;
   }
-  
+
   if (!scrollStart)
     onScrollStart();
   clearTimeout(timeout);
