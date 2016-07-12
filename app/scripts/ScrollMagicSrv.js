@@ -5,12 +5,6 @@ export class ScrollMagicService {
   scenes = [];
 
   artEnded = false;
-  //onArtEnded = null;
-  //onArtStart = null;
-  
-  constructor(onArtEnded, onArtStart) {
-    
-  }
 
   init() {
     this.controller = new ScrollMagic.Controller({container: $('.bubbles').get(0)});

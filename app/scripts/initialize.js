@@ -156,15 +156,11 @@ function onResize() {
 let timeout = 0;
 let scrollStart = false;
 function onScroll() {
-  if (bubblesParent.get(0).scrollTop == 0) {
-    firstScroll = true;
-    bubblesParent.css('z-index', -1);
-  }
   if (firstScroll) {
     $('.push-f').addClass('push-f-disabled');
-    bubblesParent.css('z-index', 0);
     firstScroll = false;
   }
+  
   if (!scrollStart)
     onScrollStart();
   clearTimeout(timeout);
@@ -186,37 +182,23 @@ function onMouseMove(event) {
   if (scrollMagicSrv.artEnded)
     return;
 
-  let currentElm = document.elementFromPoint(event.clientX, event.clientY);
-  //let match = currentElm.className.match(/\d+/);
-  //if (match) {
-    //match[0];
-
   let x = Math.min(1, Math.max(0, event.clientX / $(window).width()));
   let y = Math.min(1, Math.max(0, event.clientY / $(window).height()));
 
   $('.art').each((index, elm) => {
-    if (currentElm = elm) {
-      let jqElm = $(currentElm);
-      let x1 = event.pageX - jqElm.offset().left;
-      let y1 = event.pageY - jqElm.offset().top;
+    let jqElm = $(elm);
+    let x1 = event.pageX - jqElm.offset().left;
+    let y1 = event.pageY - jqElm.offset().top;
 
-      x1 = Math.min(1, Math.max(0, x1 / jqElm.width()));
-      y1 = Math.min(1, Math.max(0, y1 / jqElm.height()));
+    x1 = Math.min(1, Math.max(0, x1 / jqElm.width()));
+    y1 = Math.min(1, Math.max(0, y1 / jqElm.height()));
 
-      TweenLite.to(elm, 1, {
-          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL   - (x1 - 0.5) * jqElm.width() * PARALLAX_LOCAL,
-          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL  - (y1 - 0.5) * jqElm.height() * PARALLAX_LOCAL,
-          z: 0.01
-        }
-      );
-    } else {
-      TweenLite.to(elm, 1, {
-          x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL,
-          y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL,
-          z: 0.01
-        }
-      );
-    }
+    TweenLite.to(elm, 1, {
+        x: -(x - 0.5) * $(window).width() * PARALLAX_GLOBAL   - (x1 - 0.5) * jqElm.width() * PARALLAX_LOCAL,
+        y: -(y - 0.5) * $(window).height() * PARALLAX_GLOBAL  - (y1 - 0.5) * jqElm.height() * PARALLAX_LOCAL,
+        z: 0.01
+      }
+    );
   });
 }
 
