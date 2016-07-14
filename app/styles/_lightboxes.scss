@@ -196,7 +196,8 @@
   }
 
   .lightbox-inner {
-    width: 50%;
+    width: 100%;
+    max-width: 620px;
     max-height: 75%;
 
     position: relative;
@@ -246,6 +247,7 @@
     text-align: center;
     font-size: 15px;
     color: #FFFFFF;
+    font-weight: 700;
   }
 
   .text {
@@ -254,6 +256,7 @@
     color: #FFFFFF;
     letter-spacing: 1.51px;
     line-height: 18px;
+    font-weight: 100;
   }
 
   .socials {

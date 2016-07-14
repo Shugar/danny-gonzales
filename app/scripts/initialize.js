@@ -50,7 +50,6 @@ function setNavListeners() {
 
   $('.nav, .nav-toggle').click(event => event.stopPropagation());
 
-
   $('.footer .logo').click(event => {
     event.stopPropagation();
   });
@@ -69,6 +68,7 @@ function setBioLightbox() {
 
   $('.nav .bio-link').click(bioLightboxShow);
   $('.bio-lightbox .close-button').click(bioLightboxHide);
+  $('.bio-lightbox .bg').click(bioLightboxHide);
 }
 
 
