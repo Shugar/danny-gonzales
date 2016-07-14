@@ -14,11 +14,12 @@ head
     require('scripts/initialize');
 
 body.body-playCursor
-  
+
   .preloader.preloader-active
-    .preloader-text
-      | Loading...
-  
+    //- .preloader-text
+    //-   | Loading...
+    img(src="images/ball.svg")
+
   .push-f
     | For best experience hit F to enter fullscreen
 
