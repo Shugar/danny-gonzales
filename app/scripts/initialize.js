@@ -183,15 +183,7 @@ function onMouseMove(event) {
   });
 }
 
-$(window).on('load', () => {
-    let preloader = $('.preloader'),
-        text      = preloader.find('.preloader-text');
-    text.fadeOut();
-    preloader.delay(350).fadeOut('slow');
-});
-
-
-$(document).ready(() => {
+function onReady() {
   bubblesParent = $('.bubbles');
 
   lightboxSrv = new LightboxService();
@@ -220,4 +212,18 @@ $(document).ready(() => {
   setNavListeners();
   setBioLightbox();
   setOthersListeneres();
-});
+}
+
+function onLoaded() {
+  let preloader = $('.preloader'),
+    text      = preloader.find('.preloader-text');
+  text.fadeOut();
+  preloader.delay(350).fadeOut('slow');
+}
+
+$(document).ready(onReady);
+
+if (document.readyState == 'complete')
+  onLoaded();
+else
+  window.addEventListener('load', onLoaded);
