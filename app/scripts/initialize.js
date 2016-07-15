@@ -215,13 +215,14 @@ function onReady() {
 }
 
 function onLoaded() {
+  onReady()
+
   let preloader = $('.preloader'),
     text      = preloader.find('.preloader-text');
   text.fadeOut();
   preloader.delay(350).fadeOut('slow');
 }
 
-$(document).ready(onReady);
 
 if (document.readyState == 'complete')
   onLoaded();
