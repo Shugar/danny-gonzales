@@ -62,26 +62,20 @@ body {
   }
 
   .logo {
-    background: url('../images/logo.svg') no-repeat center center;
-    background-size: contain;
-
     position: absolute;
-    bottom: 7.2vw;
+    bottom: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 50%);
+    transition-duration: 300ms;
 
     pointer-events: auto;
     cursor: pointer;
 
-    // width: 397px;
-    // height: 177px
+    height: 60%;
+  }
 
-    width: 38.24%;
-    height: 42.85%;
-
-    &:hover {
-      transform: translate3d(-50%,-50%,0), scale(1.1);
-    }
+  .logo:hover {
+    transform: translate(-50%, 50%) scale(1.15);
   }
 }
 
