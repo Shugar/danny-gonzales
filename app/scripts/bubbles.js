@@ -47,7 +47,8 @@ export class BubblesService {
   setBubbles(grow = 1) {
     this.bubbles = [];
     
-    let coeff = 1500 / this.width;
+    let coeff = 1200 / this.width;
+    coeff = coeff < 1  ?  1  :  coeff > 1.3 ? 1.3 : coeff;
     let reserve = UPPER_RESERVE * this.screenHeight;
     this.height = reserve + Math.round(Math.sqrt(this.posts.length) * grow);
 
@@ -55,7 +56,7 @@ export class BubblesService {
       let bubble = new Bubble();
       bubble.post = this.posts[i];
       bubble.size = BubblesService.getSize(bubble.post.size);
-      bubble.size = Math.floor(bubble.size * (coeff > 1 ? 1 : 1/coeff));
+      bubble.size = Math.floor(bubble.size / coeff);
 
       let attempt = 0;
       let check = true;
