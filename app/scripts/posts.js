@@ -25,7 +25,8 @@ export class PostsService {
   setPosts() {
     $('.bubble-container').each((index, elm) => {
       let post = new Post();
-      for (let cls of elm.classList) {
+      for (let i = 0; i < elm.classList.length; i++) {
+        let cls = elm.classList.item(i);
         if (postTypes.indexOf(cls) != -1)
           post.type = cls;
         else if (postSizes.indexOf(cls) != -1)
