@@ -209,6 +209,8 @@ function onReady() {
     height: $(window).height() + 'px'
   });
 
+  $('.bubbles').addClass('webkit');
+
   setNavListeners();
   setBioLightbox();
   setOthersListeneres();

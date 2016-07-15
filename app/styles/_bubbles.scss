@@ -4,13 +4,17 @@
   position: relative;
 
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  &.webkit {
+    -webkit-overflow-scrolling: touch;
+  }
   -ms-overflow-style: none;
+  transform: translateZ(0);
+  z-index: 10;
 
   .bubble-container {
     position: absolute;
     overflow: hidden;
-
+    transform: translateZ(0);
     will-change: transform;
 
     .bubble {
