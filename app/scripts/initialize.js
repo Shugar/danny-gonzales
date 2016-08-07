@@ -59,11 +59,17 @@ function setBioLightbox() {
   let bioLightboxShow = () => {
     $('.nav').removeClass('nav-active');
     $('.nav-toggle').removeClass('toggle-active');
-    $('.bio-lightbox').addClass('lightbox-active')
+    $('.bio-lightbox').addClass('lightbox-active').delay(100).queue((next) => {
+      $('.bio-lightbox .lightbox-inner').addClass('lightbox-inner--active');
+      next();
+    });
   };
 
   let bioLightboxHide = () => {
-    $('.bio-lightbox').removeClass('lightbox-active');
+    $('.bio-lightbox').removeClass('lightbox-active').delay(100).queue((next) => {
+      $('.bio-lightbox .lightbox-inner').removeClass('lightbox-inner--active');
+      next();
+    });
   };
 
   $('.nav .bio-link').click(bioLightboxShow);

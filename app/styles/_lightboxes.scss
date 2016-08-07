@@ -1,3 +1,9 @@
+.bio-lightbox .lightbox-inner {
+  transform: translateY(-250%);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
 .lightbox,
 .bio-lightbox {
   position: fixed;
@@ -185,6 +191,10 @@
 
 .lightbox-active {
   display: flex;
+}
+
+.bio-lightbox.lightbox-active .lightbox-inner--active {
+  transform: translateY(0);
 }
 
 
