@@ -90,12 +90,12 @@ export class LightboxService {
   }
 
   callLightbox(post) {
-    if (post.type == POST_TYPE_INSTAGRAM) {
+    if (post.type == POST_TYPE_INSTAGRAM)
       this.type = LIGHTBOX_INSTAGRAM;
-    } else {
+    else
       this.type = LIGHTBOX_GALLERY;
-      this.images = post.images;
-    }
+    
+    this.images = post.images;
 
     this.title = post.title;
     this.subtitle = post.subtitle;
@@ -105,9 +105,9 @@ export class LightboxService {
     $(this.type + ' .subtitle').html(this.subtitle);
     $(this.type + ' .text').html(this.text);
 
-    if (post.images.length > 0) {
+    if (this.images.length > 0) {
       this.updateImage();
-      if (post.images.length == 1) {
+      if (this.images.length == 1) {
         $('.lightbox .count').hide();
         $('.lightbox .slide-prev').hide();
         $('.lightbox .slide-next').hide();
