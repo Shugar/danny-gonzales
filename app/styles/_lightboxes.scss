@@ -110,7 +110,6 @@
     width: 56%;
     display: flex;
     flex-flow: column nowrap;
-    overflow-y: scroll;
     padding: 60px 0;
 
     overflow-y: scroll;
@@ -119,7 +118,7 @@
     &::-webkit-scrollbar { width: 0 !important }
   }
 
-  .image {
+  .image, iframe {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -129,6 +128,11 @@
     max-height: 400px;
     overflow: hidden;
     position: relative;
+  }
+  
+  iframe {
+    max-height: 1000px;
+    border: none;
   }
 
   .image img {

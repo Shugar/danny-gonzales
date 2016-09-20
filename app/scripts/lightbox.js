@@ -1,7 +1,8 @@
-import {Post, POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS} from './posts';
+import {Post, POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS, POST_TYPE_VIDEO} from './posts';
 
 export const LIGHTBOX_GALLERY = ".gallery-lightbox";
 export const LIGHTBOX_INSTAGRAM = ".ig-lightbox";
+export const LIGHTBOX_VIDEO = ".video-lightbox";
 
 
 export class LightboxService {
@@ -12,6 +13,7 @@ export class LightboxService {
   subtitle = '';
   text = '';
   images = [];
+  video = {};
 
   constructor() {
     this.initListeners();
@@ -65,6 +67,7 @@ export class LightboxService {
     this.title = '';
     this.subtitle = '';
     this.text = '';
+    this.video = {};
   }
 
   onPrev() {
@@ -88,14 +91,29 @@ export class LightboxService {
     let cur = this.current + 1;
     $('.lightbox .count').html(cur + ' / ' + this.images.length);
   }
+  
+  countVideo() {
+    let iframe = $(this.type + ' iframe');
+    let width = iframe.width();
+    let height = width / this.video.width * this.video.height;
+  
+    iframe.attr({
+      'src': this.video.src,
+      'width': width,
+      'height': height
+    });
+  }
 
   callLightbox(post) {
     if (post.type == POST_TYPE_INSTAGRAM)
       this.type = LIGHTBOX_INSTAGRAM;
+    else if (post.type == POST_TYPE_VIDEO)
+      this.type = LIGHTBOX_VIDEO;
     else
       this.type = LIGHTBOX_GALLERY;
     
     this.images = post.images;
+    this.video = post.video;
 
     this.title = post.title;
     this.subtitle = post.subtitle;
@@ -119,5 +137,8 @@ export class LightboxService {
     }
 
     this.showLightbox();
+  
+    if (this.type == LIGHTBOX_VIDEO)
+      this.countVideo();
   }
 }

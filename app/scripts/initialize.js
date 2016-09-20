@@ -1,4 +1,4 @@
-import {PostsService, POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS} from './posts';
+import {PostsService} from './posts';
 import {BubblesService} from './bubbles';
 import {BubbleNodesService} from './bubbleNodes';
 import {LightboxService} from './lightbox';

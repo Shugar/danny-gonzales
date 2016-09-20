@@ -3,8 +3,9 @@ import {BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S} from './bub
 export const POST_TYPE_PROJECT    = 'POST_TYPE_PROJECT';
 export const POST_TYPE_INSTAGRAM  = 'POST_TYPE_INSTAGRAM';
 export const POST_TYPE_PRESS      = 'POST_TYPE_PRESS';
+export const POST_TYPE_VIDEO      = 'POST_TYPE_VIDEO';
 
-const postTypes = [POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS];
+const postTypes = [POST_TYPE_PROJECT, POST_TYPE_INSTAGRAM, POST_TYPE_PRESS, POST_TYPE_VIDEO];
 const postSizes = [BUBBLE_TYPE_XL, BUBBLE_TYPE_L, BUBBLE_TYPE_M, BUBBLE_TYPE_S];
 
 
@@ -15,6 +16,7 @@ export class Post {
   subtitle = '';
   backgroundColor = '';
   backgroundImage = '';
+  video = {};
 
   images = [];
 }
@@ -44,6 +46,11 @@ export class PostsService {
       $(elm).find('.content-image img').each((index, elm) => {
         post.images.push(elm.getAttribute('data-src') || elm.getAttribute('src'));
       });
+  
+      let iframe = $(elm).find('.iframe');
+      post.video.src = iframe.attr('src');
+      post.video.width = iframe.attr('width');
+      post.video.height = iframe.attr('height');
 
       this.posts.push(post);
     });
