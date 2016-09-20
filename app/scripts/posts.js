@@ -51,6 +51,10 @@ export class PostsService {
       post.video.src = iframe.attr('src');
       post.video.width = iframe.attr('width');
       post.video.height = iframe.attr('height');
+      post.video.frameborder = iframe.attr('frameborder');
+      post.video.webkitallowfullscreen = iframe.attr('webkitallowfullscreen');
+      post.video.mozallowfullscreen = iframe.attr('mozallowfullscreen');
+      post.video.allowfullscreen = iframe.attr('allowfullscreen');
 
       this.posts.push(post);
     });

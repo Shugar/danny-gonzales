@@ -99,6 +99,10 @@ export class LightboxService {
   
     iframe.attr({
       'src': this.video.src,
+      'frameborder': this.video.frameborder,
+      'webkitallowfullscreen': this.video.webkitallowfullscreen,
+      'mozallowfullscreen': this.video.mozallowfullscreen,
+      'allowfullscreen': this.video.allowfullscreen,
       'width': width,
       'height': height
     });
