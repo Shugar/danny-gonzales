@@ -42,7 +42,7 @@ export class PostsService {
       post.text     = $(elm).find('.content-text').text();
 
       $(elm).find('.content-image img').each((index, elm) => {
-        post.images.push(elm.getAttribute('src'));
+        post.images.push(elm.getAttribute('data-src') || elm.getAttribute('src'));
       });
 
       this.posts.push(post);
